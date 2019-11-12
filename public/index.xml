@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>A Hugo website</title>
+    <title>From Stata to R</title>
     <link>/</link>
-    <description>Recent content on A Hugo website</description>
+    <description>Recent content on From Stata to R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 12 Nov 2019 00:00:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>I am a French student doing a Master&amp;rsquo;s degree in economics and I&amp;rsquo;m sick of learning Stata to do econometrics. I love R and its flexibility and I think that students in university should learn R. However, R has a learning curve which is steeper than Stata&amp;rsquo;s. Therefore, this blog aims to facilitate the transition from Stata to R for students in economics. The content you can find on it may help students or professionals in other domains but the topics will be focused on economics.</description>
+      <description>I am a French student doing a Master&amp;rsquo;s degree in economics and I&amp;rsquo;m sick of learning Stata to do econometrics. I love R and its flexibility and I think that students in university should learn R. However, R has a steeper learning curve than Stata. Therefore, this blog aims to facilitate the transition from Stata to R for students in economics. The content you can find on it may help students or professionals in other domains but the topics will be focused on economics.</description>
     </item>
     
     <item>
@@ -27,6 +27,15 @@
       
       <guid>/contact/</guid>
       <description>You can contact me by email at etienne.bacher@orange.fr. You can write to me in English or in French if you prefer (I&amp;rsquo;m French too).</description>
+    </item>
+    
+    <item>
+      <title>Why you should move from Stata to R</title>
+      <link>/2019/11/12/why-you-should-move-from-stata-to-r/</link>
+      <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/11/12/why-you-should-move-from-stata-to-r/</guid>
+      <description>Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students’ experiences, e.</description>
     </item>
     
   </channel>

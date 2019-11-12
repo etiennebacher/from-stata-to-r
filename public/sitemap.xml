@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/</loc>
-    <lastmod>2019-11-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/about/</loc>
     <lastmod>2019-11-12T00:00:00+00:00</lastmod>
   </url>
@@ -18,11 +13,37 @@
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>/</loc>
+    <lastmod>2019-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2019-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/stata/</loc>
+    <lastmod>2019-11-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
+    <lastmod>2019-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2019/11/12/why-you-should-move-from-stata-to-r/</loc>
+    <lastmod>2019-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
   </url>
   
 </urlset>
