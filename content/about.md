@@ -1,6 +1,6 @@
 ---
-date: "2016-05-05T21:48:51-07:00"
+date: "2019-11-12"
 title: About
 ---
 
-This is a "hello world" example website for the [**blogdown**](https://github.com/rstudio/blogdown) package. The theme was forked from [@jrutheiser/hugo-lithium-theme](https://github.com/jrutheiser/hugo-lithium-theme) and modified by [Yihui Xie](https://github.com/yihui/hugo-lithium).
+I am a French student doing a Master's degree in economics and I'm sick of learning Stata to do econometrics. I love R and its flexibility and I think that students in university should learn R. However, R has a learning curve which is steeper than Stata's. Therefore, this blog aims to facilitate the transition from Stata to R for students in economics. The content you can find on it may help students or professionals in other domains but the topics will be focused on economics. 
