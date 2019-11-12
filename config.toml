@@ -1,8 +1,7 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "A Hugo website"
+title = "From Stata to R"
 theme = "hugo-lithium"
-googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
@@ -29,12 +28,12 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     MathJaxCDN = "//cdnjs.cloudflare.com/ajax/libs"
     MathJaxVersion = "2.7.5"
 
-    # path to the favicon, under "static"
-    favicon = "favicon.ico"
+#    # path to the favicon, under "static"
+#    favicon = "favicon.ico"
 
-    [params.logo]
-    url = "logo.png"
-    width = 50
-    height = 50
-    alt = "Logo"
+#    [params.logo]
+#    url = "logo.png"
+#    width = 50
+#    height = 50
+#    alt = "Logo"
 
