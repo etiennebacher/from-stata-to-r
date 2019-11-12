@@ -1,0 +1,32 @@
+---
+date: "2019-11-12"
+title: "Why you should move from Stata to R"
+author: "Etienne Bacher"
+draft: true
+tags: ["R", "Stata"]
+output: 
+  blogdown::html_page:
+    toc: false
+---
+
+Before detailing how to study economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students' experiences, e.g. data cleaning and treatment, data analysis, econometrics, etc.
+
+Now we can begin.
+
+**Reason 1: R is free**
+That may seem a false argument for some people, especially because in many universities, students have freely access to Stata. However, in my experience, I know that we frequently want to work home or in group on some projects and therefore we need Stata on our personal laptop. Therefore, some cracked versions circulate between students and it is well-known that when downloading illegally softwares (and movies, TV shows, etc.), there's always a risk of being infected by a virus. I don't know if this happens often or not, maybe you will never suffer from it, but it would be just stupid to have to suffer from a hacking just because the statistics software was not free. That's the big advantage of R: it is completely free. Whatever your operating system, you can download base R and every package you want and it won't cost any money.
+
+**Reason 2: R is open-source**
+I have already heard one of my professor complaining about the fact that Stata is a "black box" (not like those in planes but more like an opaque system). On the contrary, R is open-source (meaning that anyone can see the code, contribute to it and distribute it) and the code behind the functions you use is easily visible with just one click. That meets the next argument, which is the diversity of packages.
+
+**Reason 3: the diversity of packages**
+
+
+
+
+
+
+
+
+
+
