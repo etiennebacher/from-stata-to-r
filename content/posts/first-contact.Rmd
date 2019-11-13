@@ -1,0 +1,38 @@
+---
+date: "`r format(Sys.Date())`"
+title: "First contact with the data on R"
+author: "Etienne Bacher"
+draft: true
+tags: ["R", "Stata"]
+output: 
+  blogdown::html_page:
+    toc: false
+---
+
+In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don't know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.
+
+# Files used and organization of the project
+
+<!-- BESOIN DE TROUVER LES BASES ORIGINALES SUR LE SITE DE LA BANQUE MONDIALE -->
+The datasets that we will use come from........
+
+In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I put their path as vectors.
+
+```{r}
+figdir <- c("/your/path/to/your/project/Figures/")
+base_used_dir <- c("/your/path/to/your/project/Bases_Used/")
+base_created_dir <- c("/your/path/to/your/project/Bases_Created/")
+```
+
+
+# Import data
+
+We will use data contained in Excel (`.xlsx`) and text (`.txt`) files. To import Excel data, we wil need the `readxl` package. 
+
+```{r}
+# if you've never installed this package before, do:
+# install.packages("readxl")
+library(readxl)
+```
+
+

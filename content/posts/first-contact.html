@@ -1,0 +1,30 @@
+---
+date: "2019-11-13"
+title: "First contact with the data on R"
+author: "Etienne Bacher"
+draft: true
+tags: ["R", "Stata"]
+output: 
+  blogdown::html_page:
+    toc: false
+---
+
+
+
+<p>In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.</p>
+<div id="files-used-and-organization-of-the-project" class="section level1">
+<h1>Files used and organization of the project</h1>
+<!-- BESOIN DE TROUVER LES BASES ORIGINALES SUR LE SITE DE LA BANQUE MONDIALE -->
+<p>The datasets that we will use come from……..</p>
+<p>In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I put their path as vectors.</p>
+<pre class="r"><code>figdir &lt;- c(&quot;/your/path/to/your/project/Figures/&quot;)
+base_used_dir &lt;- c(&quot;/your/path/to/your/project/Bases_Used/&quot;)
+base_created_dir &lt;- c(&quot;/your/path/to/your/project/Bases_Created/&quot;)</code></pre>
+</div>
+<div id="import-data" class="section level1">
+<h1>Import data</h1>
+<p>We will use data contained in Excel (<code>.xlsx</code>) and text (<code>.txt</code>) files. To import Excel data, we wil need the <code>readxl</code> package.</p>
+<pre class="r"><code># if you&#39;ve never installed this package before, do:
+# install.packages(&quot;readxl&quot;)
+library(readxl)</code></pre>
+</div>
