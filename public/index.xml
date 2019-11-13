@@ -6,6 +6,7 @@
     <description>Recent content on From Stata to R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>© Copyright notice</copyright>
     <lastBuildDate>Tue, 12 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
@@ -31,10 +32,10 @@
     
     <item>
       <title>Why you should move from Stata to R</title>
-      <link>/2019/11/12/why-you-should-move-from-stata-to-r/</link>
+      <link>/posts/why-moving/</link>
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/11/12/why-you-should-move-from-stata-to-r/</guid>
+      <guid>/posts/why-moving/</guid>
       <description>Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students’ experiences, e.</description>
     </item>
     

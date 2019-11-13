@@ -1,39 +1,61 @@
-baseurl = "/"
+baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "From Stata to R"
-theme = "hugo-lithium"
-disqusShortname = ""
+theme = "ezhil"
+paginate = 5
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
-[permalinks]
-    post = "/:year/:month/:day/:slug/"
+copyright = "© Copyright notice"
 
-[[menu.main]]
-    name = "About"
-    url = "/about/"
-[[menu.main]]
-    name = "Contact"
-    url = "/contact/"
-[[menu.main]]
-    name = "GitHub"
-    url = "https://github.com/etiennebacher/from-stata-to-r"
+pygmentsstyle = "vs"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+disqusShortname = "ezhil-demo"
 
 [params]
-    # options for highlight.js (version, additional languages, and theme)
-    highlightjsVersion = "9.12.0"
-    highlightjsCDN = "//cdnjs.cloudflare.com/ajax/libs"
-    highlightjsLang = ["r", "yaml"]
-    highlightjsTheme = "github"
+	subtitle = ""
+	disableDisqusTypes = ["page"]
+	featherIconsCDN = true
+	mode = "auto" # "dark" or "auto"
+	# customCSS = "css/custom.css"  # Custom CSS applied to default styles.
+	# customDarkCSS = "css/custom-dark.css"  # Custom styles applied to dark mode css.
+	# customJS = ["js/custom.js", "js/custom1.js"]  # Custom JS scripts.
 
-    MathJaxCDN = "//cdnjs.cloudflare.com/ajax/libs"
-    MathJaxVersion = "2.7.5"
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
 
-#    # path to the favicon, under "static"
-#    favicon = "favicon.ico"
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
 
-#    [params.logo]
-#    url = "logo.png"
-#    width = 50
-#    height = 50
-#    alt = "Logo"
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 3
 
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 4
+
+[[menu.main]]
+name = "Contact"
+url = "/contact"
+weight = 5
+
+[[params.social]]
+name = "Github"
+icon = "github"
+url = "https://github.com/etiennebacher/from-stata-to-r"
+
+[[params.social]]
+name = "RSS"
+icon = "rss"
+url = "/index.xml"
+
+[taxonomies]
+   tag = "tags"
