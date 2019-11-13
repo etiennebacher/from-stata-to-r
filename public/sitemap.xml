@@ -18,7 +18,7 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>/posts/</loc>
     <lastmod>2019-11-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -38,12 +38,8 @@
   </url>
   
   <url>
-    <loc>/2019/11/12/why-you-should-move-from-stata-to-r/</loc>
+    <loc>/posts/why-moving/</loc>
     <lastmod>2019-11-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
   </url>
   
 </urlset>
