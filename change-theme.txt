@@ -1,5 +1,3 @@
 To change the theme of the blog, find a new theme on https://themes.gohugo.io/ and then go on the github associated. 
-In RStudio create a new project -> Blogdown -> theme = user/repo
-This creates a demo site. Remove default articles and put yours instead, customize the parameters in config.toml, modify some indexes so that previous articles do not appear anymore...
-Take all of these files except the .RProject created for the occasion and replace the files of the previous blog by the new (but do not replace the Rproject corresponding to your first blog).
-Open the project of your first site, commit and push all changes. That's it.
+Download the folder "theme" and put it in the folder "themes" of your existing project.
+In config.toml, change "theme" by the name of your new theme
