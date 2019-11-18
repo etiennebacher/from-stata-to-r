@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
-    <lastBuildDate>Wed, 13 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/stata/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,10 +15,10 @@
     <item>
       <title>First contact with the data on R</title>
       <link>/posts/first-contact/</link>
-      <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/posts/first-contact/</guid>
-      <description>In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.</description>
+      <description>Files used and organization of the project Import data Merge dataframes Descriptive Statistics Plots   In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.</description>
     </item>
     
     <item>
