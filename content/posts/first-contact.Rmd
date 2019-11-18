@@ -6,7 +6,7 @@ draft: true
 tags: ["R", "Stata"]
 output: 
   blogdown::html_page:
-    toc: true 
+    toc: false 
 ---
 
 In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don't know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.
@@ -133,7 +133,11 @@ base_created2 <- base_created2 %>%
 base_created2
 ```
 
-That's it, we now have the complete dataframe. There are still some things to do. First, we remark that there are some errors in the column `location` (`England_error` and `Spain_error`) so we correct it:
+That's it, we now have the complete dataframe. 
+
+## Clean the data
+
+There are still some things to do. First, we remark that there are some errors in the column `location` (`England_error` and `Spain_error`) so we correct it:
 
 ```{r}
 # display the unique values of the column "location"

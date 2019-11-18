@@ -4,14 +4,14 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>First contact with the data on R - From Stata to R</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="First contact with the data on R" />
-<meta property="og:description" content="Files used and organization of the project Import data Merge dataframes Descriptive Statistics Plots   In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works." />
+<meta property="og:description" content="In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/first-contact/" />
 <meta property="article:published_time" content="2019-11-18T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-11-18T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="First contact with the data on R"/>
-<meta name="twitter:description" content="Files used and organization of the project Import data Merge dataframes Descriptive Statistics Plots   In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works."/>
+<meta name="twitter:description" content="In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works."/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
@@ -68,15 +68,6 @@
 		<div class="markdown">
 			
 
-<div id="TOC">
-<ul>
-<li><a href="#files-used-and-organization-of-the-project">Files used and organization of the project</a></li>
-<li><a href="#import-data">Import data</a></li>
-<li><a href="#merge-dataframes">Merge dataframes</a></li>
-<li><a href="#descriptive-statistics">Descriptive Statistics</a></li>
-<li><a href="#plots">Plots</a></li>
-</ul>
-</div>
 
 <p>In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.</p>
 <div id="files-used-and-organization-of-the-project" class="section level2">
@@ -221,7 +212,11 @@ base_created2</code></pre>
 ##  9 21        2     1  2019 RODRIGUEZ Mary         2  3600 England 
 ## 10 21        2     1  2020 RODRIGUEZ Mary         2  3784 England 
 ## # … with 36 more rows</code></pre>
-<p>That’s it, we now have the complete dataframe. There are still some things to do. First, we remark that there are some errors in the column <code>location</code> (<code>England_error</code> and <code>Spain_error</code>) so we correct it:</p>
+<p>That’s it, we now have the complete dataframe.</p>
+</div>
+<div id="clean-the-data" class="section level2">
+<h2>Clean the data</h2>
+<p>There are still some things to do. First, we remark that there are some errors in the column <code>location</code> (<code>England_error</code> and <code>Spain_error</code>) so we correct it:</p>
 <pre class="r"><code># display the unique values of the column &quot;location&quot;
 unique(base_created2$location)</code></pre>
 <pre><code>## [1] &quot;France&quot;        &quot;England&quot;       &quot;Spain&quot;         &quot;Italy&quot;        
