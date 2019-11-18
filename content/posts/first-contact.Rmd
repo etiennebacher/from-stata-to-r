@@ -14,6 +14,7 @@ In this post, you will see how to import and treat data, make descriptive statis
 ## Files used and organization of the project
 
 <!-- COMMENT METTRE EN LIGNE DES FICHIERS ??? (do, script & bases) -->
+<!-- COMMENT AFFICHER LE CODE AVEC UN ARRIERE PLAN POUR LE DISTINGUER ??? -->
 
 In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I put their path as vectors.
 
