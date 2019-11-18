@@ -4,17 +4,16 @@ title = "From Stata to R"
 theme = "ezhil"
 paginate = 5
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
-disqusShortname = "" 
+disqusShortname = "ezhil-demo"
 
 copyright = "© Copyright notice"
 
 [params]
-  themeVariant = "blue" 
 	subtitle = ""
 	disableDisqusTypes = ["page"]
 	featherIconsCDN = true
 	mode = "auto" # "dark" or "auto"
-	customCSS = "css/style.css"  # Custom CSS applied to default styles.
+	# customCSS = "css/style.css"  # Custom CSS applied to default styles.
 	# customDarkCSS = "css/custom-dark.css"  # Custom styles applied to dark mode css.
 	# customJS = ["js/custom.js", "js/custom1.js"]  # Custom JS scripts.
 

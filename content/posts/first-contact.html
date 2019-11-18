@@ -6,19 +6,10 @@ draft: true
 tags: ["R", "Stata"]
 output: 
   blogdown::html_page:
-    toc: true 
+    toc: false 
 ---
 
 
-<div id="TOC">
-<ul>
-<li><a href="#files-used-and-organization-of-the-project">Files used and organization of the project</a></li>
-<li><a href="#import-data">Import data</a></li>
-<li><a href="#merge-dataframes">Merge dataframes</a></li>
-<li><a href="#descriptive-statistics">Descriptive Statistics</a></li>
-<li><a href="#plots">Plots</a></li>
-</ul>
-</div>
 
 <p>In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.</p>
 <div id="files-used-and-organization-of-the-project" class="section level2">
@@ -163,7 +154,11 @@ base_created2</code></pre>
 ##  9 21        2     1  2019 RODRIGUEZ Mary         2  3600 England 
 ## 10 21        2     1  2020 RODRIGUEZ Mary         2  3784 England 
 ## # … with 36 more rows</code></pre>
-<p>That’s it, we now have the complete dataframe. There are still some things to do. First, we remark that there are some errors in the column <code>location</code> (<code>England_error</code> and <code>Spain_error</code>) so we correct it:</p>
+<p>That’s it, we now have the complete dataframe.</p>
+</div>
+<div id="clean-the-data" class="section level2">
+<h2>Clean the data</h2>
+<p>There are still some things to do. First, we remark that there are some errors in the column <code>location</code> (<code>England_error</code> and <code>Spain_error</code>) so we correct it:</p>
 <pre class="r"><code># display the unique values of the column &quot;location&quot;
 unique(base_created2$location)</code></pre>
 <pre><code>## [1] &quot;France&quot;        &quot;England&quot;       &quot;Spain&quot;         &quot;Italy&quot;        
@@ -275,5 +270,5 @@ hist2</code></pre>
 <p><img src="/posts/first-contact_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>Finally, you may want to export these graphs. To do so, we use <code>ggsave</code> (you can replace .pdf by .eps or .png if you want):</p>
 <pre class="r"><code>ggsave(paste(figdir, &quot;plot1.pdf&quot;, sep = &quot;&quot;), plot = hist1)</code></pre>
-<p>That’s it! In this first (long) post, you have seen how to import, clean and tidy datasets, and how to make some descriptive statistics and some plots. I hope this was helpful to you!</p>
+<p>That’s it! In this first post, you have seen how to import, clean and tidy datasets, and how to make some descriptive statistics and some plots. I hope this was helpful to you!</p>
 </div>
