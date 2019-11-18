@@ -4,6 +4,11 @@ title = "From Stata to R"
 theme = "ezhil"
 paginate = 5
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+pygmentsstyle = "vs"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
 disqusShortname = "ezhil-demo"
 
 copyright = "© Copyright notice"

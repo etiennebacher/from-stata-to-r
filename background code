@@ -1,0 +1,2 @@
+pour avoir un arrière plan clair pour le code, il faut mettre soit le format .md (mais dans ce cas le code ne s'exécute pas) soit .Rmarkdown (le format adopté ici).
+Pour plus d'infos, voir : https://bookdown.org/yihui/blogdown/output-format.html 

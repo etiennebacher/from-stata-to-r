@@ -18,7 +18,7 @@
       <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/posts/first-contact/</guid>
-      <description>Files used and organization of the project Import data Merge dataframes Clean the data Descriptive Statistics Plots   In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online).</description>
+      <description>In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don&amp;rsquo;t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.</description>
     </item>
     
     <item>
@@ -45,7 +45,7 @@
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/posts/why-moving/</guid>
-      <description>Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students’ experiences, e.</description>
+      <description>Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students&amp;rsquo; experiences, e.</description>
     </item>
     
   </channel>

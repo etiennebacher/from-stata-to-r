@@ -4,14 +4,14 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>First contact with the data on R - From Stata to R</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="First contact with the data on R" />
-<meta property="og:description" content="Files used and organization of the project Import data Merge dataframes Clean the data Descriptive Statistics Plots   In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online)." />
+<meta property="og:description" content="In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don&rsquo;t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/first-contact/" />
 <meta property="article:published_time" content="2019-11-18T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-11-18T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="First contact with the data on R"/>
-<meta name="twitter:description" content="Files used and organization of the project Import data Merge dataframes Clean the data Descriptive Statistics Plots   In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online)."/>
+<meta name="twitter:description" content="In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don&rsquo;t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works."/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
@@ -66,50 +66,43 @@
 		<div class="markdown">
 			
 
-<div id="TOC">
-<ul>
-<li><a href="#files-used-and-organization-of-the-project">Files used and organization of the project</a></li>
-<li><a href="#import-data">Import data</a></li>
-<li><a href="#merge-dataframes">Merge dataframes</a></li>
-<li><a href="#clean-the-data">Clean the data</a></li>
-<li><a href="#descriptive-statistics">Descriptive Statistics</a></li>
-<li><a href="#plots">Plots</a></li>
-</ul>
-</div>
+<p>In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don&rsquo;t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.</p>
 
-<p>In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don’t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.</p>
-<div id="files-used-and-organization-of-the-project" class="section level2">
-<h2>Files used and organization of the project</h2>
+<h2 id="files-used-and-organization-of-the-project">Files used and organization of the project</h2>
+
 <!-- COMMENT METTRE EN LIGNE DES FICHIERS ??? (do, script & bases) -->
+
 <!-- COMMENT AFFICHER LE CODE AVEC UN ARRIERE PLAN POUR LE DISTINGUER ??? -->
+
 <p>In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I put their path as vectors.</p>
-<pre class="r"><code>figdir &lt;- c(&quot;/your/path/to/your/project/Figures/&quot;)
-base_used_dir &lt;- c(&quot;/your/path/to/your/project/Bases_Used/&quot;)
-base_created_dir &lt;- c(&quot;/your/path/to/your/project/Bases_Created/&quot;)</code></pre>
-</div>
-<div id="import-data" class="section level2">
-<h2>Import data</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">figdir &lt;- c(<span style="color:#a31515">&#34;/your/path/to/your/project/Figures/&#34;</span>)
+base_used_dir &lt;- c(<span style="color:#a31515">&#34;/your/path/to/your/project/Bases_Used/&#34;</span>)
+base_created_dir &lt;- c(<span style="color:#a31515">&#34;/your/path/to/your/project/Bases_Created/&#34;</span>)</code></pre></div>
+<h2 id="import-data">Import data</h2>
+
 <p>We will use data contained in Excel (<code>.xlsx</code>) and text (<code>.txt</code>) files. To import Excel data, we wil need the <code>readxl</code> package.</p>
-<pre class="r"><code># if you&#39;ve never installed this package before, do:
-# install.packages(&quot;readxl&quot;)
-library(readxl)</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#008000"># if you&#39;ve never installed this package before, do:</span>
+<span style="color:#008000"># install.packages(&#34;readxl&#34;)</span>
+library(readxl)</code></pre></div>
 <p>We use the <code>read_excel</code> function of this package to import excel files and the function <code>read.table</code> (in base R) to import the data:</p>
+
 <!-- La partie qui suit doit être visible pour correspondre à ce que je dis mais ne doit pas être exécutée car pas les bons chemins d'accès -->
-<pre class="r"><code>base1 &lt;- read_excel(paste(base_used_dir, &quot;Base_Excel.xlsx&quot;, sep = &quot;&quot;), sheet = &quot;Base1&quot;)
-base2 &lt;- read_excel(paste(base_used_dir, &quot;Base_Excel.xlsx&quot;, sep = &quot;&quot;), sheet = &quot;Base2&quot;)
-base3 &lt;- read_excel(paste(base_used_dir, &quot;Base_Excel.xlsx&quot;, sep = &quot;&quot;), sheet = &quot;Base3&quot;)
-base4 &lt;- read.table(paste(base_used_dir, &quot;Base_Text.txt&quot;, sep = &quot;&quot;), header = TRUE)</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">base1 &lt;- read_excel(paste(base_used_dir, <span style="color:#a31515">&#34;Base_Excel.xlsx&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>), sheet = <span style="color:#a31515">&#34;Base1&#34;</span>)
+base2 &lt;- read_excel(paste(base_used_dir, <span style="color:#a31515">&#34;Base_Excel.xlsx&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>), sheet = <span style="color:#a31515">&#34;Base2&#34;</span>)
+base3 &lt;- read_excel(paste(base_used_dir, <span style="color:#a31515">&#34;Base_Excel.xlsx&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>), sheet = <span style="color:#a31515">&#34;Base3&#34;</span>)
+base4 &lt;- read.table(paste(base_used_dir, <span style="color:#a31515">&#34;Base_Text.txt&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>), header = <span style="color:#00f">TRUE</span>)</code></pre></div>
 <!-- La partie qui suit ne doit pas être visible mais doit être exécutée -->
+
 <p>Now, we have stored the four datasets in four objects called <code>data.frames</code>. To me, this simple thing is an advantage on Stata where storing multiple datasets in the same time is not intuitive at all.</p>
-</div>
-<div id="merge-dataframes" class="section level2">
-<h2>Merge dataframes</h2>
-<p>We want to have a unique dataset to make descriptive statistics and econometrics (we will just do descriptive statistics in this post). Therefore, we will merge these datasets together, first by using the <code>dplyr</code> package. This package is one of the references for data manipulation. It is extremely useful and much more easy to use than base R. You may find a cheatsheet (i.e. a recap of the functions) for this package <a href="https://rstudio.com/resources/cheatsheets/">here</a>, along with cheatsheets of many other great packages.</p>
-<p>First, we want to regroup <code>base1</code> and <code>base2</code>. To do so, we just need to put one under the other and to “stick” them together with <code>bind_rows</code> and we observe the result:</p>
-<pre class="r"><code>library(dplyr)
+
+<h2 id="merge-dataframes">Merge dataframes</h2>
+
+<p>We want to have a unique dataset to make descriptive statistics and econometrics (we will just do descriptive statistics in this post). Therefore, we will merge these datasets together, first by using the <code>dplyr</code> package. This package is one of the references for data manipulation. It is extremely useful and much more easy to use than base R. You may find a cheatsheet (i.e. a recap of the functions) for this package <a href="https://rstudio.com/resources/cheatsheets/">here</a>, along with cheatsheets of many other great packages.</p>
+
+<p>First, we want to regroup <code>base1</code> and <code>base2</code>. To do so, we just need to put one under the other and to &ldquo;stick&rdquo; them together with <code>bind_rows</code> and we observe the result:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">library(dplyr)
 base_created &lt;- bind_rows(base1, base2)
-base_created</code></pre>
-<pre><code>## # A tibble: 23 x 6
+base_created</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">## # A tibble: 23 x 6
 ##     hhid indidy1 surname   name     gender  wage
 ##    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
 ##  1     1       1 BROWN     Robert        1  2000
@@ -122,11 +115,10 @@ base_created</code></pre>
 ##  8     2       4 ANDERSON  Richard       1  1900
 ##  9     3       1 THOMAS    Charles       1  1800
 ## 10     3       2 TAYLOR    Barbara       2  1890
-## # … with 13 more rows</code></pre>
+## # … with 13 more rows</pre></div>
 <p>As you can see, we obtain a dataframe with 6 columns (like each table separately) and 23 rows: 18 in the first table, 5 in the second table. Now, we merge this dataframe with <code>base3</code>. <code>base_created</code> and <code>base3</code> only have one column in common (<code>hhid</code>) so we will need to specify that we want to merge these two bases by this column:</p>
-<pre class="r"><code>base_created &lt;- left_join(base_created, base3, by = &quot;hhid&quot;)
-base_created</code></pre>
-<pre><code>## # A tibble: 23 x 7
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">base_created &lt;- left_join(base_created, base3, by = <span style="color:#a31515">&#34;hhid&#34;</span>)
+base_created</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">## # A tibble: 23 x 7
 ##     hhid indidy1 surname   name     gender  wage location
 ##    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   
 ##  1     1       1 BROWN     Robert        1  2000 France  
@@ -139,20 +131,20 @@ base_created</code></pre>
 ##  8     2       4 ANDERSON  Richard       1  1900 England 
 ##  9     3       1 THOMAS    Charles       1  1800 Spain   
 ## 10     3       2 TAYLOR    Barbara       2  1890 Spain   
-## # … with 13 more rows</code></pre>
-<p><code>left_join</code> is a <code>dplyr</code> function saying that the first dataframe mentioned (here <code>base_created</code>) is the “most important” and that we will stick the second one (here <code>base3</code>) to it. If there are more rows in the first one than in the second one, then there will be some missing values but the number of rows will stay the same. If we knew that <code>base3</code> had more rows than <code>base_created</code>, we would have used <code>right_join</code>.</p>
-<p>We now want to merge <code>base_created</code> with <code>base4</code>. The problem is that there are no common columns so we will need to create one in each. Moreover, <code>base_created</code> contains data for the year 2019 and <code>base4</code> for the year 2020. We will need to create columns to specify that too:</p>
-<pre class="r"><code># rename the second column of base_created and of base4
-colnames(base_created)[2] &lt;- &quot;indid&quot;
-colnames(base4)[2] &lt;- &quot;indid&quot;
+## # … with 13 more rows</pre></div>
+<p><code>left_join</code> is a <code>dplyr</code> function saying that the first dataframe mentioned (here <code>base_created</code>) is the &ldquo;most important&rdquo; and that we will stick the second one (here <code>base3</code>) to it. If there are more rows in the first one than in the second one, then there will be some missing values but the number of rows will stay the same. If we knew that <code>base3</code> had more rows than <code>base_created</code>, we would have used <code>right_join</code>.</p>
 
-# create the column 2019 for base_created and 2020 for base4
+<p>We now want to merge <code>base_created</code> with <code>base4</code>. The problem is that there are no common columns so we will need to create one in each. Moreover, <code>base_created</code> contains data for the year 2019 and <code>base4</code> for the year 2020. We will need to create columns to specify that too:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#008000"># rename the second column of base_created and of base4</span>
+colnames(base_created)[2] &lt;- <span style="color:#a31515">&#34;indid&#34;</span>
+colnames(base4)[2] &lt;- <span style="color:#a31515">&#34;indid&#34;</span>
+
+<span style="color:#008000"># create the column 2019 for base_created and 2020 for base4</span>
 base_created$year &lt;- 2019
-base4$year &lt;- 2020</code></pre>
+base4$year &lt;- 2020</code></pre></div>
 <p>From this point, we can merge these two dataframes:</p>
-<pre class="r"><code>base_created2 &lt;- bind_rows(base_created, base4)
-base_created2</code></pre>
-<pre><code>## # A tibble: 46 x 8
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">base_created2 &lt;- bind_rows(base_created, base4)
+base_created2</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">## # A tibble: 46 x 8
 ##     hhid indid surname   name     gender  wage location  year
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
 ##  1     1     1 BROWN     Robert        1  2000 France    2019
@@ -165,14 +157,13 @@ base_created2</code></pre>
 ##  8     2     4 ANDERSON  Richard       1  1900 England   2019
 ##  9     3     1 THOMAS    Charles       1  1800 Spain     2019
 ## 10     3     2 TAYLOR    Barbara       2  1890 Spain     2019
-## # … with 36 more rows</code></pre>
+## # … with 36 more rows</pre></div>
 <p>But we have many missing values for the new rows because <code>base4</code> only contained three columns. We want to have a data frame arranged by household then by individual and finally by year. Using only <code>dplyr</code> functions, we can do:</p>
-<pre class="r"><code>base_created2 &lt;- base_created2 %&gt;% 
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">base_created2 &lt;- base_created2 %&gt;% 
   group_by(hhid, indid) %&gt;% 
   arrange(hhid, indid, year) %&gt;%
   ungroup()
-base_created2</code></pre>
-<pre><code>## # A tibble: 46 x 8
+base_created2</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">## # A tibble: 46 x 8
 ##     hhid indid surname   name    gender  wage location  year
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
 ##  1     1     1 BROWN     Robert       1  2000 France    2019
@@ -185,14 +176,15 @@ base_created2</code></pre>
 ##  8     1     4 &lt;NA&gt;      &lt;NA&gt;        NA  2090 &lt;NA&gt;      2020
 ##  9     2     1 RODRIGUEZ Mary         2  3600 England   2019
 ## 10     2     1 &lt;NA&gt;      &lt;NA&gt;        NA  3784 &lt;NA&gt;      2020
-## # … with 36 more rows</code></pre>
-<p>Notice that there are <code>%&gt;%</code> between the lines: it is a pipe and its function is to connect lines of code between them so that we don’t have to write <code>base_created2</code> every time. Now that our dataframe is arranged, we need to fill the missing values. Fortunately, these missing values do not change for an individual since they concern the gender, the location, the name and the surname. So basically, we can just take the value of the cell above (corresponding to year 2019) and replicate it in each cell (corresponding to year 2020):</p>
-<pre class="r"><code>library(tidyr)
+## # … with 36 more rows</pre></div>
+<p>Notice that there are <code>%&gt;%</code> between the lines: it is a pipe and its function is to connect lines of code between them so that we don&rsquo;t have to write <code>base_created2</code> every time. Now that our dataframe is arranged, we need to fill the missing values. Fortunately, these missing values do not change for an individual since they concern the gender, the location, the name and the surname. So basically, we can just take the value of the cell above (corresponding to year 2019) and replicate it in each cell (corresponding to year 2020):</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">library(tidyr)
 base_created2 &lt;- base_created2 %&gt;%
   fill(select_if(., ~ any(is.na(.))) %&gt;% 
          names(),
-       .direction = &#39;down&#39;)</code></pre>
+       .direction = <span style="color:#a31515">&#39;down&#39;</span>)</code></pre></div>
 <p>Let me explain the code above:</p>
+
 <ul>
 <li><code>fill</code> aims at fill cells</li>
 <li><code>select_if</code> selects columns according to the condition defined</li>
@@ -201,13 +193,14 @@ base_created2 &lt;- base_created2 %&gt;%
 <li><code>names</code> tells us what the names of the columns selected are</li>
 <li><code>.direction</code> tells the direction in which the filling goes</li>
 </ul>
-<p>So <code>fill(select_if(., ~ any(is.na(.))) %&gt;% names(), .direction = 'down')</code> means that for the dataframe, we select each column which has some NA in it and we obtain their names. In these columns, the empty cells are filled by the value of the cell above (since the direction is “down”).</p>
+
+<p>So <code>fill(select_if(., ~ any(is.na(.))) %&gt;% names(), .direction = 'down')</code> means that for the dataframe, we select each column which has some NA in it and we obtain their names. In these columns, the empty cells are filled by the value of the cell above (since the direction is &ldquo;down&rdquo;).</p>
+
 <p>Finally, we want the first three columns to be <code>hhid</code>, <code>indid</code> and <code>year</code>, and we create a ID column named <code>hhind</code> which is just the union of <code>hhid</code> and <code>indid</code>.</p>
-<pre class="r"><code>base_created2 &lt;- base_created2 %&gt;%
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">base_created2 &lt;- base_created2 %&gt;%
   select(hhid, indid, year, everything()) %&gt;%
-  unite(hhind, c(hhid, indid), sep = &quot;&quot;, remove = FALSE) 
-base_created2</code></pre>
-<pre><code>## # A tibble: 46 x 9
+  unite(hhind, c(hhid, indid), sep = <span style="color:#a31515">&#34;&#34;</span>, remove = <span style="color:#00f">FALSE</span>) 
+base_created2</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">## # A tibble: 46 x 9
 ##    hhind  hhid indid  year surname   name    gender  wage location
 ##    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   
 ##  1 11        1     1  2019 BROWN     Robert       1  2000 France  
@@ -220,39 +213,35 @@ base_created2</code></pre>
 ##  8 14        1     4  2020 DAVIS     David        1  2090 France  
 ##  9 21        2     1  2019 RODRIGUEZ Mary         2  3600 England 
 ## 10 21        2     1  2020 RODRIGUEZ Mary         2  3784 England 
-## # … with 36 more rows</code></pre>
-<p>That’s it, we now have the complete dataframe.</p>
-</div>
-<div id="clean-the-data" class="section level2">
-<h2>Clean the data</h2>
+## # … with 36 more rows</pre></div>
+<p>That&rsquo;s it, we now have the complete dataframe.</p>
+
+<h2 id="clean-the-data">Clean the data</h2>
+
 <p>There are still some things to do. First, we remark that there are some errors in the column <code>location</code> (<code>England_error</code> and <code>Spain_error</code>) so we correct it:</p>
-<pre class="r"><code># display the unique values of the column &quot;location&quot;
-unique(base_created2$location)</code></pre>
-<pre><code>## [1] &quot;France&quot;        &quot;England&quot;       &quot;Spain&quot;         &quot;Italy&quot;        
-## [5] &quot;England_error&quot; &quot;Spain_error&quot;</code></pre>
-<pre class="r"><code># correct the errors
-base_created2[base_created2 == &quot;England_error&quot;] &lt;- &quot;England&quot;
-base_created2[base_created2 == &quot;Spain_error&quot;] &lt;- &quot;Spain&quot;
-unique(base_created2$location)</code></pre>
-<pre><code>## [1] &quot;France&quot;  &quot;England&quot; &quot;Spain&quot;   &quot;Italy&quot;</code></pre>
-<p>Basically, what we’ve done here is that we have selected every cell in the whole dataframe that had the value <code>England_error</code> (respectively <code>Spain_error</code>) and we replaced these cells by <code>England</code> (<code>Spain</code>). We also need to recode the column <code>gender</code> because binary variables have to take values of 0 or 1, not 1 or 2.</p>
-<pre class="r"><code>base_created2$gender &lt;- recode(base_created2$gender, `2` = 0)</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#008000"># display the unique values of the column &#34;location&#34;</span>
+unique(base_created2$location)</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">## [1] &#34;France&#34;        &#34;England&#34;       &#34;Spain&#34;         &#34;Italy&#34;        
+## [5] &#34;England_error&#34; &#34;Spain_error&#34;</pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#008000"># correct the errors</span>
+base_created2[base_created2 == <span style="color:#a31515">&#34;England_error&#34;</span>] &lt;- <span style="color:#a31515">&#34;England&#34;</span>
+base_created2[base_created2 == <span style="color:#a31515">&#34;Spain_error&#34;</span>] &lt;- <span style="color:#a31515">&#34;Spain&#34;</span>
+unique(base_created2$location)</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">## [1] &#34;France&#34;  &#34;England&#34; &#34;Spain&#34;   &#34;Italy&#34;</pre></div>
+<p>Basically, what we&rsquo;ve done here is that we have selected every cell in the whole dataframe that had the value <code>England_error</code> (respectively <code>Spain_error</code>) and we replaced these cells by <code>England</code> (<code>Spain</code>). We also need to recode the column <code>gender</code> because binary variables have to take values of 0 or 1, not 1 or 2.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">base_created2$gender &lt;- recode(base_created2$gender, `2` = 0)</code></pre></div>
 <p>To have more details on the dataframe, we need to create some labels. To do so, we need the <code>upData</code> function in the <code>Hmisc</code> package.</p>
-<pre class="r"><code>library(Hmisc)
-var.labels &lt;- c(hhind = &quot;individual&#39;s ID&quot;,
-                hhid = &quot;household&#39;s ID&quot;,
-                indid = &quot;individual&#39;s ID in the household&quot;,
-                year = &quot;year&quot;,
-                surname = &quot;surname&quot;,
-                name = &quot;name&quot;,
-                gender = &quot;1 if male, 0 if female&quot;,
-                wage = &quot;wage&quot;,
-                location = &quot;location&quot;)
-base_created2 &lt;- upData(base_created2, labels = var.labels)</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">library(Hmisc)
+var.labels &lt;- c(hhind = <span style="color:#a31515">&#34;individual&#39;s ID&#34;</span>,
+                hhid = <span style="color:#a31515">&#34;household&#39;s ID&#34;</span>,
+                indid = <span style="color:#a31515">&#34;individual&#39;s ID in the household&#34;</span>,
+                year = <span style="color:#a31515">&#34;year&#34;</span>,
+                surname = <span style="color:#a31515">&#34;surname&#34;</span>,
+                name = <span style="color:#a31515">&#34;name&#34;</span>,
+                gender = <span style="color:#a31515">&#34;1 if male, 0 if female&#34;</span>,
+                wage = <span style="color:#a31515">&#34;wage&#34;</span>,
+                location = <span style="color:#a31515">&#34;location&#34;</span>)
+base_created2 &lt;- upData(base_created2, labels = var.labels)</code></pre></div>
 <p>We can see the result with:</p>
-<pre class="r"><code>contents(base_created2)</code></pre>
-<pre><code>## 
-## Data frame:base_created2 46 observations and 9 variables    Maximum # NAs:0
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">contents(base_created2)</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">## 
+## Data frame:base_created2	46 observations and 9 variables    Maximum # NAs:0
 ## 
 ## 
 ##                                    Labels     Class   Storage
@@ -264,28 +253,23 @@ base_created2 &lt;- upData(base_created2, labels = var.labels)</code></pre>
 ## name                                 name character character
 ## gender             1 if male, 0 if female   integer   integer
 ## wage                                 wage   integer   integer
-## location                         location character character</code></pre>
+## location                         location character character</pre></div>
 <p>Now that our dataframe is clean and detailed, we can compute some descriptive statistics. But before doing it, we might want to save it:</p>
-<pre class="r"><code>write.xlsx(base_created2, file = paste(base_created_dir, &quot;modified_base.xlsx&quot;, sep = &quot;&quot;))</code></pre>
-</div>
-<div id="descriptive-statistics" class="section level2">
-<h2>Descriptive Statistics</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">write.xlsx(base_created2, file = paste(base_created_dir, <span style="color:#a31515">&#34;modified_base.xlsx&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>))</code></pre></div>
+<h2 id="descriptive-statistics">Descriptive Statistics</h2>
+
 <p>First of all, if we want to check the number of people per location or gender and per year, we use the <code>table</code> function:</p>
-<pre class="r"><code>table(base_created2$gender, base_created2$year)</code></pre>
-<pre><code>##    
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">table(base_created2$gender, base_created2$year)</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">##    
 ##     2019 2020
 ##   0    9    9
-##   1   14   14</code></pre>
-<pre class="r"><code>table(base_created2$location, base_created2$year)</code></pre>
-<pre><code>##          
+##   1   14   14</pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">table(base_created2$location, base_created2$year)</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">##          
 ##           2019 2020
 ##   England    6    6
 ##   France    12   12
 ##   Italy      1    1
-##   Spain      4    4</code></pre>
+##   Spain      4    4</pre></div>
 <p>To have more detailed statistics, you can use many functions. Here, we use</p>
-<pre class="r"><code>summary(base_created2)</code></pre>
-<pre><code>##     hhind                hhid           indid            year     
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">summary(base_created2)</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">##     hhind                hhid           indid            year     
 ##  Length:46          Min.   :1.000   Min.   :1.000   Min.   :2019  
 ##  Class1:labelled    1st Qu.:2.000   1st Qu.:1.000   1st Qu.:2019  
 ##  Class2:character   Median :5.000   Median :2.000   Median :2020  
@@ -305,40 +289,38 @@ base_created2 &lt;- upData(base_created2, labels = var.labels)</code></pre>
 ##  Class2:character  
 ##  Mode  :character  
 ##                    
-## </code></pre>
-<p>but you can try the function <code>stat.desc</code> in <code>pastecs</code>, <code>skim</code> in <code>skimr</code> or even <code>makeDataReport</code> in <code>dataMaid</code> to have a complete PDF report summarizing your data. To summarize data under certain conditions (e.g. to have the average wage for each location), you can use <code>dplyr</code>:</p>
-<pre class="r"><code># you can change the argument in group_by() by gender for example
+## </pre></div>
+<p>but you can try the function <code>stat.desc</code> in <code>pastecs</code>, <code>skim</code> in <code>skimr</code> or even <code>makeDataReport</code> in <code>dataMaid</code> to have a complete PDF report summarizing your data. To summarize data under certain conditions (e.g. to have the average wage for each location), you can use <code>dplyr</code>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#008000"># you can change the argument in group_by() by gender for example</span>
 base_created2 %&gt;%
   group_by(location) %&gt;%
-  summarize_at(.vars = &quot;wage&quot;, .funs = &quot;mean&quot;)</code></pre>
-<pre><code>## # A tibble: 4 x 2
+  summarize_at(.vars = <span style="color:#a31515">&#34;wage&#34;</span>, .funs = <span style="color:#a31515">&#34;mean&#34;</span>)</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">## # A tibble: 4 x 2
 ##   location    wage
 ##   &lt;labelled&gt; &lt;dbl&gt;
 ## 1 England    2452.
 ## 2 France     1935.
 ## 3 Italy      1801 
-## 4 Spain      1905.</code></pre>
-</div>
-<div id="plots" class="section level2">
-<h2>Plots</h2>
+## 4 Spain      1905.</pre></div>
+<h2 id="plots">Plots</h2>
+
 <p>Finally, we want to plot some data to include in our report or article (or anything else). <code>ggplot2</code> is THE reference to make plots with R. The <code>ggplot</code> function does not create a graph but tells what is the data you are going to use and the aesthetics (<code>aes</code>). Here, we want to display the wages in a histogram and to distinguish them per year. Therefore, we want to fill the bars according to the year. To precise the type of graph we want, we add <code>+ geom_histogram()</code> after <code>ggplot</code>. You may change the number of <code>bins</code> to have a more precise histogram.</p>
-<pre class="r"><code>library(ggplot2)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">library(ggplot2)
 hist1 &lt;- ggplot(data = base_created2, 
                 mapping = aes(wage, fill = factor(year))) +
   geom_histogram(bins = 10)
-hist1</code></pre>
+hist1</code></pre></div>
 <p><img src="/posts/first-contact_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 If you prefer one histogram per year, you can use the <code>facet_grid()</code> argument, as below.</p>
-<pre class="r"><code>hist2 &lt;- ggplot(data = base_created2, 
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">hist2 &lt;- ggplot(data = base_created2, 
                 mapping = aes(wage)) +
   geom_histogram(bins = 10) +
-  facet_grid(cols = vars(year), scales = &quot;fixed&quot;)
-hist2</code></pre>
+  facet_grid(cols = vars(year), scales = <span style="color:#a31515">&#34;fixed&#34;</span>)
+hist2</code></pre></div>
 <p><img src="/posts/first-contact_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+
 <p>Finally, you may want to export these graphs. To do so, we use <code>ggsave</code> (you can replace .pdf by .eps or .png if you want):</p>
-<pre class="r"><code>ggsave(paste(figdir, &quot;plot1.pdf&quot;, sep = &quot;&quot;), plot = hist1)</code></pre>
-<p>That’s it! In this first post, you have seen how to import, clean and tidy datasets, and how to make some descriptive statistics and some plots. I hope this was helpful to you!</p>
-</div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ggsave(paste(figdir, <span style="color:#a31515">&#34;plot1.pdf&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>), plot = hist1)</code></pre></div>
+<p>That&rsquo;s it! In this first post, you have seen how to import, clean and tidy datasets, and how to make some descriptive statistics and some plots. I hope this was helpful to you!</p>
 
 		</div>
 
