@@ -1,5 +1,5 @@
 ---
-date: "2019-11-18"
+date: "2019-11-19"
 title: "First contact with the data on R"
 author: "Etienne Bacher"
 draft: true
@@ -13,8 +13,6 @@ In this post, you will see how to import and treat data, make descriptive statis
 
 ## Files used and organization of the project
 
-<!-- COMMENT METTRE EN LIGNE DES FICHIERS ??? (do, script & bases) -->
-<!-- COMMENT AFFICHER LE CODE AVEC UN ARRIERE PLAN POUR LE DISTINGUER ??? -->
 
 In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I put their path as vectors.
 
@@ -28,7 +26,7 @@ base_created_dir <- c("/your/path/to/your/project/Bases_Created/")
 
 ## Import data
 
-We will use data contained in Excel (`.xlsx`) and text (`.txt`) files. To import Excel data, we wil need the `readxl` package. 
+We will use data contained in Excel (`.xlsx`) and text (`.txt`) files. You can find these files (and the full R script corresponding to this post) [here](https://github.com/etiennebacher/from-stata-to-r/tree/master/public/Data/first-contact). To import Excel data, we wil need the `readxl` package. 
 
 
 ```r
@@ -51,6 +49,7 @@ base4 <- read.table(paste(base_used_dir, "Base_Text.txt", sep = ""), header = TR
 
 
 Now, we have stored the four datasets in four objects called `data.frames`. To me, this simple thing is an advantage on Stata where storing multiple datasets in the same time is not intuitive at all.
+
 
 ## Merge dataframes
 
@@ -226,6 +225,7 @@ base_created2
 
 That's it, we now have the complete dataframe. 
 
+
 ## Clean the data
 
 There are still some things to do. First, we remark that there are some errors in the column `location` (`England_error` and `Spain_error`) so we correct it:
@@ -307,6 +307,7 @@ Now that our dataframe is clean and detailed, we can compute some descriptive st
 write.xlsx(base_created2, file = paste(base_created_dir, "modified_base.xlsx", sep = ""))
 ```
 
+
 ## Descriptive Statistics
 
 First of all, if we want to check the number of people per location or gender and per year, we use the `table` function:
@@ -386,6 +387,7 @@ base_created2 %>%
 ## 3 Italy      1801 
 ## 4 Spain      1905.
 ```
+
 
 ## Plots
 
