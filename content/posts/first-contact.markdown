@@ -338,38 +338,90 @@ table(base_created2$location, base_created2$year)
 ##   Spain      4    4
 ```
 
-To have more detailed statistics, you can use many functions. Here, we use
+To have more detailed statistics, you can use many functions. Here, we use the function `describe` from the `Hmisc` package
 
 
 ```r
-summary(base_created2)
+describe(base_created2)
 ```
 
 ```
-##     hhind                hhid           indid            year     
-##  Length:46          Min.   :1.000   Min.   :1.000   Min.   :2019  
-##  Class1:labelled    1st Qu.:2.000   1st Qu.:1.000   1st Qu.:2019  
-##  Class2:character   Median :5.000   Median :2.000   Median :2020  
-##  Mode  :character   Mean   :4.217   Mean   :2.217   Mean   :2020  
-##                     3rd Qu.:6.000   3rd Qu.:3.000   3rd Qu.:2020  
-##                     Max.   :8.000   Max.   :5.000   Max.   :2020  
-##    surname              name               gender            wage     
-##  Length:46          Length:46          Min.   :0.0000   Min.   :1397  
-##  Class1:labelled    Class1:labelled    1st Qu.:0.0000   1st Qu.:1800  
-##  Class2:character   Class2:character   Median :1.0000   Median :1901  
-##  Mode  :character   Mode  :character   Mean   :0.6087   Mean   :2059  
-##                                        3rd Qu.:1.0000   3rd Qu.:2098  
-##                                        Max.   :1.0000   Max.   :3784  
-##    location        
-##  Length:46         
-##  Class1:labelled   
-##  Class2:character  
-##  Mode  :character  
-##                    
+## base_created2 
 ## 
+##  9  Variables      46  Observations
+## --------------------------------------------------------------------------------
+## hhind : individual's ID 
+##        n  missing distinct 
+##       46        0       23 
+## 
+## lowest : 11 12 13 14 21, highest: 71 72 81 82 83
+## --------------------------------------------------------------------------------
+## hhid : household's ID 
+##        n  missing distinct     Info     Mean      Gmd 
+##       46        0        8    0.975    4.217    2.783 
+## 
+## lowest : 1 2 3 4 5, highest: 4 5 6 7 8
+##                                                           
+## Value          1     2     3     4     5     6     7     8
+## Frequency      8     8     4     2    10     4     4     6
+## Proportion 0.174 0.174 0.087 0.043 0.217 0.087 0.087 0.130
+## --------------------------------------------------------------------------------
+## indid : individual's ID in the household 
+##        n  missing distinct     Info     Mean      Gmd 
+##       46        0        5    0.923    2.217    1.306 
+## 
+## lowest : 1 2 3 4 5, highest: 1 2 3 4 5
+##                                         
+## Value          1     2     3     4     5
+## Frequency     16    14     8     6     2
+## Proportion 0.348 0.304 0.174 0.130 0.043
+## --------------------------------------------------------------------------------
+## year 
+##        n  missing distinct     Info     Mean      Gmd 
+##       46        0        2     0.75     2020   0.5111 
+##                     
+## Value      2019 2020
+## Frequency    23   23
+## Proportion  0.5  0.5
+## --------------------------------------------------------------------------------
+## surname 
+##        n  missing distinct 
+##       46        0       23 
+## 
+## lowest : ANDERSON BROWN    DAVIS    DOE      JACKSON 
+## highest: THOMAS   THOMPSON WHITE    WILLIAMS WILSON  
+## --------------------------------------------------------------------------------
+## name 
+##        n  missing distinct 
+##       46        0       23 
+## 
+## lowest : Barbara Charles Daniel  David   Donald 
+## highest: Richard Robert  Susan   Thomas  William
+## --------------------------------------------------------------------------------
+## gender : 1 if male, 0 if female 
+##        n  missing distinct     Info      Sum     Mean      Gmd 
+##       46        0        2    0.715       28   0.6087    0.487 
+## 
+## --------------------------------------------------------------------------------
+## wage 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##       46        0       37    0.998     2059    477.4     1627     1692 
+##      .25      .50      .75      .90      .95 
+##     1800     1901     2098     2373     3575 
+## 
+## lowest : 1397 1600 1608 1683 1690, highest: 2384 3500 3600 3782 3784
+## --------------------------------------------------------------------------------
+## location 
+##        n  missing distinct 
+##       46        0        4 
+##                                           
+## Value      England  France   Italy   Spain
+## Frequency       12      24       2       8
+## Proportion   0.261   0.522   0.043   0.174
+## --------------------------------------------------------------------------------
 ```
 
-but you can try the function `stat.desc` in `pastecs`, `skim` in `skimr` or even `makeDataReport` in `dataMaid` to have a complete PDF report summarizing your data. To summarize data under certain conditions (e.g. to have the average wage for each location), you can use `dplyr`:
+but you can try the function `summary` (automatically available in base R), `stat.desc` in `pastecs`, `skim` in `skimr` or even `makeDataReport` in `dataMaid` to have a complete PDF report summarizing your data. To summarize data under certain conditions (e.g. to have the average wage for each location), you can use `dplyr`:
 
 
 ```r
@@ -409,9 +461,9 @@ If you prefer one histogram per year, you can use the `facet_grid()` argument, a
 
 ```r
 hist2 <- ggplot(data = base_created2, 
-                mapping = aes(wage)) +
+                mapping = aes(wage, fill = factor(year))) +
   geom_histogram(bins = 10) +
-  facet_grid(cols = vars(year), scales = "fixed")
+  facet_wrap(vars(year))
 hist2
 ```
 

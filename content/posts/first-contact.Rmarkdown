@@ -194,13 +194,13 @@ table(base_created2$gender, base_created2$year)
 table(base_created2$location, base_created2$year)
 ```
 
-To have more detailed statistics, you can use many functions. Here, we use
+To have more detailed statistics, you can use many functions. Here, we use the function `describe` from the `Hmisc` package
 
 ```{r}
-summary(base_created2)
+describe(base_created2)
 ```
 
-but you can try the function `stat.desc` in `pastecs`, `skim` in `skimr` or even `makeDataReport` in `dataMaid` to have a complete PDF report summarizing your data. To summarize data under certain conditions (e.g. to have the average wage for each location), you can use `dplyr`:
+but you can try the function `summary` (automatically available in base R), `stat.desc` in `pastecs`, `skim` in `skimr` or even `makeDataReport` in `dataMaid` to have a complete PDF report summarizing your data. To summarize data under certain conditions (e.g. to have the average wage for each location), you can use `dplyr`:
 
 ```{r warning = FALSE}
 # you can change the argument in group_by() by gender for example
@@ -225,9 +225,9 @@ If you prefer one histogram per year, you can use the `facet_grid()` argument, a
 
 ```{r message = FALSE}
 hist2 <- ggplot(data = base_created2, 
-                mapping = aes(wage)) +
+                mapping = aes(wage, fill = factor(year))) +
   geom_histogram(bins = 10) +
-  facet_grid(cols = vars(year), scales = "fixed")
+  facet_wrap(vars(year))
 hist2
 ```
 
