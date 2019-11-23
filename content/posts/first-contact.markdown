@@ -1,5 +1,5 @@
 ---
-date: "2019-11-19"
+date: "2019-11-23"
 title: "First contact with the data on R"
 author: "Etienne Bacher"
 draft: true
@@ -116,7 +116,8 @@ We now want to merge `base_created` with `base4`. The problem is that there are 
 colnames(base_created)[2] <- "indid"
 colnames(base4)[2] <- "indid"
 
-# create the column 2019 for base_created and 2020 for base4
+# create the column "year", that will take the value 2019 
+# for base_created and 2020 for base4
 base_created$year <- 2019
 base4$year <- 2020
 ```
