@@ -7,8 +7,8 @@
 <meta property="og:description" content="In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don&rsquo;t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/first-contact/" />
-<meta property="article:published_time" content="2019-11-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-11-25T00:00:00+00:00" />
+<meta property="article:published_time" content="2019-11-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-11-26T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="First contact with the data on R"/>
 <meta name="twitter:description" content="In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don&rsquo;t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works."/>
@@ -60,7 +60,7 @@
 
 		<div class="post-header">
 			<h1 class="title">First contact with the data on R</h1>
-			<div class="meta">Posted at &mdash; Nov 25, 2019 <span class="draft-label">DRAFT</span> </div>
+			<div class="meta">Posted at &mdash; Nov 26, 2019 <span class="draft-label">DRAFT</span> </div>
 		</div>
 
 		<div class="markdown">
@@ -76,7 +76,7 @@ base_used_dir &lt;- c(<span style="color:#a31515">&#34;/your/path/to/your/projec
 base_created_dir &lt;- c(<span style="color:#a31515">&#34;/your/path/to/your/project/Bases_Created/&#34;</span>)</code></pre></div>
 <h2 id="import-data">Import data</h2>
 
-<p>We will use data contained in Excel (<strong><code>.xlsx</code></strong>) and text (<code>**.txt</code>**) files. You can find these files (and the full R script corresponding to this post) <a href="https://github.com/etiennebacher/from-stata-to-r/tree/master/public/Data/first-contact">here</a>. To import Excel data, we wil need the <strong><code>readxl</code></strong> package.</p>
+<p>We will use data contained in Excel (<strong><code>.xlsx</code></strong>) and text (<strong><code>.txt</code></strong>) files. You can find these files (and the full R script corresponding to this post) <a href="https://github.com/etiennebacher/from-stata-to-r/tree/master/public/Data/first-contact">here</a>. To import Excel data, we wil need the <strong><code>readxl</code></strong> package.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#008000"># if you&#39;ve never installed this package before, do:</span>
 <span style="color:#008000"># install.packages(&#34;readxl&#34;)</span>
 library(readxl)</code></pre></div>
@@ -186,14 +186,14 @@ base_created2 &lt;- base_created2 %&gt;%
 <li><strong><code>fill</code></strong> aims to fill cells</li>
 <li><strong><code>select_if</code></strong> selects columns according to the condition defined</li>
 <li><strong><code>any(is.na(.))</code></strong> is a logical question asking if there are missing values (NA)</li>
-<li><code>**.</code>** indicates that we want to apply the function to the whole dataframe</li>
+<li><strong><code>.</code></strong> indicates that we want to apply the function to the whole dataframe</li>
 <li><strong><code>names</code></strong> tells us what the names of the columns selected are</li>
-<li><code>**.direction</code>** tells the direction in which the filling goes</li>
+<li><strong><code>.direction</code></strong> tells the direction in which the filling goes</li>
 </ul>
 
 <p>So <strong><code>fill(select_if(., ~ any(is.na(.))) %&gt;% names(), .direction = 'down')</code></strong> means that for the dataframe, we select each column which has some NA in it and we obtain their names. In these columns, the empty cells are filled by the value of the cell above (since the direction is &ldquo;down&rdquo;).</p>
 
-<p>Finally, we want the first three columns to be <strong><code>hhid</code></strong>, <strong><code>indid</code></strong> and <strong><code>year**</code></strong>, and we create a ID column named <strong><code>hhind</code></strong> which is just the union of <strong><code>hhid</code></strong> and <strong><code>indid</code></strong>.</p>
+<p>Finally, we want the first three columns to be <strong><code>hhid</code></strong>, <strong><code>indid</code></strong> and <strong><code>year</code></strong>, and we create a ID column named <strong><code>hhind</code></strong> which is just the union of <strong><code>hhid</code></strong> and <strong><code>indid</code></strong>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">base_created2 &lt;- base_created2 %&gt;%
   select(hhid, indid, year, everything()) %&gt;%
   unite(hhind, c(hhid, indid), sep = <span style="color:#a31515">&#34;&#34;</span>, remove = <span style="color:#00f">FALSE</span>) 

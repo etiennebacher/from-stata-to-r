@@ -1,5 +1,5 @@
 ---
-date: "2019-11-25"
+date: "2019-11-26"
 title: "First contact with the data on R"
 author: "Etienne Bacher"
 draft: true
@@ -26,7 +26,7 @@ base_created_dir <- c("/your/path/to/your/project/Bases_Created/")
 
 ## Import data
 
-We will use data contained in Excel (**``.xlsx``**) and text (`**.txt`**) files. You can find these files (and the full R script corresponding to this post) [here](https://github.com/etiennebacher/from-stata-to-r/tree/master/public/Data/first-contact). To import Excel data, we wil need the **`readxl`** package. 
+We will use data contained in Excel (**`.xlsx`**) and text (**`.txt`**) files. You can find these files (and the full R script corresponding to this post) [here](https://github.com/etiennebacher/from-stata-to-r/tree/master/public/Data/first-contact). To import Excel data, we wil need the **`readxl`** package. 
 
 
 ```r
@@ -191,13 +191,13 @@ Let me explain the code above:
 * **`fill`** aims to fill cells
 * **`select_if`** selects columns according to the condition defined
 * **`any(is.na(.))`** is a logical question asking if there are missing values (NA)
-* `**.`** indicates that we want to apply the function to the whole dataframe
+* **`.`** indicates that we want to apply the function to the whole dataframe
 * **`names`** tells us what the names of the columns selected are
-* `**.direction`** tells the direction in which the filling goes
+* **`.direction`** tells the direction in which the filling goes
 
 So **`fill(select_if(., ~ any(is.na(.))) %>% names(), .direction = 'down')`** means that for the dataframe, we select each column which has some NA in it and we obtain their names. In these columns, the empty cells are filled by the value of the cell above (since the direction is "down").
 
-Finally, we want the first three columns to be **`hhid`**, **`indid`** and **`year**`**, and we create a ID column named **`hhind`** which is just the union of **`hhid`** and **`indid`**.
+Finally, we want the first three columns to be **`hhid`**, **`indid`** and **`year`**, and we create a ID column named **`hhind`** which is just the union of **`hhid`** and **`indid`**.
 
 
 ```r
