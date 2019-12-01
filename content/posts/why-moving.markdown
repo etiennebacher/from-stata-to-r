@@ -1,5 +1,5 @@
 ---
-date: "2019-11-12"
+date: "2019-12-01"
 title: "Why you should move from Stata to R"
 author: "Etienne Bacher"
 draft: true
