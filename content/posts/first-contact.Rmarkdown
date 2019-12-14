@@ -221,7 +221,7 @@ hist1 <- ggplot(data = base_created2,
   geom_histogram(bins = 10)
 hist1
 ```
-If you prefer one histogram per year, you can use the **`facet_grid()`** argument, as below.
+If you prefer one histogram per year, you can use the **`facet_wrap()`** argument, as below.
 
 ```{r message = FALSE}
 hist2 <- ggplot(data = base_created2, 
