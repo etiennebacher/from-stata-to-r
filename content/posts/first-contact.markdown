@@ -456,7 +456,7 @@ hist1
 ```
 
 <img src="/posts/first-contact_files/figure-html/unnamed-chunk-20-1.png" width="672" />
-If you prefer one histogram per year, you can use the **`facet_grid()`** argument, as below.
+If you prefer one histogram per year, you can use the **`facet_wrap()`** argument, as below.
 
 
 ```r
