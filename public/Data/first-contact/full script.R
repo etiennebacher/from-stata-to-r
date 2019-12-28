@@ -1,3 +1,4 @@
+library(here)
 library(readxl)
 library(dplyr)
 library(tidyr)
@@ -6,9 +7,10 @@ library(ggplot2)
 
 ## Import
 
-figdir <- c("/your/path/to/your/project/Figures/")
-base_used_dir <- c("/your/path/to/your/project/Bases_Used/")
-base_created_dir <- c("/your/path/to/your/project/Bases_Created/")
+base1 <- read_excel(here("Bases_Used/Base_Excel.xlsx"), sheet = "Base1")
+base2 <- read_excel(here("Bases_Used/Base_Excel.xlsx"), sheet = "Base2")
+base3 <- read_excel(here("Bases_Used/Base_Excel.xlsx"), sheet = "Base3")
+base4 <- read.table(here("Bases_Used/Base_Text.txt"), header = TRUE)
 
 ## Merge
 
