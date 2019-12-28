@@ -9,7 +9,7 @@ output:
     toc: true 
 ---
 
-In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don't know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.
+In this post, you will see how to import and treat data, make descriptive statistics and a few plots. I will show you a personal method to organize one's work (it may not be the most effective but it works). 
 
 
 ## Files used and organization of the project
