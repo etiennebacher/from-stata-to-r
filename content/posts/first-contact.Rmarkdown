@@ -9,7 +9,7 @@ output:
     toc: true 
 ---
 
-In this post, you will see how to import and treat data, make descriptive statistics and a few plots. I will show you a personal method to organize one's work (it may not be the most effective but it works).
+In this post, you will see how to import and treat data, make descriptive statistics and a few plots. I will show you a personal method to organize one's work (it may not be the most effective but it works). 
 
 
 ## Files used and organization of the project
