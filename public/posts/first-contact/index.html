@@ -88,15 +88,15 @@
 
 		
 
-<p>In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don&rsquo;t know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.</p>
+<p>In this post, you will see how to import and treat data, make descriptive statistics and a few plots. I will also show you a personal method to organize one&rsquo;s work.</p>
 
 <h2 id="files-used-and-organization-of-the-project">Files used and organization of the project</h2>
 
-<p>First of all, you need to create a project. In RStudio, you can do &ldquo;File&rdquo;, &ldquo;NEw Project&rdquo; and then choose the location of the project and its name. In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I use the package <strong><code>here</code></strong>. The command <strong><code>here()</code></strong> shows the path to your project and you just need to complete the path to access to your datasets or other files.</p>
+<p>First of all, you need to create a project. In RStudio, you can do &ldquo;File&rdquo;, &ldquo;New Project&rdquo; and then choose the location of the project and its name. In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I use the package <strong><code>here</code></strong>. The command <strong><code>here()</code></strong> shows the path to your project and you just need to complete the path to access to your datasets or other files.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#008000"># if you&#39;ve never installed this package before, do:</span>
 <span style="color:#008000"># install.packages(&#34;here&#34;)</span>
 library(here)</code></pre></div>
-<p>Why is this package important? Your code must be reproducible, either for your current collaborators to work efficiently with you or for other people to check your code and to try to use it in the future. Using paths that work only for your computer (like &ldquo;/home/Mr X/somefolder/somesubfolder/Project&rdquo;) makes it longer and more annoying to use your code since it requires to manually change paths in order to import data or other files. The package <strong><code>here</code></strong> makes it much easier to reproduce your code since it automatically detects the path to access to your data. You only need to keep the same structure between R files and datasets. You will see in the next part how to use <strong><code>here</code></strong>.</p>
+<p>Why is this package important? Your code must be reproducible, either for your current collaborators to work efficiently with you or for other people to check your code and to use it in the future. Using paths that work only for your computer (like &ldquo;/home/Mr X/somefolder/somesubfolder/Project&rdquo;) makes it longer and more annoying to use your code since it requires to manually change paths in order to import data or other files. The package <strong><code>here</code></strong> makes it much easier to reproduce your code since it automatically detects the path to access to your data. You only need to keep the same structure between R files and datasets. You will see in the next part how to use it.</p>
 
 <h2 id="import-data">Import data</h2>
 
@@ -407,7 +407,7 @@ hist2</code></pre></div>
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-12-28 15:24:27.088147779 &#43;0100 CET m=&#43;0.068940172">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2019-12-28 15:49:10.420389353 &#43;0100 CET m=&#43;0.080299233">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

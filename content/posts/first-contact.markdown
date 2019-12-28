@@ -9,12 +9,12 @@ output:
     toc: true 
 ---
 
-In this post, you will see how to import and treat data, make descriptive statistics and a few plots. However, I am still a recent user of R and I don't know much about the optimal organization of files in a project (and many people explain it better than me online). Therefore, I will show you a personal method that is perhaps not the most effective but that works.
+In this post, you will see how to import and treat data, make descriptive statistics and a few plots. I will also show you a personal method to organize one's work. 
 
 
 ## Files used and organization of the project
 
-First of all, you need to create a project. In RStudio, you can do "File", "NEw Project" and then choose the location of the project and its name. In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I use the package **`here`**. The command **`here()`** shows the path to your project and you just need to complete the path to access to your datasets or other files.
+First of all, you need to create a project. In RStudio, you can do "File", "New Project" and then choose the location of the project and its name. In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I use the package **`here`**. The command **`here()`** shows the path to your project and you just need to complete the path to access to your datasets or other files.
 
 
 ```r
@@ -23,7 +23,7 @@ First of all, you need to create a project. In RStudio, you can do "File", "NEw 
 library(here)
 ```
 
-Why is this package important? Your code must be reproducible, either for your current collaborators to work efficiently with you or for other people to check your code and to try to use it in the future. Using paths that work only for your computer (like "/home/Mr X/somefolder/somesubfolder/Project") makes it longer and more annoying to use your code since it requires to manually change paths in order to import data or other files. The package **`here`** makes it much easier to reproduce your code since it automatically detects the path to access to your data. You only need to keep the same structure between R files and datasets. You will see in the next part how to use **`here`**.
+Why is this package important? Your code must be reproducible, either for your current collaborators to work efficiently with you or for other people to check your code and to use it in the future. Using paths that work only for your computer (like "/home/Mr X/somefolder/somesubfolder/Project") makes it longer and more annoying to use your code since it requires to manually change paths in order to import data or other files. The package **`here`** makes it much easier to reproduce your code since it automatically detects the path to access to your data. You only need to keep the same structure between R files and datasets. You will see in the next part how to use it.
 
 ## Import data
 
