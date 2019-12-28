@@ -79,7 +79,7 @@
     <span>Written by</span>
         Etienne Bacher
         <br>
-        <span>on&nbsp;</span><time datetime="2019-12-01 00:00:00 &#43;0000 UTC">December 1, 2019</time>
+        <span>on&nbsp;</span><time datetime="2019-12-28 00:00:00 &#43;0000 UTC">December 28, 2019</time>
 </div>
 		<h1 class="post-title">First contact with the data on R</h1>
 <div class="post-line"></div>
@@ -92,26 +92,26 @@
 
 <h2 id="files-used-and-organization-of-the-project">Files used and organization of the project</h2>
 
-<p>In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I put their path as vectors.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">figdir &lt;- c(<span style="color:#a31515">&#34;/your/path/to/your/project/Figures/&#34;</span>)
-base_used_dir &lt;- c(<span style="color:#a31515">&#34;/your/path/to/your/project/Bases_Used/&#34;</span>)
-base_created_dir &lt;- c(<span style="color:#a31515">&#34;/your/path/to/your/project/Bases_Created/&#34;</span>)</code></pre></div>
+<p>First of all, you need to create a project. In RStudio, you can do &ldquo;File&rdquo;, &ldquo;NEw Project&rdquo; and then choose the location of the project and its name. In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I use the package <strong><code>here</code></strong>. The command <strong><code>here()</code></strong> shows the path to your project and you just need to complete the path to access to your datasets or other files.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#008000"># if you&#39;ve never installed this package before, do:</span>
+<span style="color:#008000"># install.packages(&#34;here&#34;)</span>
+library(here)</code></pre></div>
+<p>Why is this package important? Your code must be reproducible, either for your current collaborators to work efficiently with you or for other people to check your code and to try to use it in the future. Using paths that work only for your computer (like &ldquo;/home/Mr X/somefolder/somesubfolder/Project&rdquo;) makes it longer and more annoying to use your code since it requires to manually change paths in order to import data or other files. The package <strong><code>here</code></strong> makes it much easier to reproduce your code since it automatically detects the path to access to your data. You only need to keep the same structure between R files and datasets. You will see in the next part how to use <strong><code>here</code></strong>.</p>
+
 <h2 id="import-data">Import data</h2>
 
 <p>We will use data contained in Excel (<strong><code>.xlsx</code></strong>) and text (<strong><code>.txt</code></strong>) files. You can find these files (and the full R script corresponding to this post) <a href="https://github.com/etiennebacher/from-stata-to-r/tree/master/public/Data/first-contact">here</a>. To import Excel data, we wil need the <strong><code>readxl</code></strong> package.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#008000"># if you&#39;ve never installed this package before, do:</span>
-<span style="color:#008000"># install.packages(&#34;readxl&#34;)</span>
-library(readxl)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">library(readxl)</code></pre></div>
 <p>We use the <strong><code>read_excel</code></strong> function of this package to import excel files and the function <strong><code>read.table</code></strong> (in base R) to import the data:</p>
 
 <!-- La partie qui suit doit être visible pour correspondre à ce que je dis mais ne doit pas être exécutée car pas les bons chemins d'accès -->
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">base1 &lt;- read_excel(paste(base_used_dir, <span style="color:#a31515">&#34;Base_Excel.xlsx&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>), sheet = <span style="color:#a31515">&#34;Base1&#34;</span>)
-base2 &lt;- read_excel(paste(base_used_dir, <span style="color:#a31515">&#34;Base_Excel.xlsx&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>), sheet = <span style="color:#a31515">&#34;Base2&#34;</span>)
-base3 &lt;- read_excel(paste(base_used_dir, <span style="color:#a31515">&#34;Base_Excel.xlsx&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>), sheet = <span style="color:#a31515">&#34;Base3&#34;</span>)
-base4 &lt;- read.table(paste(base_used_dir, <span style="color:#a31515">&#34;Base_Text.txt&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>), header = <span style="color:#00f">TRUE</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">base1 &lt;- read_excel(here(<span style="color:#a31515">&#34;Bases_Used/Base_Excel.xlsx&#34;</span>), sheet = <span style="color:#a31515">&#34;Base1&#34;</span>)
+base2 &lt;- read_excel(here(<span style="color:#a31515">&#34;Bases_Used/Base_Excel.xlsx&#34;</span>), sheet = <span style="color:#a31515">&#34;Base2&#34;</span>)
+base3 &lt;- read_excel(here(<span style="color:#a31515">&#34;Bases_Used/Base_Excel.xlsx&#34;</span>), sheet = <span style="color:#a31515">&#34;Base3&#34;</span>)
+base4 &lt;- read.table(here(<span style="color:#a31515">&#34;Bases_Used/Base_Text.txt&#34;</span>), header = <span style="color:#00f">TRUE</span>)</code></pre></div>
 <!-- La partie qui suit ne doit pas être visible mais doit être exécutée -->
 
-<p>Now, we have stored the four datasets in four objects called <strong><code>data.frames</code></strong>. To me, this simple thing is an advantage on Stata where storing multiple datasets in the same time is not intuitive at all.</p>
+<p>As you can see, if your project is in a folder and if you stored you datasets in the Bases_Used subfolder, this code will work automatically since <strong><code>here</code></strong> detects the path. Now, we have stored the four datasets in four objects called <strong><code>data.frames</code></strong>. To me, this simple thing is an advantage on Stata where storing multiple datasets in the same time is not intuitive at all.</p>
 
 <h2 id="merge-dataframes">Merge dataframes</h2>
 
@@ -274,7 +274,7 @@ base_created2 &lt;- upData(base_created2, labels = var.labels)</code></pre></div
 ## wage                                 wage   integer   integer
 ## location                         location character character</pre></div>
 <p>Now that our dataframe is clean and detailed, we can compute some descriptive statistics. But before doing it, we might want to save it:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">write.xlsx(base_created2, file = paste(base_created_dir, <span style="color:#a31515">&#34;modified_base.xlsx&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>))</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">write.xlsx(base_created2, file = here(<span style="color:#a31515">&#34;Bases_Created/modified_base.xlsx&#34;</span>)</code></pre></div>
 <h2 id="descriptive-statistics">Descriptive Statistics</h2>
 
 <p>First of all, if we want to check the number of people per location or gender and per year, we use the <strong><code>table</code></strong> function:</p>
@@ -381,7 +381,7 @@ hist1 &lt;- ggplot(data = base_created2,
   geom_histogram(bins = 10)
 hist1</code></pre></div>
 <p><img src="/posts/first-contact_files/figure-html/unnamed-chunk-20-1.png" width="672" />
-If you prefer one histogram per year, you can use the <strong><code>facet_grid()</code></strong> argument, as below.</p>
+If you prefer one histogram per year, you can use the <strong><code>facet_wrap()</code></strong> argument, as below.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">hist2 &lt;- ggplot(data = base_created2, 
                 mapping = aes(wage, fill = factor(year))) +
   geom_histogram(bins = 10) +
@@ -390,7 +390,7 @@ hist2</code></pre></div>
 <p><img src="/posts/first-contact_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 
 <p>Finally, you may want to export these graphs. To do so, we use <strong><code>ggsave</code></strong> (you can replace .pdf by .eps or .png if you want):</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ggsave(paste(figdir, <span style="color:#a31515">&#34;plot1.pdf&#34;</span>, sep = <span style="color:#a31515">&#34;&#34;</span>), plot = hist1)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ggsave(here(<span style="color:#a31515">&#34;Figures/plot1.pdf&#34;</span>), plot = hist1)</code></pre></div>
 <p>That&rsquo;s it! In this first post, you have seen how to import, clean and tidy datasets, and how to make some descriptive statistics and some plots. I hope this was helpful to you!</p>
 
 
@@ -407,7 +407,7 @@ hist2</code></pre></div>
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-12-01 21:16:53.303154134 &#43;0100 CET m=&#43;0.073122257">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2019-12-28 15:24:27.088147779 &#43;0100 CET m=&#43;0.068940172">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

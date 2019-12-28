@@ -1,5 +1,5 @@
 ---
-date: "2019-12-01"
+date: "2019-12-28"
 title: "First contact with the data on R"
 author: "Etienne Bacher"
 draft: true
@@ -14,15 +14,16 @@ In this post, you will see how to import and treat data, make descriptive statis
 
 ## Files used and organization of the project
 
-In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I put their path as vectors.
+First of all, you need to create a project. In RStudio, you can do "File", "NEw Project" and then choose the location of the project and its name. In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I use the package **`here`**. The command **`here()`** shows the path to your project and you just need to complete the path to access to your datasets or other files.
 
 
 ```r
-figdir <- c("/your/path/to/your/project/Figures/")
-base_used_dir <- c("/your/path/to/your/project/Bases_Used/")
-base_created_dir <- c("/your/path/to/your/project/Bases_Created/")
+# if you've never installed this package before, do:
+# install.packages("here")
+library(here)
 ```
 
+Why is this package important? Your code must be reproducible, either for your current collaborators to work efficiently with you or for other people to check your code and to try to use it in the future. Using paths that work only for your computer (like "/home/Mr X/somefolder/somesubfolder/Project") makes it longer and more annoying to use your code since it requires to manually change paths in order to import data or other files. The package **`here`** makes it much easier to reproduce your code since it automatically detects the path to access to your data. You only need to keep the same structure between R files and datasets. You will see in the next part how to use **`here`**.
 
 ## Import data
 
@@ -30,8 +31,6 @@ We will use data contained in Excel (**`.xlsx`**) and text (**`.txt`**) files. Y
 
 
 ```r
-# if you've never installed this package before, do:
-# install.packages("readxl")
 library(readxl)
 ```
 
@@ -40,15 +39,15 @@ We use the **`read_excel`** function of this package to import excel files and t
 <!-- La partie qui suit doit être visible pour correspondre à ce que je dis mais ne doit pas être exécutée car pas les bons chemins d'accès -->
 
 ```r
-base1 <- read_excel(paste(base_used_dir, "Base_Excel.xlsx", sep = ""), sheet = "Base1")
-base2 <- read_excel(paste(base_used_dir, "Base_Excel.xlsx", sep = ""), sheet = "Base2")
-base3 <- read_excel(paste(base_used_dir, "Base_Excel.xlsx", sep = ""), sheet = "Base3")
-base4 <- read.table(paste(base_used_dir, "Base_Text.txt", sep = ""), header = TRUE)
+base1 <- read_excel(here("Bases_Used/Base_Excel.xlsx"), sheet = "Base1")
+base2 <- read_excel(here("Bases_Used/Base_Excel.xlsx"), sheet = "Base2")
+base3 <- read_excel(here("Bases_Used/Base_Excel.xlsx"), sheet = "Base3")
+base4 <- read.table(here("Bases_Used/Base_Text.txt"), header = TRUE)
 ```
 <!-- La partie qui suit ne doit pas être visible mais doit être exécutée -->
 
 
-Now, we have stored the four datasets in four objects called **`data.frames`**. To me, this simple thing is an advantage on Stata where storing multiple datasets in the same time is not intuitive at all.
+As you can see, if your project is in a folder and if you stored you datasets in the Bases_Used subfolder, this code will work automatically since **`here`** detects the path. Now, we have stored the four datasets in four objects called **`data.frames`**. To me, this simple thing is an advantage on Stata where storing multiple datasets in the same time is not intuitive at all.
 
 
 ## Merge dataframes
@@ -305,7 +304,7 @@ Now that our dataframe is clean and detailed, we can compute some descriptive st
 
 
 ```r
-write.xlsx(base_created2, file = paste(base_created_dir, "modified_base.xlsx", sep = ""))
+write.xlsx(base_created2, file = here("Bases_Created/modified_base.xlsx")
 ```
 
 
@@ -456,7 +455,7 @@ hist1
 ```
 
 <img src="/posts/first-contact_files/figure-html/unnamed-chunk-20-1.png" width="672" />
-If you prefer one histogram per year, you can use the **`facet_grid()`** argument, as below.
+If you prefer one histogram per year, you can use the **`facet_wrap()`** argument, as below.
 
 
 ```r
@@ -473,7 +472,7 @@ Finally, you may want to export these graphs. To do so, we use **`ggsave`** (you
 
 
 ```r
-ggsave(paste(figdir, "plot1.pdf", sep = ""), plot = hist1)
+ggsave(here("Figures/plot1.pdf"), plot = hist1)
 ```
 
 That's it! In this first post, you have seen how to import, clean and tidy datasets, and how to make some descriptive statistics and some plots. I hope this was helpful to you!
