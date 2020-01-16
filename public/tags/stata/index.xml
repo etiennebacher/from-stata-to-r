@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
-    <lastBuildDate>Sat, 28 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/stata/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,11 +15,10 @@
     <item>
       <title>First contact with the data on R</title>
       <link>/posts/first-contact/</link>
-      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 16 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/first-contact/</guid>
-      <description>In this post, you will see how to import and treat data, make descriptive statistics and a few plots. I will also show you a personal method to organize one&amp;rsquo;s work.
-Files used and organization of the project First of all, you need to create a project. In RStudio, you can do &amp;ldquo;File&amp;rdquo;, &amp;ldquo;New Project&amp;rdquo; and then choose the location of the project and its name. In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created.</description>
+      <description>Note:  In this and future articles, you will see some arrows below R code. In you click on it, it will display the Stata code equivalent to the R code displayed. However, since those are two different softwares, they are not completely equivalent and some of the Stata code may not fully correspond to the R code. Consider it more like a reference point not to be lost rather than like an exact equivalent.</description>
     </item>
     
     <item>

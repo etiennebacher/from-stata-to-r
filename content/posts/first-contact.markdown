@@ -1,5 +1,5 @@
 ---
-date: "2019-12-28"
+date: "2020-01-16"
 title: "First contact with the data on R"
 author: "Etienne Bacher"
 draft: true
@@ -8,6 +8,10 @@ output:
   blogdown::html_page:
     toc: true 
 ---
+
+<p style="color:rgb(127, 165, 179)"> <b> Note: </b>  </p> <p style="color:rgb(127, 165, 179)">In this and future articles, you will see some arrows below R code. In you click on it, it will display the Stata code equivalent to the R code displayed. However, since those are two different softwares, they are not completely equivalent and some of the Stata code may not fully correspond to the R code. Consider it more like a reference point not to be lost rather than like an exact equivalent. </p>
+
+<br>
 
 In this post, you will see how to import and treat data, make descriptive statistics and a few plots. I will also show you a personal method to organize one's work. 
 
@@ -47,6 +51,16 @@ base4 <- read.table(here("Bases_Used/Base_Text.txt"), header = TRUE)
 <!-- La partie qui suit ne doit pas être visible mais doit être exécutée -->
 
 
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+cd "/path/to/Bases_Used"
+import excel using Base_Excel, sheet("Base1") firstrow
+``` 
+</details>
+
 As you can see, if your project is in a folder and if you stored you datasets in the Bases_Used subfolder, this code will work automatically since **`here`** detects the path. Now, we have stored the four datasets in four objects called **`data.frames`**. To me, this simple thing is an advantage on Stata where storing multiple datasets in the same time is not intuitive at all.
 
 
@@ -80,6 +94,24 @@ base_created
 ## # … with 13 more rows
 ```
 
+<details>
+<summary> Stata
+</summary>
+<p>
+
+```stata
+preserve
+
+*** Open base #2 and bind the rows
+clear all 
+import excel using Base_Excel, sheet("Base2") firstrow
+tempfile base2
+save  `base2' 
+restore
+append using `base2'
+``` 
+</details>
+
 As you can see, we obtain a dataframe with 6 columns (like each table separately) and 23 rows: 18 in the first table, 5 in the second table. Now, we merge this dataframe with **`base3`**. **`base_created`** and **`base3`** only have one column in common (**`hhid`**) so we will need to specify that we want to merge these two bases by this column:
 
 
@@ -104,6 +136,25 @@ base_created
 ## 10     3       2 TAYLOR    Barbara       2  1890 Spain   
 ## # … with 13 more rows
 ```
+
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+preserve 
+
+*** Open base #3 and merge
+clear all
+cd ..\Bases_Used 
+import excel using Base_Excel, sheet("Base3") firstrow
+tempfile base3
+save `base3'
+restore 
+merge m:1 hhid using `base3' 
+drop _merge 
+```
+</details>
 
 **`left_join`** is a **`dplyr`** function saying that the first dataframe mentioned (here **`base_created`**) is the "most important" and that we will stick the second one (here **`base3`**) to it. If there are more rows in the first one than in the second one, then there will be some missing values but the number of rows will stay the same. If we knew that **`base3`** had more rows than **`base_created`**, we would have used **`right_join`**.
 
@@ -146,6 +197,30 @@ base_created2
 ## # … with 36 more rows
 ```
 
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+
+rename indidy1 indid 
+gen year=2019 
+preserve 
+
+* Open base #4 and merge
+clear all
+import delimited Base_Text.txt 
+rename indidy2 indid 
+gen year=2020
+tempfile base4
+save `base4'
+restore 
+
+merge 1:1 hhid indid year using `base4'
+drop _merge
+``` 
+</details>
+
 But we have many missing values for the new rows because **`base4`** only contained three columns. We want to have a data frame arranged by household then by individual and finally by year. Using only **`dplyr`** functions, we can do:
 
 
@@ -185,6 +260,17 @@ base_created2 <- base_created2 %>%
        .direction = 'down')
 ```
 
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+foreach x of varlist surname name gender location {
+  bysort hhid indid: replace `x'=`x'[_n-1] if year==2020
+}
+```
+</details>
+
 Let me explain the code above:
 
 * **`fill`** aims to fill cells
@@ -223,6 +309,17 @@ base_created2
 ## # … with 36 more rows
 ```
 
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+egen hhind=group(hhid indid) 
+order hhind hhid indid year * 
+sort hhid indid year 
+```
+</details>
+
 That's it, we now have the complete dataframe. 
 
 
@@ -252,12 +349,35 @@ unique(base_created2$location)
 ## [1] "France"  "England" "Spain"   "Italy"
 ```
 
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+replace localisation="England" if localisation=="England_error"
+replace localisation="Spain" if localisation=="Spain_error"
+```
+</details>
+
 Basically, what we've done here is that we have selected every cell in the whole dataframe that had the value **`England_error`** (respectively **`Spain_error`**) and we replaced these cells by **`England`** (**`Spain`**). We also need to recode the column **`gender`** because binary variables have to take values of 0 or 1, not 1 or 2.
 
 
 ```r
 base_created2$gender <- recode(base_created2$gender, `2` = 0)
 ```
+
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+label define genderlab 1 "M" 2 "F"
+label values gender genderlab
+recode gender (2=0 "Female") (1=1 "Male"), gen(gender2)
+drop gender
+rename gender2 gender
+```
+</details>
 
 To have more details on the dataframe, we need to create some labels. To do so, we need the **`upData`** function in the **`Hmisc`** package.
 
@@ -272,9 +392,26 @@ var.labels <- c(hhind = "individual's ID",
                 name = "name",
                 gender = "1 if male, 0 if female",
                 wage = "wage",
-                location = "location")
+                location = "household's location")
 base_created2 <- upData(base_created2, labels = var.labels)
 ```
+
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+label variable hhind "individual's ID"
+label variable indid "household's ID" 
+label variable year "year"
+label variable hhid "individual's ID in the household"
+label variable surname "Surname"
+label variable name "Name"
+label variable gender "1 if male, 0 if female"
+label variable wage "wage"
+label variable location "household's location"
+```
+</details>
 
 We can see the result with: 
 
@@ -297,7 +434,7 @@ contents(base_created2)
 ## name                                 name character character
 ## gender             1 if male, 0 if female   integer   integer
 ## wage                                 wage   integer   integer
-## location                         location character character
+## location             household's location character character
 ```
 
 Now that our dataframe is clean and detailed, we can compute some descriptive statistics. But before doing it, we might want to save it:
@@ -306,6 +443,16 @@ Now that our dataframe is clean and detailed, we can compute some descriptive st
 ```r
 write.xlsx(base_created2, file = here("Bases_Created/modified_base.xlsx")
 ```
+
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+cd ..\Bases_Created  
+export excel using "modified_base.xls", replace
+```
+</details>
 
 
 ## Descriptive Statistics
@@ -336,6 +483,16 @@ table(base_created2$location, base_created2$year)
 ##   Italy      1    1
 ##   Spain      4    4
 ```
+
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+tab gender if year==2019  
+tab location if year==2019 
+```
+</details>
 
 To have more detailed statistics, you can use many functions. Here, we use the function **`describe`** from the **`Hmisc`** package
 
@@ -410,7 +567,7 @@ describe(base_created2)
 ## 
 ## lowest : 1397 1600 1608 1683 1690, highest: 2384 3500 3600 3782 3784
 ## --------------------------------------------------------------------------------
-## location 
+## location : household's location 
 ##        n  missing distinct 
 ##       46        0        4 
 ##                                           
@@ -419,6 +576,15 @@ describe(base_created2)
 ## Proportion   0.261   0.522   0.043   0.174
 ## --------------------------------------------------------------------------------
 ```
+
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+sum *, detail
+```
+</details>
 
 but you can also try the function **`summary`** (automatically available in base R), **`stat.desc`** in **`pastecs`**, **`skim`** in **`skimr`** or even **`makeDataReport`** in **`dataMaid`** to have a complete PDF report summarizing your data. To summarize data under certain conditions (e.g. to have the average wage for each location), you can use **`dplyr`**:
 
@@ -440,6 +606,15 @@ base_created2 %>%
 ## 4 Spain      1905.
 ```
 
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+tabstat wage if year==2019, stats(N mean sd min max p25 p50 p75) by(location)
+tabstat wage if year==2020, stats(N mean sd min max p25 p50 p75) by(location)
+```
+</details>
 
 ## Plots
 
@@ -455,6 +630,17 @@ hist1
 ```
 
 <img src="/posts/first-contact_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+histogram wage if year==2019, saving(Hist1, replace) bin(10) freq title("Year 2019") ytitle("Frequency") 
+histogram wage if year==2020, saving(Hist2, replace) bin(10) freq title("Year 2020") ytitle("Frequency")
+```
+</details>
+
 If you prefer one histogram per year, you can use the **`facet_wrap()`** argument, as below.
 
 
@@ -468,11 +654,29 @@ hist2
 
 <img src="/posts/first-contact_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+graph combine Hist1.gph Hist2.gph, col(2) xsize(10) ysize(5) iscale(1.5) title("{bf:Wage distribution per year}")
+```
+</details>
+
 Finally, you may want to export these graphs. To do so, we use **`ggsave`** (you can replace .pdf by .eps or .png if you want): 
 
 
 ```r
 ggsave(here("Figures/plot1.pdf"), plot = hist1)
 ```
+
+<details>
+<summary> Stata
+</summary>
+<p>
+```stata
+graph export Histogram1.pdf,  replace
+```
+</details>
 
 That's it! In this first post, you have seen how to import, clean and tidy datasets, and how to make some descriptive statistics and some plots. I hope this was helpful to you!
