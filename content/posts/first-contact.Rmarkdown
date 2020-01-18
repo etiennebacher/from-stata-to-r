@@ -9,7 +9,7 @@ output:
     toc: true 
 ---
 
-<p style="color:rgb(127, 165, 179)"> <b> Note: </b>  </p> <p style="color:rgb(127, 165, 179)">In this and future articles, you will see some arrows below R code. In you click on it, it will display the Stata code equivalent to the R code displayed. However, since those are two different softwares, they are not completely equivalent and some of the Stata code may not fully correspond to the R code. Consider it more like a reference point not to be lost rather than like an exact equivalent. </p>
+<p style="color:rgb(127, 165, 179)"> <b> Note: </b>  </p> <p style="color:rgb(127, 165, 179)">In this and future articles, you will see some arrows below R code. If you click on it, it will display the Stata code equivalent to the R code displayed. However, since those are two different softwares, they are not completely equivalent and some of the Stata code may not fully correspond to the R code. Consider it more like a reference point not to be lost rather than like an exact equivalent. </p>
 
 <br>
 
