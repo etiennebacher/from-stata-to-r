@@ -23,7 +23,7 @@ I have already heard one of my professor complaining about the fact that Stata i
 
 **Reason 3: the diversity of packages**
 
-There A LOT of packages on R (more than 10,000 on CRAN as shown [here](https://blog.revolutionanalytics.com/2017/01/cran-10000.html), and it was in 2017!). Additionally to the packages on CRAN (the *Comprehensive R Archive Network*, where the stable versions of the packages are), some packages are hosted only on Github and others are made by users or companies only for private purposes and will not be released on open-source. The packages are the strength of R. Base-R (i.e. the basic version of R, without any packages manually installed) is a great start to learn how to code and to manipulate data, and in fact you can stay with base-R only if you limit your study to some basic data analysis. However, base-R may also be hard to learn and not very esthetic. Moreover, some packages allow to extend R functionalities beyond base-R. 
+There is A LOT of packages on R (more than 10,000 on CRAN as shown [here](https://blog.revolutionanalytics.com/2017/01/cran-10000.html), and it was in 2017!). Additionally to the packages on CRAN (the *Comprehensive R Archive Network*, where the stable versions of the packages are), some packages are hosted only on Github and others are made by users or companies only for private purposes and will not be released on open-source. The packages are the strength of R. Base-R (i.e. the basic version of R, without any packages manually installed) is a great start to learn how to code and to manipulate data, and in fact you can stay with base-R only if you limit your study to some basic data analysis. However, base-R may also be hard to learn and not very esthetic. Moreover, some packages allow to extend R functionalities beyond base-R. 
 
 This is a list (far from being exhaustive) of some of the most important packages for students in economics:
 
@@ -40,7 +40,7 @@ It is certain that will have some problems with your code, everybody has. The do
 
 **Reason 5: RStudio is just a pleasure to use**
 
-RStudio is the most used IDE for R (Integrated Development Environment, not the language but a software that permits to use more easily the language). It has tons of shortcuts and is very customizable. It is a real pleasure to use, and it can be linked to other great services like GitHub (maybe you don't know what it is so in a few words, it is a service that permits version control i.e. keep a trace of every change in a project, whether it is a report, a package or a web application).
+RStudio is the most used IDE for R (Integrated Desktop Environment, not the language but a software that permits to use more easily the language). It has tons of shortcuts and is very customizable. It is a real pleasure to use, and it can be linked to other great services like GitHub (maybe you don't know what it is so in a few words, it is a service that permits version control i.e. keep a trace of every change in a project, whether it is a report, a package or a web application). 
 
 
 
