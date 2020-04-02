@@ -38,7 +38,7 @@ Indentation is quite important to have a code that is readable, especially when 
 This creates a new section in your code, with the title you choose. Quite convenient to keep a readable code. 
 
 ## "Ctrl+Shift+N": new file
-
+ 
 If you want to try a chunk of code quickly, you can run this combination to open a new file in RStudio.
 
 <br>

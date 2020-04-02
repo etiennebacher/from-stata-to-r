@@ -1,25 +1,68 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>From Stata to R</title>
     <link>/</link>
     <description>Recent content on From Stata to R</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© Copyright notice</copyright>
+    <language>en-US</language>
+    <copyright>Copyright © 2018, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo</copyright>
     <lastBuildDate>Thu, 02 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My favorite shortcuts in RStudio</title>
-      <link>/post/my-favorite-shortcuts-in-rstudio/</link>
+      <link>/posts/my-favorite-shortcuts-in-rstudio/</link>
       <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/my-favorite-shortcuts-in-rstudio/</guid>
-      <description>Currently working on my master&amp;rsquo;s thesis, I spend almost half on my day on R (the other half being spent reading articles). I have learnt a few very useful shortcuts by reading blog posts or free R books here and there and I have decided to make a small list of those I use most.
-&amp;ldquo;Ctrl+Shift+Enter&amp;rdquo;: run the whole script This combination will run all of your script, wherever the mouse is in the script.</description>
+      <guid>/posts/my-favorite-shortcuts-in-rstudio/</guid>
+      <description>
+
+&lt;p&gt;Currently working on my master&amp;rsquo;s thesis, I spend almost half on my day on R (the other half being spent reading articles). I have learnt a few very useful shortcuts by reading blog posts or free R books here and there and I have decided to make a small list of those I use most.&lt;/p&gt;
+
+&lt;h2 id=&#34;ctrl-shift-enter-run-the-whole-script&#34;&gt;&amp;ldquo;Ctrl+Shift+Enter&amp;rdquo;: run the whole script&lt;/h2&gt;
+
+&lt;p&gt;This combination will run all of your script, wherever the mouse is in the script. This considerably saves some time and is much more convenient than having to drag the mouse up to the &amp;ldquo;Run&amp;rdquo; button.&lt;/p&gt;
+
+&lt;h2 id=&#34;ctrl-shift-f10-restart-r-session&#34;&gt;&amp;ldquo;Ctrl+Shift+F10&amp;rdquo;: restart R session&lt;/h2&gt;
+
+&lt;p&gt;Almost all your work will have to be done again one day, either by you or by somebody else. That day, you will regret not having saved all the packages you needed in your R script. How is that possible? Well, it comes from the fact that I (and presumably other people too) load some packages &lt;em&gt;and their dependencies&lt;/em&gt; in the same session because we test some packages, or because we are trying to solve a StackOverflow problem during a break, etc. Therefore, when you were writing it, some of your code was running only thanks to some packages you didn&amp;rsquo;t keep in your script.&lt;/p&gt;
+
+&lt;p&gt;To prevent this to happen again, you can run &amp;ldquo;Ctrl+Shift+F10&amp;rdquo; sometimes: it restarts the R session (but does not close RStudio) and allows to see quickly if your code can run all by itself. When I have finished writing a chunk of code, I always do &amp;ldquo;Ctrl+Shift+F10&amp;rdquo; and &amp;ldquo;Ctrl+Shift+Enter&amp;rdquo; to make sure that my code can run again in three months or more.&lt;/p&gt;
+
+&lt;h2 id=&#34;ctrl-shift-k-knit-markdown-documents&#34;&gt;&amp;ldquo;Ctrl+Shift+K&amp;rdquo;: knit Markdown documents&lt;/h2&gt;
+
+&lt;p&gt;I do not use this everywhere but only in Markdown documents: it knits the document. As &amp;ldquo;Ctrl+Shift+Enter&amp;rdquo; replaces the &amp;ldquo;Run&amp;rdquo; button, &amp;ldquo;Ctrl+Shift+K&amp;rdquo; replaces the &amp;ldquo;Knit&amp;rdquo; button.&lt;/p&gt;
+
+&lt;h2 id=&#34;ctrl-alt-b-run-the-script-from-the-beginning-to-where-i-am&#34;&gt;&amp;ldquo;Ctrl+Alt+B&amp;rdquo;: run the script from the beginning to where I am&lt;/h2&gt;
+
+&lt;p&gt;This is similar to &amp;ldquo;Ctrl+Shift+Enter&amp;rdquo; but it runs the script only until your mouse.&lt;/p&gt;
+
+&lt;h2 id=&#34;ctrl-shift-a-good-alignment&#34;&gt;&amp;ldquo;Ctrl+Shift+A&amp;rdquo;: good alignment&lt;/h2&gt;
+
+&lt;p&gt;Indentation is quite important to have a code that is readable, especially when you begin to write more than 10 lines of code. Select your code (or just a piece of it) and do this combination to apply indentation rules automatically.&lt;/p&gt;
+
+&lt;h2 id=&#34;ctrl-shift-r-new-section-label&#34;&gt;&amp;ldquo;Ctrl+Shift+R&amp;rdquo;: new section label&lt;/h2&gt;
+
+&lt;p&gt;This creates a new section in your code, with the title you choose. Quite convenient to keep a readable code.&lt;/p&gt;
+
+&lt;h2 id=&#34;ctrl-shift-n-new-file&#34;&gt;&amp;ldquo;Ctrl+Shift+N&amp;rdquo;: new file&lt;/h2&gt;
+
+&lt;p&gt;If you want to try a chunk of code quickly, you can run this combination to open a new file in RStudio.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;The complete list of shortcuts is available in &amp;ldquo;Tools -&amp;gt; Keyboard Shortcuts Help&amp;rdquo; in RStudio. These are my favorite ones, what are yours?&lt;/p&gt;
+
+&lt;p&gt;Other useful tools:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://rstudio.github.io/rstudio-extensions/rstudio_snippets.html&#34;&gt;snippets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rstudio.github.io/rstudioaddins/&#34;&gt;addins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/rstudiotips&#34;&gt;RStudio tips&lt;/a&gt; (on Twitter)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -28,7 +71,638 @@
       <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/first-contact/</guid>
-      <description>Note:  In this and future articles, you will see some arrows below R code. If you click on it, it will display the Stata code equivalent to the R code displayed. However, since those are two different softwares, they are not completely equivalent and some of the Stata code may not fully correspond to the R code. Consider it more like a reference point not to be lost rather than like an exact equivalent.</description>
+      <description>
+
+&lt;p style=&#34;color:rgb(127, 165, 179)&#34;&gt; &lt;b&gt; Note: &lt;/b&gt;  &lt;/p&gt; &lt;p style=&#34;color:rgb(127, 165, 179)&#34;&gt;In this and future articles, you will see some arrows below R code. If you click on it, it will display the Stata code equivalent to the R code displayed. However, since those are two different softwares, they are not completely equivalent and some of the Stata code may not fully correspond to the R code. Consider it more like a reference point not to be lost rather than like an exact equivalent. &lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;In this post, you will see how to import and treat data, make descriptive statistics and a few plots. I will also show you a personal method to organize one&amp;rsquo;s work.&lt;/p&gt;
+
+&lt;h2 id=&#34;files-used-and-organization-of-the-project&#34;&gt;Files used and organization of the project&lt;/h2&gt;
+
+&lt;p&gt;First of all, you need to create a project. In RStudio, you can do &amp;ldquo;File&amp;rdquo;, &amp;ldquo;New Project&amp;rdquo; and then choose the location of the project and its name. In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I use the package &lt;strong&gt;&lt;code&gt;here&lt;/code&gt;&lt;/strong&gt;. The command &lt;strong&gt;&lt;code&gt;here()&lt;/code&gt;&lt;/strong&gt; shows the path to your project and you just need to complete the path to access to your datasets or other files.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# if you&#39;ve never installed this package before, do:
+# install.packages(&amp;quot;here&amp;quot;)
+library(here)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Why is this package important? Your code must be reproducible, either for your current collaborators to work efficiently with you or for other people to check your code and to use it in the future. Using paths that work only for your computer (like &amp;ldquo;/home/Mr X/somefolder/somesubfolder/Project&amp;rdquo;) makes it longer and more annoying to use your code since it requires to manually change paths in order to import data or other files. The package &lt;strong&gt;&lt;code&gt;here&lt;/code&gt;&lt;/strong&gt; makes it much easier to reproduce your code since it automatically detects the path to access to your data. You only need to keep the same structure between R files and datasets. You will see in the next part how to use it.&lt;/p&gt;
+
+&lt;h2 id=&#34;import-data&#34;&gt;Import data&lt;/h2&gt;
+
+&lt;p&gt;We will use data contained in Excel (&lt;strong&gt;&lt;code&gt;.xlsx&lt;/code&gt;&lt;/strong&gt;) and text (&lt;strong&gt;&lt;code&gt;.txt&lt;/code&gt;&lt;/strong&gt;) files. You can find these files (and the full R script corresponding to this post) &lt;a href=&#34;https://github.com/etiennebacher/from-stata-to-r/tree/master/public/Data/first-contact&#34;&gt;here&lt;/a&gt;. To import Excel data, we wil need the &lt;strong&gt;&lt;code&gt;readxl&lt;/code&gt;&lt;/strong&gt; package.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(readxl)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We use the &lt;strong&gt;&lt;code&gt;read_excel&lt;/code&gt;&lt;/strong&gt; function of this package to import excel files and the function &lt;strong&gt;&lt;code&gt;read.table&lt;/code&gt;&lt;/strong&gt; (in base R) to import the data:&lt;/p&gt;
+
+&lt;!-- La partie qui suit doit être visible pour correspondre à ce que je dis mais ne doit pas être exécutée car pas les bons chemins d&#39;accès --&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base1 &amp;lt;- read_excel(here(&amp;quot;Bases_Used/Base_Excel.xlsx&amp;quot;), sheet = &amp;quot;Base1&amp;quot;)
+base2 &amp;lt;- read_excel(here(&amp;quot;Bases_Used/Base_Excel.xlsx&amp;quot;), sheet = &amp;quot;Base2&amp;quot;)
+base3 &amp;lt;- read_excel(here(&amp;quot;Bases_Used/Base_Excel.xlsx&amp;quot;), sheet = &amp;quot;Base3&amp;quot;)
+base4 &amp;lt;- read.table(here(&amp;quot;Bases_Used/Base_Text.txt&amp;quot;), header = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;!-- La partie qui suit ne doit pas être visible mais doit être exécutée --&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;cd &amp;quot;/path/to/Bases_Used&amp;quot;
+import excel using Base_Excel, sheet(&amp;quot;Base1&amp;quot;) firstrow
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see, if your project is in a folder and if you stored you datasets in the Bases_Used subfolder, this code will work automatically since &lt;strong&gt;&lt;code&gt;here&lt;/code&gt;&lt;/strong&gt; detects the path. Now, we have stored the four datasets in four objects called &lt;strong&gt;&lt;code&gt;data.frames&lt;/code&gt;&lt;/strong&gt;. To me, this simple thing is an advantage on Stata where storing multiple datasets in the same time is not intuitive at all.&lt;/p&gt;
+
+&lt;h2 id=&#34;merge-dataframes&#34;&gt;Merge dataframes&lt;/h2&gt;
+
+&lt;p&gt;We want to have a unique dataset to make descriptive statistics and econometrics (we will just do descriptive statistics in this post). Therefore, we will merge these datasets together, first by using the &lt;strong&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/strong&gt; package. This package is one of the references for data manipulation. It is extremely useful and much more easy to use than base R. You may find a cheatsheet (i.e. a recap of the functions) for this package &lt;a href=&#34;https://rstudio.com/resources/cheatsheets/&#34;&gt;here&lt;/a&gt;, along with cheatsheets of many other great packages.&lt;/p&gt;
+
+&lt;p&gt;First, we want to regroup &lt;strong&gt;&lt;code&gt;base1&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code&gt;base2&lt;/code&gt;&lt;/strong&gt;. To do so, we just need to put one under the other and to &amp;ldquo;stick&amp;rdquo; them together with &lt;strong&gt;&lt;code&gt;bind_rows&lt;/code&gt;&lt;/strong&gt; and we observe the result:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+base_created &amp;lt;- bind_rows(base1, base2)
+base_created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## # A tibble: 23 x 6
+##     hhid indidy1 surname   name     gender  wage
+##    &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+##  1     1       1 BROWN     Robert        1  2000
+##  2     1       2 JONES     Michael       1  2100
+##  3     1       3 MILLER    William       1  2300
+##  4     1       4 DAVIS     David         1  1800
+##  5     2       1 RODRIGUEZ Mary          2  3600
+##  6     2       2 MARTINEZ  Patricia      2  3500
+##  7     2       3 WILSON    Linda         2  1900
+##  8     2       4 ANDERSON  Richard       1  1900
+##  9     3       1 THOMAS    Charles       1  1800
+## 10     3       2 TAYLOR    Barbara       2  1890
+## # … with 13 more rows
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;preserve
+
+*** Open base #2 and bind the rows
+clear all 
+import excel using Base_Excel, sheet(&amp;quot;Base2&amp;quot;) firstrow
+tempfile base2
+save  `base2&#39; 
+restore
+append using `base2&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see, we obtain a dataframe with 6 columns (like each table separately) and 23 rows: 18 in the first table, 5 in the second table. Now, we merge this dataframe with &lt;strong&gt;&lt;code&gt;base3&lt;/code&gt;&lt;/strong&gt;. &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code&gt;base3&lt;/code&gt;&lt;/strong&gt; only have one column in common (&lt;strong&gt;&lt;code&gt;hhid&lt;/code&gt;&lt;/strong&gt;) so we will need to specify that we want to merge these two bases by this column:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base_created &amp;lt;- left_join(base_created, base3, by = &amp;quot;hhid&amp;quot;)
+base_created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## # A tibble: 23 x 7
+##     hhid indidy1 surname   name     gender  wage location
+##    &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;   
+##  1     1       1 BROWN     Robert        1  2000 France  
+##  2     1       2 JONES     Michael       1  2100 France  
+##  3     1       3 MILLER    William       1  2300 France  
+##  4     1       4 DAVIS     David         1  1800 France  
+##  5     2       1 RODRIGUEZ Mary          2  3600 England 
+##  6     2       2 MARTINEZ  Patricia      2  3500 England 
+##  7     2       3 WILSON    Linda         2  1900 England 
+##  8     2       4 ANDERSON  Richard       1  1900 England 
+##  9     3       1 THOMAS    Charles       1  1800 Spain   
+## 10     3       2 TAYLOR    Barbara       2  1890 Spain   
+## # … with 13 more rows
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;preserve 
+
+*** Open base #3 and merge
+clear all
+cd ..\Bases_Used 
+import excel using Base_Excel, sheet(&amp;quot;Base3&amp;quot;) firstrow
+tempfile base3
+save `base3&#39;
+restore 
+merge m:1 hhid using `base3&#39; 
+drop _merge 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;left_join&lt;/code&gt;&lt;/strong&gt; is a &lt;strong&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/strong&gt; function saying that the first dataframe mentioned (here &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt;) is the &amp;ldquo;most important&amp;rdquo; and that we will stick the second one (here &lt;strong&gt;&lt;code&gt;base3&lt;/code&gt;&lt;/strong&gt;) to it. If there are more rows in the first one than in the second one, then there will be some missing values but the number of rows will stay the same. If we knew that &lt;strong&gt;&lt;code&gt;base3&lt;/code&gt;&lt;/strong&gt; had more rows than &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt;, we would have used &lt;strong&gt;&lt;code&gt;right_join&lt;/code&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;We now want to merge &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt; with &lt;strong&gt;&lt;code&gt;base4&lt;/code&gt;&lt;/strong&gt;. The problem is that there are no common columns so we will need to create one in each. Moreover, &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt; contains data for the year 2019 and &lt;strong&gt;&lt;code&gt;base4&lt;/code&gt;&lt;/strong&gt; for the year 2020. We will need to create columns to specify that too:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# rename the second column of base_created and of base4
+colnames(base_created)[2] &amp;lt;- &amp;quot;indid&amp;quot;
+colnames(base4)[2] &amp;lt;- &amp;quot;indid&amp;quot;
+
+# create the column &amp;quot;year&amp;quot;, that will take the value 2019 
+# for base_created and 2020 for base4
+base_created$year &amp;lt;- 2019
+base4$year &amp;lt;- 2020
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;From this point, we can merge these two dataframes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base_created2 &amp;lt;- bind_rows(base_created, base4)
+base_created2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## # A tibble: 46 x 8
+##     hhid indid surname   name     gender  wage location  year
+##    &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;
+##  1     1     1 BROWN     Robert        1  2000 France    2019
+##  2     1     2 JONES     Michael       1  2100 France    2019
+##  3     1     3 MILLER    William       1  2300 France    2019
+##  4     1     4 DAVIS     David         1  1800 France    2019
+##  5     2     1 RODRIGUEZ Mary          2  3600 England   2019
+##  6     2     2 MARTINEZ  Patricia      2  3500 England   2019
+##  7     2     3 WILSON    Linda         2  1900 England   2019
+##  8     2     4 ANDERSON  Richard       1  1900 England   2019
+##  9     3     1 THOMAS    Charles       1  1800 Spain     2019
+## 10     3     2 TAYLOR    Barbara       2  1890 Spain     2019
+## # … with 36 more rows
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;
+rename indidy1 indid 
+gen year=2019 
+preserve 
+
+* Open base #4 and merge
+clear all
+import delimited Base_Text.txt 
+rename indidy2 indid 
+gen year=2020
+tempfile base4
+save `base4&#39;
+restore 
+
+merge 1:1 hhid indid year using `base4&#39;
+drop _merge
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;But we have many missing values for the new rows because &lt;strong&gt;&lt;code&gt;base4&lt;/code&gt;&lt;/strong&gt; only contained three columns. We want to have a data frame arranged by household then by individual and finally by year. Using only &lt;strong&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/strong&gt; functions, we can do:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base_created2 &amp;lt;- base_created2 %&amp;gt;% 
+  group_by(hhid, indid) %&amp;gt;% 
+  arrange(hhid, indid, year) %&amp;gt;%
+  ungroup()
+base_created2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## # A tibble: 46 x 8
+##     hhid indid surname   name    gender  wage location  year
+##    &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;
+##  1     1     1 BROWN     Robert       1  2000 France    2019
+##  2     1     1 &amp;lt;NA&amp;gt;      &amp;lt;NA&amp;gt;        NA  2136 &amp;lt;NA&amp;gt;      2020
+##  3     1     2 JONES     Michael      1  2100 France    2019
+##  4     1     2 &amp;lt;NA&amp;gt;      &amp;lt;NA&amp;gt;        NA  2362 &amp;lt;NA&amp;gt;      2020
+##  5     1     3 MILLER    William      1  2300 France    2019
+##  6     1     3 &amp;lt;NA&amp;gt;      &amp;lt;NA&amp;gt;        NA  2384 &amp;lt;NA&amp;gt;      2020
+##  7     1     4 DAVIS     David        1  1800 France    2019
+##  8     1     4 &amp;lt;NA&amp;gt;      &amp;lt;NA&amp;gt;        NA  2090 &amp;lt;NA&amp;gt;      2020
+##  9     2     1 RODRIGUEZ Mary         2  3600 England   2019
+## 10     2     1 &amp;lt;NA&amp;gt;      &amp;lt;NA&amp;gt;        NA  3784 &amp;lt;NA&amp;gt;      2020
+## # … with 36 more rows
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that there are some &lt;strong&gt;&lt;code&gt;%&amp;gt;%&lt;/code&gt;&lt;/strong&gt; between the lines: it is a pipe and its function is to connect lines of code between them so that we don&amp;rsquo;t have to write &lt;strong&gt;&lt;code&gt;base_created2&lt;/code&gt;&lt;/strong&gt; every time. Now that our dataframe is arranged, we need to fill the missing values. Fortunately, these missing values do not change for an individual since they concern the gender, the location, the name and the surname. So basically, we can just take the value of the cell above (corresponding to year 2019) and replicate it in each cell (corresponding to year 2020):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(tidyr)
+base_created2 &amp;lt;- base_created2 %&amp;gt;%
+  fill(select_if(., ~ any(is.na(.))) %&amp;gt;% 
+         names(),
+       .direction = &#39;down&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;foreach x of varlist surname name gender location {
+  bysort hhid indid: replace `x&#39;=`x&#39;[_n-1] if year==2020
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;Let me explain the code above:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;fill&lt;/code&gt;&lt;/strong&gt; aims to fill cells&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;select_if&lt;/code&gt;&lt;/strong&gt; selects columns according to the condition defined&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;any(is.na(.))&lt;/code&gt;&lt;/strong&gt; is a logical question asking if there are missing values (NA)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;.&lt;/code&gt;&lt;/strong&gt; indicates that we want to apply the function to the whole dataframe&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;names&lt;/code&gt;&lt;/strong&gt; tells us what the names of the columns selected are&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;.direction&lt;/code&gt;&lt;/strong&gt; tells the direction in which the filling goes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So &lt;strong&gt;&lt;code&gt;fill(select_if(., ~ any(is.na(.))) %&amp;gt;% names(), .direction = &#39;down&#39;)&lt;/code&gt;&lt;/strong&gt; means that for the dataframe, we select each column which has some NA in it and we obtain their names. In these columns, the empty cells are filled by the value of the cell above (since the direction is &amp;ldquo;down&amp;rdquo;).&lt;/p&gt;
+
+&lt;p&gt;Finally, we want the first three columns to be &lt;strong&gt;&lt;code&gt;hhid&lt;/code&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;code&gt;indid&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code&gt;year&lt;/code&gt;&lt;/strong&gt;, and we create a ID column named &lt;strong&gt;&lt;code&gt;hhind&lt;/code&gt;&lt;/strong&gt; which is just the union of &lt;strong&gt;&lt;code&gt;hhid&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code&gt;indid&lt;/code&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base_created2 &amp;lt;- base_created2 %&amp;gt;%
+  select(hhid, indid, year, everything()) %&amp;gt;%
+  unite(hhind, c(hhid, indid), sep = &amp;quot;&amp;quot;, remove = FALSE) 
+base_created2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## # A tibble: 46 x 9
+##    hhind  hhid indid  year surname   name    gender  wage location
+##    &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;   
+##  1 11        1     1  2019 BROWN     Robert       1  2000 France  
+##  2 11        1     1  2020 BROWN     Robert       1  2136 France  
+##  3 12        1     2  2019 JONES     Michael      1  2100 France  
+##  4 12        1     2  2020 JONES     Michael      1  2362 France  
+##  5 13        1     3  2019 MILLER    William      1  2300 France  
+##  6 13        1     3  2020 MILLER    William      1  2384 France  
+##  7 14        1     4  2019 DAVIS     David        1  1800 France  
+##  8 14        1     4  2020 DAVIS     David        1  2090 France  
+##  9 21        2     1  2019 RODRIGUEZ Mary         2  3600 England 
+## 10 21        2     1  2020 RODRIGUEZ Mary         2  3784 England 
+## # … with 36 more rows
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;egen hhind=group(hhid indid) 
+order hhind hhid indid year * 
+sort hhid indid year 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s it, we now have the complete dataframe.&lt;/p&gt;
+
+&lt;h2 id=&#34;clean-the-data&#34;&gt;Clean the data&lt;/h2&gt;
+
+&lt;p&gt;There are still some things to do. First, we remark that there are some errors in the column &lt;strong&gt;&lt;code&gt;location&lt;/code&gt;&lt;/strong&gt; (&lt;strong&gt;&lt;code&gt;England_error&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code&gt;Spain_error&lt;/code&gt;&lt;/strong&gt;) so we correct it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# display the unique values of the column &amp;quot;location&amp;quot;
+unique(base_created2$location)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;France&amp;quot;        &amp;quot;England&amp;quot;       &amp;quot;Spain&amp;quot;         &amp;quot;Italy&amp;quot;        
+## [5] &amp;quot;England_error&amp;quot; &amp;quot;Spain_error&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# correct the errors
+base_created2[base_created2 == &amp;quot;England_error&amp;quot;] &amp;lt;- &amp;quot;England&amp;quot;
+base_created2[base_created2 == &amp;quot;Spain_error&amp;quot;] &amp;lt;- &amp;quot;Spain&amp;quot;
+unique(base_created2$location)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;France&amp;quot;  &amp;quot;England&amp;quot; &amp;quot;Spain&amp;quot;   &amp;quot;Italy&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;replace localisation=&amp;quot;England&amp;quot; if localisation==&amp;quot;England_error&amp;quot;
+replace localisation=&amp;quot;Spain&amp;quot; if localisation==&amp;quot;Spain_error&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;Basically, what we&amp;rsquo;ve done here is that we have selected every cell in the whole dataframe that had the value &lt;strong&gt;&lt;code&gt;England_error&lt;/code&gt;&lt;/strong&gt; (respectively &lt;strong&gt;&lt;code&gt;Spain_error&lt;/code&gt;&lt;/strong&gt;) and we replaced these cells by &lt;strong&gt;&lt;code&gt;England&lt;/code&gt;&lt;/strong&gt; (&lt;strong&gt;&lt;code&gt;Spain&lt;/code&gt;&lt;/strong&gt;). We also need to recode the column &lt;strong&gt;&lt;code&gt;gender&lt;/code&gt;&lt;/strong&gt; because binary variables have to take values of 0 or 1, not 1 or 2.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base_created2$gender &amp;lt;- recode(base_created2$gender, `2` = 0)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;label define genderlab 1 &amp;quot;M&amp;quot; 2 &amp;quot;F&amp;quot;
+label values gender genderlab
+recode gender (2=0 &amp;quot;Female&amp;quot;) (1=1 &amp;quot;Male&amp;quot;), gen(gender2)
+drop gender
+rename gender2 gender
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;To have more details on the dataframe, we need to create some labels. To do so, we need the &lt;strong&gt;&lt;code&gt;upData&lt;/code&gt;&lt;/strong&gt; function in the &lt;strong&gt;&lt;code&gt;Hmisc&lt;/code&gt;&lt;/strong&gt; package.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(Hmisc)
+var.labels &amp;lt;- c(hhind = &amp;quot;individual&#39;s ID&amp;quot;,
+                hhid = &amp;quot;household&#39;s ID&amp;quot;,
+                indid = &amp;quot;individual&#39;s ID in the household&amp;quot;,
+                year = &amp;quot;year&amp;quot;,
+                surname = &amp;quot;surname&amp;quot;,
+                name = &amp;quot;name&amp;quot;,
+                gender = &amp;quot;1 if male, 0 if female&amp;quot;,
+                wage = &amp;quot;wage&amp;quot;,
+                location = &amp;quot;household&#39;s location&amp;quot;)
+base_created2 &amp;lt;- upData(base_created2, labels = var.labels)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;label variable hhind &amp;quot;individual&#39;s ID&amp;quot;
+label variable indid &amp;quot;household&#39;s ID&amp;quot; 
+label variable year &amp;quot;year&amp;quot;
+label variable hhid &amp;quot;individual&#39;s ID in the household&amp;quot;
+label variable surname &amp;quot;Surname&amp;quot;
+label variable name &amp;quot;Name&amp;quot;
+label variable gender &amp;quot;1 if male, 0 if female&amp;quot;
+label variable wage &amp;quot;wage&amp;quot;
+label variable location &amp;quot;household&#39;s location&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;We can see the result with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;contents(base_created2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Data frame:base_created2	46 observations and 9 variables    Maximum # NAs:0
+## 
+## 
+##                                    Labels     Class   Storage
+## hhind                     individual&#39;s ID character character
+## hhid                       household&#39;s ID   integer   integer
+## indid    individual&#39;s ID in the household   integer   integer
+## year                                 year   integer   integer
+## surname                           surname character character
+## name                                 name character character
+## gender             1 if male, 0 if female   integer   integer
+## wage                                 wage   integer   integer
+## location             household&#39;s location character character
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now that our dataframe is clean and detailed, we can compute some descriptive statistics. But before doing it, we might want to save it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;write.xlsx(base_created2, file = here(&amp;quot;Bases_Created/modified_base.xlsx&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;cd ..\Bases_Created  
+export excel using &amp;quot;modified_base.xls&amp;quot;, replace
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;descriptive-statistics&#34;&gt;Descriptive Statistics&lt;/h2&gt;
+
+&lt;p&gt;First of all, if we want to check the number of people per location or gender and per year, we use the &lt;strong&gt;&lt;code&gt;table&lt;/code&gt;&lt;/strong&gt; function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;table(base_created2$gender, base_created2$year)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##    
+##     2019 2020
+##   0    9    9
+##   1   14   14
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;table(base_created2$location, base_created2$year)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##          
+##           2019 2020
+##   England    6    6
+##   France    12   12
+##   Italy      1    1
+##   Spain      4    4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;tab gender if year==2019  
+tab location if year==2019 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;To have more detailed statistics, you can use many functions. Here, we use the function &lt;strong&gt;&lt;code&gt;describe&lt;/code&gt;&lt;/strong&gt; from the &lt;strong&gt;&lt;code&gt;Hmisc&lt;/code&gt;&lt;/strong&gt; package&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;describe(base_created2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## base_created2 
+## 
+##  9  Variables      46  Observations
+## --------------------------------------------------------------------------------
+## hhind : individual&#39;s ID 
+##        n  missing distinct 
+##       46        0       23 
+## 
+## lowest : 11 12 13 14 21, highest: 71 72 81 82 83
+## --------------------------------------------------------------------------------
+## hhid : household&#39;s ID 
+##        n  missing distinct     Info     Mean      Gmd 
+##       46        0        8    0.975    4.217    2.783 
+## 
+## lowest : 1 2 3 4 5, highest: 4 5 6 7 8
+##                                                           
+## Value          1     2     3     4     5     6     7     8
+## Frequency      8     8     4     2    10     4     4     6
+## Proportion 0.174 0.174 0.087 0.043 0.217 0.087 0.087 0.130
+## --------------------------------------------------------------------------------
+## indid : individual&#39;s ID in the household 
+##        n  missing distinct     Info     Mean      Gmd 
+##       46        0        5    0.923    2.217    1.306 
+## 
+## lowest : 1 2 3 4 5, highest: 1 2 3 4 5
+##                                         
+## Value          1     2     3     4     5
+## Frequency     16    14     8     6     2
+## Proportion 0.348 0.304 0.174 0.130 0.043
+## --------------------------------------------------------------------------------
+## year 
+##        n  missing distinct     Info     Mean      Gmd 
+##       46        0        2     0.75     2020   0.5111 
+##                     
+## Value      2019 2020
+## Frequency    23   23
+## Proportion  0.5  0.5
+## --------------------------------------------------------------------------------
+## surname 
+##        n  missing distinct 
+##       46        0       23 
+## 
+## lowest : ANDERSON BROWN    DAVIS    DOE      JACKSON 
+## highest: THOMAS   THOMPSON WHITE    WILLIAMS WILSON  
+## --------------------------------------------------------------------------------
+## name 
+##        n  missing distinct 
+##       46        0       23 
+## 
+## lowest : Barbara Charles Daniel  David   Donald 
+## highest: Richard Robert  Susan   Thomas  William
+## --------------------------------------------------------------------------------
+## gender : 1 if male, 0 if female 
+##        n  missing distinct     Info      Sum     Mean      Gmd 
+##       46        0        2    0.715       28   0.6087    0.487 
+## 
+## --------------------------------------------------------------------------------
+## wage 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##       46        0       37    0.998     2059    477.4     1627     1692 
+##      .25      .50      .75      .90      .95 
+##     1800     1901     2098     2373     3575 
+## 
+## lowest : 1397 1600 1608 1683 1690, highest: 2384 3500 3600 3782 3784
+## --------------------------------------------------------------------------------
+## location : household&#39;s location 
+##        n  missing distinct 
+##       46        0        4 
+##                                           
+## Value      England  France   Italy   Spain
+## Frequency       12      24       2       8
+## Proportion   0.261   0.522   0.043   0.174
+## --------------------------------------------------------------------------------
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;sum *, detail
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;but you can also try the function &lt;strong&gt;&lt;code&gt;summary&lt;/code&gt;&lt;/strong&gt; (automatically available in base R), &lt;strong&gt;&lt;code&gt;stat.desc&lt;/code&gt;&lt;/strong&gt; in &lt;strong&gt;&lt;code&gt;pastecs&lt;/code&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;code&gt;skim&lt;/code&gt;&lt;/strong&gt; in &lt;strong&gt;&lt;code&gt;skimr&lt;/code&gt;&lt;/strong&gt; or even &lt;strong&gt;&lt;code&gt;makeDataReport&lt;/code&gt;&lt;/strong&gt; in &lt;strong&gt;&lt;code&gt;dataMaid&lt;/code&gt;&lt;/strong&gt; to have a complete PDF report summarizing your data. To summarize data under certain conditions (e.g. to have the average wage for each location), you can use &lt;strong&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# you can change the argument in group_by() by gender for example
+base_created2 %&amp;gt;%
+  group_by(location) %&amp;gt;%
+  summarize_at(.vars = &amp;quot;wage&amp;quot;, .funs = &amp;quot;mean&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 2
+##   location    wage
+##   &amp;lt;labelled&amp;gt; &amp;lt;dbl&amp;gt;
+## 1 England    2452.
+## 2 France     1935.
+## 3 Italy      1801 
+## 4 Spain      1905.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;tabstat wage if year==2019, stats(N mean sd min max p25 p50 p75) by(location)
+tabstat wage if year==2020, stats(N mean sd min max p25 p50 p75) by(location)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;plots&#34;&gt;Plots&lt;/h2&gt;
+
+&lt;p&gt;Finally, we want to plot some data to include in our report or article (or anything else). &lt;strong&gt;&lt;code&gt;ggplot2&lt;/code&gt;&lt;/strong&gt; is THE reference to make plots with R. The &lt;strong&gt;&lt;code&gt;ggplot&lt;/code&gt;&lt;/strong&gt; function does not create a graph but tells what is the data you are going to use and the aesthetics (&lt;strong&gt;&lt;code&gt;aes&lt;/code&gt;&lt;/strong&gt;). Here, we want to display the wages in a histogram and to distinguish them per year. Therefore, we want to fill the bars according to the year. To precise the type of graph we want, we add &lt;strong&gt;&lt;code&gt;+ geom_histogram()&lt;/code&gt;&lt;/strong&gt; after &lt;strong&gt;&lt;code&gt;ggplot&lt;/code&gt;&lt;/strong&gt;. You may change the number of &lt;strong&gt;&lt;code&gt;bins&lt;/code&gt;&lt;/strong&gt; to have a more precise histogram.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggplot2)
+hist1 &amp;lt;- ggplot(data = base_created2, 
+                mapping = aes(wage, fill = factor(year))) +
+  geom_histogram(bins = 10)
+hist1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/posts/first-contact_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;histogram wage if year==2019, saving(Hist1, replace) bin(10) freq title(&amp;quot;Year 2019&amp;quot;) ytitle(&amp;quot;Frequency&amp;quot;) 
+histogram wage if year==2020, saving(Hist2, replace) bin(10) freq title(&amp;quot;Year 2020&amp;quot;) ytitle(&amp;quot;Frequency&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;If you prefer one histogram per year, you can use the &lt;strong&gt;&lt;code&gt;facet_wrap()&lt;/code&gt;&lt;/strong&gt; argument, as below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;hist2 &amp;lt;- ggplot(data = base_created2, 
+                mapping = aes(wage, fill = factor(year))) +
+  geom_histogram(bins = 10) +
+  facet_wrap(vars(year))
+hist2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/posts/first-contact_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;graph combine Hist1.gph Hist2.gph, col(2) xsize(10) ysize(5) iscale(1.5) title(&amp;quot;{bf:Wage distribution per year}&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally, you may want to export these graphs. To do so, we use &lt;strong&gt;&lt;code&gt;ggsave&lt;/code&gt;&lt;/strong&gt; (you can replace .pdf by .eps or .png if you want):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;ggsave(here(&amp;quot;Figures/plot1.pdf&amp;quot;), plot = hist1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt; Stata
+&lt;/summary&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;graph export Histogram1.pdf,  replace
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s it! In this first post, you have seen how to import, clean and tidy datasets, and how to make some descriptive statistics and some plots. I hope this was helpful to you!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -37,7 +711,41 @@
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/posts/why-moving/</guid>
-      <description>Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students&amp;rsquo; experiences, e.</description>
+      <description>&lt;p&gt;Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students&amp;rsquo; experiences, e.g. data cleaning and treatment, data analysis, econometrics, etc.&lt;/p&gt;
+
+&lt;p&gt;Now we can begin.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reason 1: R is free&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;That may seem a false argument for some people, especially because in many universities, students have freely access to Stata. However, in my experience, I know that we frequently want to work home or in group on some projects and therefore we need Stata on our personal laptop. Therefore, some cracked versions circulate between students and it is well-known that when downloading illegally softwares (and movies, TV shows, etc.), there&amp;rsquo;s always a risk of being infected by a virus. I don&amp;rsquo;t know if this happens often or not, maybe you will never suffer from it, but it would be just stupid to have to suffer from a hacking just because the statistical software was not free. That&amp;rsquo;s the big advantage of R: it is completely free. Whatever your operating system, you can download base R and every package you want and it won&amp;rsquo;t cost any money.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reason 2: R is open-source&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I have already heard one of my professor complaining about the fact that Stata is a &amp;ldquo;black box&amp;rdquo; (not like those in planes but more like an opaque system). On the contrary, R is open-source (meaning that anyone can see the code, contribute to it and distribute it) and the code behind the functions you use is easily visible with just one click. That accessiblity entails the next argument, which is the diversity of packages.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reason 3: the diversity of packages&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There is A LOT of packages on R (more than 10,000 on CRAN as shown &lt;a href=&#34;https://blog.revolutionanalytics.com/2017/01/cran-10000.html&#34;&gt;here&lt;/a&gt;, and it was in 2017!). Additionally to the packages on CRAN (the &lt;em&gt;Comprehensive R Archive Network&lt;/em&gt;, where the stable versions of the packages are), some packages are hosted only on Github and others are made by users or companies only for private purposes and will not be released on open-source. The packages are the strength of R. Base-R (i.e. the basic version of R, without any packages manually installed) is a great start to learn how to code and to manipulate data, and in fact you can stay with base-R only if you limit your study to some basic data analysis. However, base-R may also be hard to learn and not very esthetic. Moreover, some packages allow to extend R functionalities beyond base-R.&lt;/p&gt;
+
+&lt;p&gt;This is a list (far from being exhaustive) of some of the most important packages for students in economics:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tidyverse&lt;/code&gt;: this is a portmanteau word of &lt;em&gt;tidy&lt;/em&gt; and &lt;em&gt;universe&lt;/em&gt;. It regroups more than 20 packages for data import (&lt;code&gt;readr&lt;/code&gt;), data treatment (&lt;code&gt;dplyr&lt;/code&gt;, &lt;code&gt;tidyr&lt;/code&gt;&amp;hellip;), graphics (&lt;code&gt;ggplot2&lt;/code&gt;), etc.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rmarkdown&lt;/code&gt;: as a student (in economics but in other domains too), you will have to write a Master&amp;rsquo;s thesis and before that, you will certainly have to do some group projects, sort of small reports. When the data analysis will be done, you will have to write your report and to incorporate the results in the document. That can lead to some mistakes/typos that can lead to big errors, like changes in p-values between the results obtained in the statistical software and the word processing program (whether it is LaTeX or Microsoft Word). To guarantee that you won&amp;rsquo;t make this sort of mistakes, the most effective way is to write directly in R and to incorporate your code directly in the text. Therefore, in one document, you will have the text of your report and the code needed for the data analysis, all of that ready to be converted in PDF, HTML or Word.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;shiny&lt;/code&gt;: while &lt;code&gt;rmarkdown&lt;/code&gt; promotes reproducibility by keeping all in a unique document, &lt;code&gt;shiny&lt;/code&gt; goes a step further. Once you have made some data analysis, you can put it in a Shiny application (&amp;ldquo;app&amp;rdquo;) that will create a web page in which people interested in your work will be able to reproduce your results but also to check wether they are robust. Indeed, Shiny makes results &lt;em&gt;reactive&lt;/em&gt;, meaning that you can change the sample size or the years or anything else you want and the results will automatically adapt. That is very useful in econometrics, where robustness is very important and always checked.
+There exist thousands and thousands of R packages which cover a large spectrum of the problems and questions you might have, and that is definitely a strength of R.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Reason 4: the community&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It is certain that will have some problems with your code, everybody has. The documentation is very complete and allows to solve most of them, but sometimes you may need to seek for help online. It is quite probable that the question you ask yourself has already been asked by somebody else before you and if it has, you will find the answer on &lt;a href=&#34;https://stackoverflow.com/questions/tagged/r&#34;&gt;StackOverflow&lt;/a&gt; or on the &lt;a href=&#34;https://community.rstudio.com/&#34;&gt;RStudio Community&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reason 5: RStudio is just a pleasure to use&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;RStudio is the most used IDE for R (Integrated Desktop Environment, not the language but a software that permits to use more easily the language). It has tons of shortcuts and is very customizable. It is a real pleasure to use, and it can be linked to other great services like GitHub (maybe you don&amp;rsquo;t know what it is so in a few words, it is a service that permits version control i.e. keep a trace of every change in a project, whether it is a report, a package or a web application).&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -46,7 +754,8 @@
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>I am a French student doing a Master&amp;rsquo;s degree in economics. I love R and its flexibility and I think that students in university should learn R. However, R has a steeper learning curve than Stata. Therefore, this blog aims to facilitate the transition from Stata to R for students in economics. The content you can find on it may help students or professionals in other domains but the topics will be focused on economics.</description>
+      <description>&lt;p&gt;I am a French student doing a Master&amp;rsquo;s degree in economics. I love R and its flexibility and I think that students in university should learn R. However, R has a steeper learning curve than Stata. Therefore, this blog aims to facilitate the transition from Stata to R for students in economics. The content you can find on it may help students or professionals in other domains but the topics will be focused on economics.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -55,7 +764,8 @@
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/contact/</guid>
-      <description>You can contact me by email at etienne.bacher@orange.fr. You can write to me in English or in French if you prefer (I&amp;rsquo;m French too).</description>
+      <description>&lt;p&gt;You can contact me by email at &lt;a href=&#34;etienne.bacher@orange.fr&#34;&gt;etienne.bacher@orange.fr&lt;/a&gt;. You can write to me in English or in French if you prefer (I&amp;rsquo;m French too).&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -1,0 +1,70 @@
+ Suite au remplacement de tale-hugo par indigo, voilà la sauvegarde du config.toml utilisé pour tale-hugo. Le config.toml actuel est celui de indigo (voir themes/indigo/config.toml.example) personnalisé : 
+
+baseURL = ""
+languageCode = "en-us"
+title = "From Stata to R"
+theme = "tale-hugo"
+paginate = 20
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+pygmentsstyle = "vs"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+disqusShortname = "ezhil-demo"
+
+copyright = "© Copyright notice"
+
+[params]
+	subtitle = ""
+	disableDisqusTypes = ["page"]
+	featherIconsCDN = true
+	mode = "auto" # "dark" or "auto"
+	# customCSS = "css/style.css"  # Custom CSS applied to default styles.
+	# customDarkCSS = "css/custom-dark.css"  # Custom styles applied to dark mode css.
+	# customJS = ["js/custom.js", "js/custom1.js"]  # Custom JS scripts.
+  highlightjsVersion = "9.11.0"
+  highlightjsCDN = "//cdn.bootcss.com"
+  highlightjsLang = ["r", "yaml"]
+  highlightjsTheme = "github"
+  MathJaxCDN = "//cdn.bootcss.com"
+  MathJaxVersion = "2.7.1"
+  
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 3
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 4
+
+[[menu.main]]
+name = "Contact"
+url = "/contact"
+weight = 5
+
+[[params.social]]
+name = "Github"
+icon = "github"
+url = "https://github.com/etiennebacher/from-stata-to-r"
+
+[[params.social]]
+name = "RSS"
+icon = "rss"
+url = "/index.xml"
+
+[taxonomies]
+   tag = "tags"
+

@@ -8,12 +8,12 @@
   </url>
   
   <url>
-    <loc>/post/my-favorite-shortcuts-in-rstudio/</loc>
+    <loc>/posts/my-favorite-shortcuts-in-rstudio/</loc>
     <lastmod>2020-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>/posts/</loc>
     <lastmod>2020-04-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -29,11 +29,6 @@
   
   <url>
     <loc>/posts/first-contact/</loc>
-    <lastmod>2020-01-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/</loc>
     <lastmod>2020-01-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -55,6 +50,10 @@
   <url>
     <loc>/contact/</loc>
     <lastmod>2019-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
   </url>
   
 </urlset>

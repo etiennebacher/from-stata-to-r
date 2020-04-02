@@ -1,92 +1,95 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    
+    <title>Why you should move from Stata to R | From Stata to R</title>
+    <meta name="description" content="A blog to narrate my transition from Stata to R">
+    <meta name="author" content="">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href=/apple-touch-icon.png>
+    <link rel="icon" type="image/png" sizes="32x32" href=/favicon-32x32.png>
+    <link rel="icon" type="image/png" sizes="16x16" href=/favicon-16x16.png>
+    <link rel="manifest" href=/site.webmanifest>
+    <link rel="mask-icon" href=/safari-pinned-tab.svg color="#00416a">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link rel="me" href="mailto:etienne.bacher@orange.fr">
+    <link rel="me" href="https://github.com/etiennebacher">
+    
+    
+    
+    <link rel="authorization_endpoint" href=https://indieauth.com/auth />
+    <link rel="token_endpoint" href=https://tokens.indieauth.com/token />
+    
+    
+    
+    
+    <link rel="stylesheet" href=/css/fonts.css />
+    <link rel="stylesheet" href=/css/style.css />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-		<title>Why you should move from Stata to R &middot; From Stata to R</title>
-
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="/css/fonts.css">
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="From Stata to R" />
-	</head>
-
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">From Stata to R</h2>
-				</a>
-				<ul>
+<body>
+    <div id="sitelogo">
+        <a class="glyph" alt="Home" href="/"><img src=/images/site-logo.svg alt="Site Logo" height="64px" width="64px"></a>
+    </div>
+    <header>
+        <nav>
     
-    
-        <li>
-            <a href="/">
-                
-                <span>Home</span>
-                
-            </a>
-        </li>
-    
-        <li>
-            <a href="/posts">
-                
-                <span>All posts</span>
-                
-            </a>
-        </li>
-    
-        <li>
-            <a href="/tags">
-                
-                <span>Tags</span>
-                
-            </a>
-        </li>
-    
-        <li>
-            <a href="/about">
-                
-                <span>About</span>
-                
-            </a>
-        </li>
-    
-        <li>
-            <a href="/contact">
-                
-                <span>Contact</span>
-                
-            </a>
-        </li>
-    
-</ul>
-			</div>
-		</nav>
-
+    <div id="page-nav">
+        <div class="page-nav-item">
+            <a href="/">Home</a>
+        </div>
         
+            <div class="page-nav-item">
+                <a href="/posts">
+                    
+                    <span>All posts</span>
+                </a>
+            </div>
+        
+            <div class="page-nav-item">
+                <a href="/about">
+                    
+                    <span>About</span>
+                </a>
+            </div>
+        
+            <div class="page-nav-item">
+                <a href="/contact">
+                    
+                    <span>Contact</span>
+                </a>
+            </div>
+        
+    </div>
+</nav>
+        
+    </header>
 
-<main>
-	<div class="post">
-		<div class="post-info">
-    <span>Written by</span>
-        Etienne Bacher
-        <br>
-        <span>on&nbsp;</span><time datetime="2019-12-01 00:00:00 &#43;0000 UTC">December 1, 2019</time>
-</div>
-		<h1 class="post-title">Why you should move from Stata to R</h1>
-<div class="post-line"></div>
 
-		
 
-		<p>Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students&rsquo; experiences, e.g. data cleaning and treatment, data analysis, econometrics, etc.</p>
+
+    
+
+<div id="content">
+    <article class="h-entry">
+        <header>
+            <h1 class="post-title p-name">Why you should move from Stata to R</h1>
+            
+            <p class="post-date">Posted on
+                <time class="dt-published" datetime="2019-12-01T00:00:00Z">
+                1 December, 2019 at 00:00 UTC
+                </time>  by <a href="/" class="p-author h-card" rel="author">Etienne Bacher</a>
+            </p>
+            
+            
+        </header>
+        <section class="content e-content">
+            <p>Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students&rsquo; experiences, e.g. data cleaning and treatment, data analysis, econometrics, etc.</p>
 
 <p>Now we can begin.</p>
 
@@ -121,24 +124,97 @@ There exist thousands and thousands of R packages which cover a large spectrum o
 
 <p>RStudio is the most used IDE for R (Integrated Desktop Environment, not the language but a software that permits to use more easily the language). It has tons of shortcuts and is very customizable. It is a real pleasure to use, and it can be linked to other great services like GitHub (maybe you don&rsquo;t know what it is so in a few words, it is a service that permits version control i.e. keep a trace of every change in a project, whether it is a report, a package or a web application).</p>
 
+        </section>
+        <footer>
+            <a class="permalink u-url" href="/posts/why-moving/">🔗</a>
+            
+            <hr class="post-underline">
+            <p class="post-tag">Tags for this post: 
+            
+                <a href="/tags/r" class="post-tag p-category">R</a>
+            
+                <a href="/tags/stata" class="post-tag p-category">Stata</a>
+            
+            </p>
+            
+        </footer>
+    </article>
+</div>
 
-		
-	</div>
+    
+    <div class="h-card">
+      <img class="u-photo" src="/images/site-logo.svg" />
+      <div class="card-content">
+        <h2 class="card-name"><a class="p-name u-url" href="/" rel="me">Etienne Bacher</a></h2>
+        <p class="card-subhead">
+          <span class="p-locality">Clermont-Ferrand</span>,
+          <span class="p-country-name">France</span><br />
+          <a class="u-email" href="mailto:etienne.bacher@orange.fr">Email me</a>
+        </p>
+      </div>
+      <p class="p-note">I&#39;m a French student in Economics, currently finishing my Master&#39;s degree.</p>
+    </div>
+    
+    <div id="footer">
+      
+      <nav id="article-skip">
+        <div class="next">
+          
+          <a alt="Newer article" href="/posts/first-contact/">&larr; Newer</a>
+          
+        </div>
+        <div class="top">
+          <a alt="Top of page" href="#">Top</a>
+        </div>
+        <div class="prev">
+          
+          <a alt="Older article" href="/about/">Older &rarr;</a>
+          
+        </div>
+      </nav>
+      
+      <aside id="social">
+  <div id="social-icons">
+    
+    <div class="icon-24x24">
+      <a class="glyph" alt="Email me" href="mailto:etienne.bacher@orange.fr"><img src=/icons/envelope.svg height="24px" width="24px"></a>
+    </div>
+    
+    
+    
+    
+    <div class="icon-24x24">
+      <a class="glyph" alt="GitHub profile" href="https://github.com/etiennebacher"><img src=/icons/github.svg height="24px" width="24px"></a>
+    </div>
+    
+    
+    
+    
+    
+    <div class="icon-24x24">
+      <a class="glyph" alt="LinkedIn profile" href="https://www.linkedin.com/in/Etienne%20Bacher"><img src=/icons/linkedin.svg height="24px" width="24px"></a>
+    </div>
+    
+    
+    
+    
+    
+    <div class="icon-24x24">
+      <a class="glyph" alt="Stack Overflow profile" href="https://stackoverflow.com/users/bretauv"><img src=/icons/stack-overflow.svg height="24px" width="24px"></a>
+    </div>
+    
+    
+    
+  </div>
+</aside>
 
-	<div class="pagination">
-		<a href="/about/" class="left arrow">&#8592;</a>
-		<a href="/posts/first-contact/" class="right arrow">&#8594;</a>
+      
+      <p class="copyright">
+          Copyright © 2018, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo
+      </p>
+      
+    </div>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
 
-
-        		<footer>
-			<span>
-			&copy; <time datetime="2020-04-02 17:04:36.089708971 &#43;0200 CEST m=&#43;0.077088636">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
-
-    </body>
+</body>
 </html>

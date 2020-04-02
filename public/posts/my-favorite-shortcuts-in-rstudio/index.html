@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    
+    <title>My favorite shortcuts in RStudio | From Stata to R</title>
+    <meta name="description" content="A blog to narrate my transition from Stata to R">
+    <meta name="author" content="">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href=/apple-touch-icon.png>
+    <link rel="icon" type="image/png" sizes="32x32" href=/favicon-32x32.png>
+    <link rel="icon" type="image/png" sizes="16x16" href=/favicon-16x16.png>
+    <link rel="manifest" href=/site.webmanifest>
+    <link rel="mask-icon" href=/safari-pinned-tab.svg color="#00416a">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link rel="me" href="mailto:etienne.bacher@orange.fr">
+    <link rel="me" href="https://github.com/etiennebacher">
+    
+    
+    
+    <link rel="authorization_endpoint" href=https://indieauth.com/auth />
+    <link rel="token_endpoint" href=https://tokens.indieauth.com/token />
+    
+    
+    
+    
+    <link rel="stylesheet" href=/css/fonts.css />
+    <link rel="stylesheet" href=/css/style.css />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="sitelogo">
+        <a class="glyph" alt="Home" href="/"><img src=/images/site-logo.svg alt="Site Logo" height="64px" width="64px"></a>
+    </div>
+    <header>
+        <nav>
+    
+    <div id="page-nav">
+        <div class="page-nav-item">
+            <a href="/">Home</a>
+        </div>
+        
+            <div class="page-nav-item">
+                <a href="/posts">
+                    
+                    <span>All posts</span>
+                </a>
+            </div>
+        
+            <div class="page-nav-item">
+                <a href="/about">
+                    
+                    <span>About</span>
+                </a>
+            </div>
+        
+            <div class="page-nav-item">
+                <a href="/contact">
+                    
+                    <span>Contact</span>
+                </a>
+            </div>
+        
+    </div>
+</nav>
+        
+    </header>
+
+
+
+
+    
+
+<div id="content">
+    <article class="h-entry">
+        <header>
+            <h1 class="post-title p-name">My favorite shortcuts in RStudio</h1>
+            
+            <p class="post-date">Posted on
+                <time class="dt-published" datetime="2020-04-02T00:00:00Z">
+                2 April, 2020 at 00:00 UTC
+                </time>  by <a href="/" class="p-author h-card" rel="author">Etienne Bacher</a>
+            </p>
+            
+            
+        </header>
+        <section class="content e-content">
+            
+
+<p>Currently working on my master&rsquo;s thesis, I spend almost half on my day on R (the other half being spent reading articles). I have learnt a few very useful shortcuts by reading blog posts or free R books here and there and I have decided to make a small list of those I use most.</p>
+
+<h2 id="ctrl-shift-enter-run-the-whole-script">&ldquo;Ctrl+Shift+Enter&rdquo;: run the whole script</h2>
+
+<p>This combination will run all of your script, wherever the mouse is in the script. This considerably saves some time and is much more convenient than having to drag the mouse up to the &ldquo;Run&rdquo; button.</p>
+
+<h2 id="ctrl-shift-f10-restart-r-session">&ldquo;Ctrl+Shift+F10&rdquo;: restart R session</h2>
+
+<p>Almost all your work will have to be done again one day, either by you or by somebody else. That day, you will regret not having saved all the packages you needed in your R script. How is that possible? Well, it comes from the fact that I (and presumably other people too) load some packages <em>and their dependencies</em> in the same session because we test some packages, or because we are trying to solve a StackOverflow problem during a break, etc. Therefore, when you were writing it, some of your code was running only thanks to some packages you didn&rsquo;t keep in your script.</p>
+
+<p>To prevent this to happen again, you can run &ldquo;Ctrl+Shift+F10&rdquo; sometimes: it restarts the R session (but does not close RStudio) and allows to see quickly if your code can run all by itself. When I have finished writing a chunk of code, I always do &ldquo;Ctrl+Shift+F10&rdquo; and &ldquo;Ctrl+Shift+Enter&rdquo; to make sure that my code can run again in three months or more.</p>
+
+<h2 id="ctrl-shift-k-knit-markdown-documents">&ldquo;Ctrl+Shift+K&rdquo;: knit Markdown documents</h2>
+
+<p>I do not use this everywhere but only in Markdown documents: it knits the document. As &ldquo;Ctrl+Shift+Enter&rdquo; replaces the &ldquo;Run&rdquo; button, &ldquo;Ctrl+Shift+K&rdquo; replaces the &ldquo;Knit&rdquo; button.</p>
+
+<h2 id="ctrl-alt-b-run-the-script-from-the-beginning-to-where-i-am">&ldquo;Ctrl+Alt+B&rdquo;: run the script from the beginning to where I am</h2>
+
+<p>This is similar to &ldquo;Ctrl+Shift+Enter&rdquo; but it runs the script only until your mouse.</p>
+
+<h2 id="ctrl-shift-a-good-alignment">&ldquo;Ctrl+Shift+A&rdquo;: good alignment</h2>
+
+<p>Indentation is quite important to have a code that is readable, especially when you begin to write more than 10 lines of code. Select your code (or just a piece of it) and do this combination to apply indentation rules automatically.</p>
+
+<h2 id="ctrl-shift-r-new-section-label">&ldquo;Ctrl+Shift+R&rdquo;: new section label</h2>
+
+<p>This creates a new section in your code, with the title you choose. Quite convenient to keep a readable code.</p>
+
+<h2 id="ctrl-shift-n-new-file">&ldquo;Ctrl+Shift+N&rdquo;: new file</h2>
+
+<p>If you want to try a chunk of code quickly, you can run this combination to open a new file in RStudio.</p>
+
+<p><br></p>
+
+<p>The complete list of shortcuts is available in &ldquo;Tools -&gt; Keyboard Shortcuts Help&rdquo; in RStudio. These are my favorite ones, what are yours?</p>
+
+<p>Other useful tools:</p>
+
+<ul>
+<li><a href="https://rstudio.github.io/rstudio-extensions/rstudio_snippets.html">snippets</a></li>
+<li><a href="https://rstudio.github.io/rstudioaddins/">addins</a></li>
+<li><a href="https://twitter.com/rstudiotips">RStudio tips</a> (on Twitter)</li>
+</ul>
+
+        </section>
+        <footer>
+            <a class="permalink u-url" href="/posts/my-favorite-shortcuts-in-rstudio/">🔗</a>
+            
+            <hr class="post-underline">
+            <p class="post-tag">Tags for this post: 
+            
+                <a href="/tags/r" class="post-tag p-category">R</a>
+            
+            </p>
+            
+        </footer>
+    </article>
+</div>
+
+    
+    <div class="h-card">
+      <img class="u-photo" src="/images/site-logo.svg" />
+      <div class="card-content">
+        <h2 class="card-name"><a class="p-name u-url" href="/" rel="me">Etienne Bacher</a></h2>
+        <p class="card-subhead">
+          <span class="p-locality">Clermont-Ferrand</span>,
+          <span class="p-country-name">France</span><br />
+          <a class="u-email" href="mailto:etienne.bacher@orange.fr">Email me</a>
+        </p>
+      </div>
+      <p class="p-note">I&#39;m a French student in Economics, currently finishing my Master&#39;s degree.</p>
+    </div>
+    
+    <div id="footer">
+      
+      <nav id="article-skip">
+        <div class="next">
+          
+          <p>&nbsp;</p>
+          
+        </div>
+        <div class="top">
+          <a alt="Top of page" href="#">Top</a>
+        </div>
+        <div class="prev">
+          
+          <a alt="Older article" href="/posts/first-contact/">Older &rarr;</a>
+          
+        </div>
+      </nav>
+      
+      <aside id="social">
+  <div id="social-icons">
+    
+    <div class="icon-24x24">
+      <a class="glyph" alt="Email me" href="mailto:etienne.bacher@orange.fr"><img src=/icons/envelope.svg height="24px" width="24px"></a>
+    </div>
+    
+    
+    
+    
+    <div class="icon-24x24">
+      <a class="glyph" alt="GitHub profile" href="https://github.com/etiennebacher"><img src=/icons/github.svg height="24px" width="24px"></a>
+    </div>
+    
+    
+    
+    
+    
+    <div class="icon-24x24">
+      <a class="glyph" alt="LinkedIn profile" href="https://www.linkedin.com/in/Etienne%20Bacher"><img src=/icons/linkedin.svg height="24px" width="24px"></a>
+    </div>
+    
+    
+    
+    
+    
+    <div class="icon-24x24">
+      <a class="glyph" alt="Stack Overflow profile" href="https://stackoverflow.com/users/bretauv"><img src=/icons/stack-overflow.svg height="24px" width="24px"></a>
+    </div>
+    
+    
+    
+  </div>
+</aside>
+
+      
+      <p class="copyright">
+          Copyright © 2018, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo
+      </p>
+      
+    </div>
+
+
+</body>
+</html>

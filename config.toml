@@ -1,47 +1,55 @@
-baseURL = ""
-languageCode = "en-us"
+baseURL = "https://from-stata-to-r.netlify.com"
 title = "From Stata to R"
-theme = "tale-hugo"
+copyright = "Copyright © 2018, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo"
+languageCode = "en-US"
+theme = "indigo"
 paginate = 20
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
-pygmentsstyle = "vs"
-pygmentscodefences = true
-pygmentscodefencesguesssyntax = true
-
-disqusShortname = "ezhil-demo"
-
-copyright = "© Copyright notice"
+disqusShortname = "indigo"
 
 [params]
-	subtitle = ""
-	disableDisqusTypes = ["page"]
-	featherIconsCDN = true
-	mode = "auto" # "dark" or "auto"
-	# customCSS = "css/style.css"  # Custom CSS applied to default styles.
-	# customDarkCSS = "css/custom-dark.css"  # Custom styles applied to dark mode css.
-	# customJS = ["js/custom.js", "js/custom1.js"]  # Custom JS scripts.
-  highlightjsVersion = "9.11.0"
-  highlightjsCDN = "//cdn.bootcss.com"
-  highlightjsLang = ["r", "yaml"]
-  highlightjsTheme = "github"
-  MathJaxCDN = "//cdn.bootcss.com"
-  MathJaxVersion = "2.7.1"
-  
-[[menu.main]]
-name = "Home"
-url = "/"
-weight = 1
+  Author = "Etienne Bacher"
+  Description = "A blog to narrate my transition from Stata to R"
+  Subtitle = ""
+  Avatar = "images/site-logo.svg"
+  Biography = "I'm a French student in Economics, currently finishing my Master's degree."
+  ShowBio = true
+  PermalinkText = "🔗"
+  mainSections = ["posts", "updates"]
+  disableDisqusTypes = ["page"]
 
+  comments = true
+  # Contact/social-network identifiers for social icons
+  EmailAddress = "etienne.bacher@orange.fr"
+  GitHubUser = "etiennebacher"
+  LinkedInUser = "Etienne Bacher"
+  StackOverflowUser = "bretauv"
+
+  # These are parameters used for indieweb identity. You should set these along
+  # with the above email/social network parameters.
+  [params.indieWeb]  
+    EmailAddress = "etienne.bacher@orange.fr" 
+    GitHubUser = "etiennebacher"
+    Country = "France"
+    City = "Clermont-Ferrand"
+    
+  [params.endpoints]
+    Auth = "https://indieauth.com/auth"
+    Token = "https://tokens.indieauth.com/token"
+    # To get webmention support, just register at webmention.io and paste the link for endpoint here.
+    #Webmention = "https://webmention.io/<yourusername>/webmention"
+    # To get micropub support, you'll need to install a Micropub endpoint at your site and put its link there.
+    # To get an endpoint with Hugo support, use nanopub: https://github.com/dg01d/nanopub
+    # It will probably require some PHP hackery though, as it's fairly basic.
+    #Micropub = ""
+    # To get microsub support, you can use Aperture from p3k. Either go to https://aperture.p3k.io or self-host it (it's open source!)
+    #Microsub = ""
+    
 [[menu.main]]
 name = "All posts"
 url = "/posts"
 weight = 2
-
-[[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 3
 
 [[menu.main]]
 name = "About"
@@ -52,16 +60,3 @@ weight = 4
 name = "Contact"
 url = "/contact"
 weight = 5
-
-[[params.social]]
-name = "Github"
-icon = "github"
-url = "https://github.com/etiennebacher/from-stata-to-r"
-
-[[params.social]]
-name = "RSS"
-icon = "rss"
-url = "/index.xml"
-
-[taxonomies]
-   tag = "tags"
