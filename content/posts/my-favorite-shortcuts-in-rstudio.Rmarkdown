@@ -43,8 +43,7 @@ If you want to try a chunk of code quickly, you can run this combination to open
 
 <br>
 
-The complete list of shortcuts is available in "Tools -> Keyboard Shortcuts Help" in RStudio. These are my favorite ones, what are yours?
-
+The complete list of shortcuts is available in "Tools -> Keyboard Shortcuts Help" in RStudio.
 Other useful tools:
 
 * [snippets](https://rstudio.github.io/rstudio-extensions/rstudio_snippets.html) 
