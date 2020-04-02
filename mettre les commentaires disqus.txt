@@ -1,4 +1,4 @@
- Pour mettre des commentaires disqus, il faut remplacer le fichier /themes/indigo/layouts/partials/comments.html par le contenu :
+ Pour mettre des commentaires disqus, il faut créer un compte sur disqus (mettre statator comme nom raccourci) et remplacer le fichier /themes/indigo/layouts/partials/comments.html par le contenu :
 
 <div id="disqus_thread"></div>
 <script>
@@ -11,4 +11,4 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
 
-Voilà pourquoi je l'ai enlevé pour ça : http://donw.io/post/github-comments/
+Voilà pourquoi je l'ai enlevé pour ça : http://donw.io/post/github-comments/ 

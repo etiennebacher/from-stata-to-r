@@ -51,6 +51,10 @@
 
 &lt;p&gt;If you want to try a chunk of code quickly, you can run this combination to open a new file in RStudio.&lt;/p&gt;
 
+&lt;h2 id=&#34;ctrl-shift-c-comment-and-un-comment-lines-of-code&#34;&gt;&amp;ldquo;Ctrl+Shift+C&amp;rdquo;: comment and un-comment lines of code&lt;/h2&gt;
+
+&lt;p&gt;To me, this is one of the most convenient shortcut. It simply allows to comment (and un-comment) at once all the lines selected.&lt;/p&gt;
+
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;The complete list of shortcuts is available in &amp;ldquo;Tools -&amp;gt; Keyboard Shortcuts Help&amp;rdquo; in RStudio.

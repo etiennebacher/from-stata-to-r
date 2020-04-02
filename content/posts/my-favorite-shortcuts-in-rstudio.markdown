@@ -41,6 +41,10 @@ This creates a new section in your code, with the title you choose. Quite conven
  
 If you want to try a chunk of code quickly, you can run this combination to open a new file in RStudio.
 
+## "Ctrl+Shift+C": comment and un-comment lines of code
+
+To me, this is one of the most convenient shortcut. It simply allows to comment (and un-comment) at once all the lines selected.
+
 <br>
 
 The complete list of shortcuts is available in "Tools -> Keyboard Shortcuts Help" in RStudio.
