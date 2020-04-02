@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
-    <lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My favorite shortcuts in RStudio</title>
+      <link>/post/my-favorite-shortcuts-in-rstudio/</link>
+      <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-favorite-shortcuts-in-rstudio/</guid>
+      <description>Currently working on my master&amp;rsquo;s thesis, I spend almost half on my day on R (the other half being spent reading articles). I have learnt a few very useful shortcuts by reading blog posts or free R books here and there and I have decided to make a small list of those I use most.
+&amp;ldquo;Ctrl+Shift+Enter&amp;rdquo;: run the whole script This combination will run all of your script, wherever the mouse is in the script.</description>
+    </item>
     
     <item>
       <title>First contact with the data on R</title>

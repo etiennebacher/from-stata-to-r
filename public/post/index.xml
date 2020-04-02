@@ -7,29 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
-    <lastBuildDate>Tue, 12 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Why you should move from Stata to R</title>
-      <link>/post/why-moving/</link>
-      <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
+      <title>My favorite shortcuts in RStudio</title>
+      <link>/post/my-favorite-shortcuts-in-rstudio/</link>
+      <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/why-moving/</guid>
-      <description>Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students’ experiences, e.</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+      <guid>/post/my-favorite-shortcuts-in-rstudio/</guid>
+      <description>Currently working on my master&amp;rsquo;s thesis, I spend almost half on my day on R (the other half being spent reading articles). I have learnt a few very useful shortcuts by reading blog posts or free R books here and there and I have decided to make a small list of those I use most.
+&amp;ldquo;Ctrl+Shift+Enter&amp;rdquo;: run the whole script This combination will run all of your script, wherever the mouse is in the script.</description>
     </item>
     
   </channel>
