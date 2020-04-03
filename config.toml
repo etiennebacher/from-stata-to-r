@@ -1,6 +1,6 @@
 baseURL = "https://from-stata-to-r.netlify.com"
 title = "From Stata to R"
-copyright = "Copyright © 2018, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo"
+copyright = "Copyright © 2020, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo"
 languageCode = "en-US"
 theme = "indigo"
 paginate = 20
