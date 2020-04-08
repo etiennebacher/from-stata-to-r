@@ -1,3 +1,3 @@
 aller dans public/css/style.css
 trouver "code{background-color:#F5F5F5"
-changer "#F5F5F5" par un autre code couleur css (voir sur internet)
+changer "#F5F5F5" par un autre code couleur css (voir sur internet) 

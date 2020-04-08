@@ -1,5 +1,5 @@
  Suite au remplacement de tale-hugo par indigo, voilà la sauvegarde du config.toml utilisé pour tale-hugo. Le config.toml actuel est celui de indigo (voir themes/indigo/config.toml.example) personnalisé : 
-
+ 
 baseURL = ""
 languageCode = "en-us"
 title = "From Stata to R"
