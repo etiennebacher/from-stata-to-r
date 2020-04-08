@@ -6,15 +6,41 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2020, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo</copyright>
-    <lastBuildDate>Thu, 02 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>My application for the Shiny Contest (2020)</title>
+      <link>/posts/my-app-for-shiny-contest-2020/</link>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/my-app-for-shiny-contest-2020/</guid>
+      <description>&lt;p&gt;One of the greatest things about R is the possibility to easily build websites with R Shiny. I started to create apps with Shiny almost immediately after having discovered it. This was in May last year and two monts later I thought it would be a great idea to build an app to treat more easily World Bank data. Indeed, in my field, World Development Indicators (WDI) are often used and I thought it would be useful to have a graphical interface where we can import and treat these indicators.&lt;/p&gt;
+
+&lt;p&gt;So in July last year I started to work on this. Besides building something useful, I considered this as a good opportunity to practice with R Shiny. I worked on that irregularly during the rest of the year. Sometimes I considerably improved my app in a week and sometimes I spent two months not thinking about it.&lt;/p&gt;
+
+&lt;p&gt;In January, I was quite stuck: my app required to generate pieces of UI (User Interface) on the fly and I didn&amp;rsquo;t know how to do that. But when I saw the &lt;a href=&#34;https://community.rstudio.com/t/shiny-contest-2020-is-here/51002&#34;&gt;announcement&lt;/a&gt; for the second edition of the Shiny Contest, I convinced myself to give it a try and worked a lot on my app, especially since I finally understood how to use &lt;a href=&#34;https://shiny.rstudio.com/articles/modules.html&#34;&gt;modules&lt;/a&gt;. Therefore, after a few weeks, I could finally deploy my app and apply to the contest. Given the incredible apps of other participants (just look at the &amp;ldquo;Shiny Contest&amp;rdquo; tag on &lt;a href=&#34;https://community.rstudio.com/&#34;&gt;RStudio Community&lt;/a&gt;), I know that there is not a chance that I win something but nonetheless I am very proud of having the possibility to show what I can do.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;That&amp;rsquo;s very good&amp;rdquo;, you may say, &amp;ldquo;but what does your app do?&amp;rdquo;. Well if you are familiar with the WDIs, you know that each indicator has an ID (like &amp;ldquo;NV.AGR.TOTL.ZS&amp;rdquo;). Using this ID in my app, you can import the dataset related, choose the type of data you want (cross-country, time series, panel data), the country/countries and year(s) you want and compute the logarithm, the squared value and the lagged value of the variable. You may also generate a plot that you can download for this dataset. You can import and manipulate as many datasets as you desire and when you are done, you can merge them in a final dataset that is also downloadable. Finally, since reproducibility is a big aspect in science, all the manipulations you did are translated into R code so that you can copy and paste this code in a fresh R session and it will reproduce everything you have done. This was made possible thanks the great (but still experimental) &lt;code&gt;shinymeta&lt;/code&gt; package&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:Luckily-I-have-d&#34;&gt;&lt;a href=&#34;#fn:Luckily-I-have-d&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can try the app &lt;a href=&#34;https://etiennebacher.shinyapps.io/woRldbank/&#34;&gt;here&lt;/a&gt;, but if it has been removed by the time you go checking it, you may find the source code for the whole app &lt;a href=&#34;https://github.com/etiennebacher/woRldbank&#34;&gt;on GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:Luckily-I-have-d&#34;&gt;Luckily, I have discovered this package a month before I launched my app, in a rstudio::conf 2020 &lt;a href=&#34;https://resources.rstudio.com/rstudio-conf-2020/reproducible-shiny-apps-with-shinymeta-dr-carson-sievert&#34;&gt;presentation by Carson Sievert&lt;/a&gt; &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:Luckily-I-have-d&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>My favorite shortcuts in RStudio</title>
       <link>/posts/my-favorite-shortcuts-in-rstudio/</link>
-      <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/my-favorite-shortcuts-in-rstudio/</guid>
       <description>

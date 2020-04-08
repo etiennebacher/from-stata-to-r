@@ -1,12 +1,12 @@
 ---
 title: My favorite shortcuts in RStudio
 author: Etienne Bacher
-date: "2020-04-02"
+date: "2020-04-03"
 slug: my-favorite-shortcuts-in-rstudio
 categories: []
 tags:
   - R
-draft: yes
+draft: no
 ---
 
 Currently working on my master's thesis, I spend almost half on my day on R (the other half being spent reading articles). I have learnt a few very useful shortcuts by reading blog posts or free R books here and there and I have decided to make a small list of those I use most.

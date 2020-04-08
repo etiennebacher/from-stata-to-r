@@ -6,7 +6,7 @@ theme = "indigo"
 paginate = 20
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
-disqusShortname = "statator"
+disqusShortname = "" # mettre statator si je veux remettre disqus
 
 [params]
   Author = "Etienne Bacher"
