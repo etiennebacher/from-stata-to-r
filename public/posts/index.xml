@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2020, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo</copyright>
-    <lastBuildDate>Wed, 08 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>What to do when your code doesn&#39;t work?</title>
+      <link>/posts/what-to-do-when-your-code-does-not-work/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/what-to-do-when-your-code-does-not-work/</guid>
+      <description>As Jenny Bryan said, one of the first things people do when there is a problem with the code is run it a second time. But in 95% of the cases (in my small programming experience), this does not solve the problem, and I realized I developed a small pattern of reactions when I am in this situation.
+Read the error message This may seem obvious since this is the first thing we see when there is an error.</description>
+    </item>
     
     <item>
       <title>My application for the Shiny Contest (2020)</title>

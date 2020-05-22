@@ -6,10 +6,92 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2020, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo</copyright>
-    <lastBuildDate>Wed, 08 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>What to do when your code doesn&#39;t work?</title>
+      <link>/posts/what-to-do-when-your-code-does-not-work/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/what-to-do-when-your-code-does-not-work/</guid>
+      <description>
+
+&lt;p&gt;As &lt;a href=&#34;https://rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable/&#34;&gt;Jenny Bryan said&lt;/a&gt;, one of the first things people do when there is a problem with the code is run it a second time. But in 95% of the cases (in my small programming experience), this does not solve the problem, and I realized I developed a small pattern of reactions when I am in this situation.&lt;/p&gt;
+
+&lt;h3 id=&#34;read-the-error-message&#34;&gt;Read the error message&lt;/h3&gt;
+
+&lt;p&gt;This may seem obvious since this is the first thing we see when there is an error. However, some messages (like those in the &lt;code&gt;tidyverse&lt;/code&gt; packages) are really helpful and are enough to solve the problem.&lt;/p&gt;
+
+&lt;p&gt;As you spend time programming, some error messages become quite familiar over time. You don&amp;rsquo;t necessarily need to fully understand the message, just remember how you solved the error when you saw this. But this does not help if this is the first time you see the message.&lt;/p&gt;
+
+&lt;h3 id=&#34;search-on-stackoverflow-and-rstudio-community&#34;&gt;Search on StackOverflow and RStudio Community&lt;/h3&gt;
+
+&lt;p&gt;If the error message was not helpful, I quickly go to step 2: search online (which is almost always equivalent to &amp;ldquo;search on StackOverflow and RStudio Community&amp;rdquo;). Those are the two places where you have the most odds of finding an answer to your problem. If your problem concerns mainstream packages (once again, such as the &lt;code&gt;tidyverse&lt;/code&gt; ones), then there will always be at least one person who had a similar problem for which a solution was given.&lt;/p&gt;
+
+&lt;h3 id=&#34;search-on-github&#34;&gt;Search on Github&lt;/h3&gt;
+
+&lt;p&gt;If no answer was available on these two websites, I usually go a step further and search about it on GitHub, especially if the problem comes from an unknown and/or new package. Indeed, the source code of a lot of R packages is available on GitHub, as well as the brand-new versions (not on CRAN yet). It is also the place where people make feedback on some issues or help develop the package.&lt;/p&gt;
+
+&lt;p&gt;It happens that somebody reported a similar issue and that the package maintainer answered. If not, well, it is always useful to see the situations in which people use the package, or to learn new functions of this package.&lt;/p&gt;
+
+&lt;h3 id=&#34;post-my-question-online-part-1&#34;&gt;Post my question online - Part 1&lt;/h3&gt;
+
+&lt;p&gt;I have an error, I don&amp;rsquo;t understand the error message and there are no answers online. What can I do now?&lt;/p&gt;
+
+&lt;p&gt;You can post your question on one of the websites I mentioned. My order of preference is:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;StackOverflow: in general, more people see your message and therefore more people might answer your question.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;RStudio Community: more &amp;ldquo;specialized&amp;rdquo; and some mainstream packages maintainers are there. Also useful when the question is about RStudio IDE (not to be confused with the R language) since they developed it.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;GitHub: clearly the problem comes from an error specific to the package and I couldn&amp;rsquo;t find an answer online. Most of the time, there is no need to create new issues.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;However:&lt;/strong&gt; posting a question online implies that you need to create a reproducible example. What is a reproducible example?&lt;/p&gt;
+
+&lt;p&gt;Suppose that you are working on your data and have a problem. You may want to copy and paste your code online. It&amp;rsquo;s quick and easy. But try to imagine you&amp;rsquo;re someone on StackOverflow that sees your code for the first time. This person needs to run it to understand what your code does and what the problem is. But that&amp;rsquo;s impossible, because you load CSV data that is only available for you, or because you forgot to mention the packages you&amp;rsquo;re using. Therefore, no one can run your code and the odds of someone solving your problem plummet.&lt;/p&gt;
+
+&lt;p&gt;If you post online, your post MUST contain:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A description of what you&amp;rsquo;re trying to do and of your problem in plain text.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Some code that contains:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;the &lt;code&gt;library()&lt;/code&gt; calls needed to run every function you use (but no need to put packages that you never use in your example)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;a code that can be copied and pasted in a new R session and that ends up in the same situation as you&amp;rsquo;re in. That means that the data you use must be reproducible.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;the expected output, if possible. If you can easily show the output you want, do it. It will be easier to help you if you show what you want. In some cases (&lt;em&gt;e.g&lt;/em&gt; Shiny apps), it is not always possible or easy to provide this, so it is not a 100% necessary.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Making a reproducible takes time but is incredibly helpful. Open a new tab in RStudio, try to simplify your situation as much as possible and to make it reproducible by using data available for everyone. For example, some datasets are automatically in R, such as &lt;code&gt;mtcars&lt;/code&gt; or &lt;code&gt;iris&lt;/code&gt;. Don&amp;rsquo;t forget to mention the packages you use in &lt;code&gt;library()&lt;/code&gt;. Once you think you have finished (you show what packages you use, you keep your example as small as possible and you show the expected output), restart the session (ctrl + shift + F10) and see if it runs and if it reproduces the same error. If it doesn&amp;rsquo;t, it means your example is not reproducible and that you have to improve it.&lt;/p&gt;
+
+&lt;p&gt;I would say that I solve the problem myself by making a reproducible example in 70% of the cases, so taking the time to make one is worth it!&lt;/p&gt;
+
+&lt;h3 id=&#34;post-my-question-online-part-2&#34;&gt;Post my question online - Part 2&lt;/h3&gt;
+
+&lt;p&gt;However, if you didn&amp;rsquo;t solve your problem with this (and if your example is reproducible), you can post it on StackOverflow or RStudio Community. Don&amp;rsquo;t forget to explain your situation and your code, don&amp;rsquo;t paste it without any details!&lt;/p&gt;
+
+&lt;p&gt;Hopefully, you&amp;rsquo;ll have an answer.&lt;/p&gt;
+
+&lt;h3 id=&#34;additional-resources&#34;&gt;Additional resources&lt;/h3&gt;
+
+&lt;p&gt;Here are two pages with details about making a reproducible example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/help/minimal-reproducible-example&#34;&gt;https://stackoverflow.com/help/minimal-reproducible-example&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example&#34;&gt;https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>My application for the Shiny Contest (2020)</title>

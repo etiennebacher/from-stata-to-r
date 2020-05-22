@@ -1,7 +1,7 @@
 ---
 title: My application for the Shiny Contest (2020)
 author: Etienne Bacher
-date: "2020-04-08"
+date: '2020-04-08'
 slug: my-app-for-shiny-contest-2020
 categories: []
 tags:
