@@ -71,7 +71,7 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Making a reproducible takes time but is incredibly helpful. Open a new tab in RStudio, try to simplify your situation as much as possible and to make it reproducible by using data available for everyone. For example, some datasets are automatically in R, such as &lt;code&gt;mtcars&lt;/code&gt; or &lt;code&gt;iris&lt;/code&gt;. Don&amp;rsquo;t forget to mention the packages you use in &lt;code&gt;library()&lt;/code&gt;. Once you think you have finished (you show what packages you use, you keep your example as small as possible and you show the expected output), restart the session (ctrl + shift + F10) and see if it runs and if it reproduces the same error. If it doesn&amp;rsquo;t, it means your example is not reproducible and that you have to improve it.&lt;/p&gt;
+&lt;p&gt;Making a reproducible example takes time but is incredibly helpful. Open a new tab in RStudio, try to simplify your situation as much as possible and to make it reproducible by using data available for everyone. For example, some datasets are automatically in R, such as &lt;code&gt;mtcars&lt;/code&gt; or &lt;code&gt;iris&lt;/code&gt;. Don&amp;rsquo;t forget to mention the packages you use in &lt;code&gt;library()&lt;/code&gt;. Once you think you have finished (you show what packages you use, you keep your example as small as possible and you show the expected output), restart the session (ctrl + shift + F10) and see if it runs and if it reproduces the same error. If it doesn&amp;rsquo;t, it means your example is not reproducible and that you have to improve it.&lt;/p&gt;
 
 &lt;p&gt;I would say that I solve the problem myself by making a reproducible example in 70% of the cases, so taking the time to make one is worth it!&lt;/p&gt;
 
