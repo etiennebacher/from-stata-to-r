@@ -5,21 +5,20 @@
     <link>/post/</link>
     <description>Recent content in Posts on From Stata to R</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© Copyright notice</copyright>
-    <lastBuildDate>Thu, 02 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <language>en-US</language>
+    <copyright>Copyright © 2020, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo</copyright>
+    <lastBuildDate>Sun, 28 Jun 2020 12:29:57 +0200</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>My favorite shortcuts in RStudio</title>
-      <link>/post/my-favorite-shortcuts-in-rstudio/</link>
-      <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
+      <title>Tips and Tricks for Writing a Master S Thesis With R Markdown</title>
+      <link>/post/tips-and-tricks-for-writing-a-master-s-thesis-with-r-markdown/</link>
+      <pubDate>Sun, 28 Jun 2020 12:29:57 +0200</pubDate>
       
-      <guid>/post/my-favorite-shortcuts-in-rstudio/</guid>
-      <description>Currently working on my master&amp;rsquo;s thesis, I spend almost half on my day on R (the other half being spent reading articles). I have learnt a few very useful shortcuts by reading blog posts or free R books here and there and I have decided to make a small list of those I use most.
-&amp;ldquo;Ctrl+Shift+Enter&amp;rdquo;: run the whole script This combination will run all of your script, wherever the mouse is in the script.</description>
+      <guid>/post/tips-and-tricks-for-writing-a-master-s-thesis-with-r-markdown/</guid>
+      <description></description>
     </item>
     
   </channel>

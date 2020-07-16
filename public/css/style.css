@@ -221,7 +221,7 @@ img.u-photo {
 blockquote {
   color: #00416a;
   background-color: #dee5e9;
-  border-left: 25px solid #00416a;
+  border-left: 25px solid #00416a; 
   line-height: 1.25em;
   margin: 2em auto;
   padding: 1% 5%;

@@ -1,7 +1,7 @@
 ---
 title: My favorite shortcuts in RStudio
 author: Etienne Bacher
-date: "`r format(Sys.Date())`"
+date: "2020-04-06"
 slug: my-favorite-shortcuts-in-rstudio
 categories: []
 tags:

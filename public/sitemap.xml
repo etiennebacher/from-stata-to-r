@@ -4,22 +4,42 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+    <lastmod>2020-07-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/posts/</loc>
-    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+    <lastmod>2020-07-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/r/</loc>
-    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+    <lastmod>2020-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r-markdown/</loc>
+    <lastmod>2020-07-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+    <lastmod>2020-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/tips-and-tricks-r-markdown/</loc>
+    <lastmod>2020-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-06-28T12:29:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/tips-and-tricks-for-writing-a-master-s-thesis-with-r-markdown/</loc>
+    <lastmod>2020-06-28T12:29:57+02:00</lastmod>
   </url>
   
   <url>
@@ -34,17 +54,17 @@
   
   <url>
     <loc>/posts/my-favorite-shortcuts-in-rstudio/</loc>
-    <lastmod>2020-04-03T00:00:00+00:00</lastmod>
+    <lastmod>2020-04-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/posts/first-contact/</loc>
-    <lastmod>2020-01-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/stata/</loc>
-    <lastmod>2020-01-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>

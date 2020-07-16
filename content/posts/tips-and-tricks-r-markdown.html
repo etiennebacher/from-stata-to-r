@@ -1,0 +1,196 @@
+---
+date: "2020-07-16"
+title: "Writing a Master's thesis with R Markdown and Bookdown"
+author: "Etienne Bacher"
+draft: true
+tags: ["R", "R Markdown"]
+output: 
+  blogdown::html_page:
+    toc: true 
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#why-bookdown">Why <code>bookdown</code>?</a></li>
+<li><a href="#latex-packages-and-commands">LaTeX packages and commands</a></li>
+<li><a href="#titlepage-acknowledgements-and-summary">Titlepage, acknowledgements and summary</a></li>
+<li><a href="#include-latex-files-in-yaml">Include LaTeX files in YAML</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</div>
+
+<p>I finished my Master’s thesis very recently, and I wrote it with R Markdown, and more precisely with the <code>bookdown</code> package. It was really comfortable to do absolutely everything with R: data treatment, use of econometric methods, redaction with chunk of codes, and even the slides for the presentation! However, I have also spent a non-negligible part of my time trying to have a correct layout, essentially for the first pages. I found that some things were not as easy to do as they should be. This post contains some solutions to these problems.</p>
+<div id="why-bookdown" class="section level2">
+<h2>Why <code>bookdown</code>?</h2>
+<p>A small preamble before starting to list these problems and solutions: why did I use <code>bookdown</code> and not <code>rmarkdown</code>? <code>bookdown</code> has a few advantages that are very important when writing a Master’s thesis (or an academic paper in general), such as cross-references between sections, figures, tables, etc. See <a href="https://bookdown.org/yihui/bookdown/">the <code>bookdown</code> book</a> for all the details.</p>
+<p>While it is possible to create a <code>bookdown</code> project with RStudio, I “manually” made my own, because I have the impression there are a lot of files created automatically by RStudio that would just confuse myself. Therefore, I had a file containing the YAML and the chunks necessary to load all the packages needed and to run the child documents. Child documents are <code>.Rmd</code> files that contain only some Markdown text and code chunks (no YAML). They make it much easier to write a thesis since it is possible to divide it in several pieces (introduction, literature review, method, etc.).</p>
+<p>In addition to <code>Global.Rmd</code> (which contains YAML and setup chunks), I used two <code>.tex</code> files: <code>preamble.tex</code> is where I put all the LaTeX commands and packages I used, and <code>titlepage.tex</code> to make my custom titlepage, acknowledgments and summary before the table of contents.</p>
+</div>
+<div id="latex-packages-and-commands" class="section level2">
+<h2>LaTeX packages and commands</h2>
+<p>In <code>preamble.tex</code>, I put all the LaTeX commands, many of them being <code>\usepackage</code>. For example, the R package <code>kableExtra</code> provides a list of LaTeX packages required to be able to customize the tables (see <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf">here</a>).</p>
+<p>Here’s a small list of the commands I used for my thesis.</p>
+<ul>
+<li><p><code>\renewcommand{\baselinestretch}{1.3}</code> to change the space between lines;</p></li>
+<li><p><code>\pagenumbering{gobble}</code> to remove page numbering for the first pages, that contain the title, the table of content (TOC), the lists of figures and tables (LOF and LOT) and some blank pages. I used <code>\pagenumbering{arabic}</code> after the YAML to start the page numbering at the right place.</p></li>
+<li><p><code>\usepackage{caption}</code>; <code>\captionsetup[table]{name=Tableau}</code>; <code>\captionsetup[figure]{name=Figure}</code>. These three commands (to put on three separate lines) are here to change the name of tables and figures. If you’re writing in English, you probably won’t need them, but they were necessary to write in French.</p></li>
+<li><p>the following lines create a new command to create a blank page after the titlepage. Strangely, <code>\pagebreak</code> or <code>\newpage</code> didn’t work inside the titlepage and I had to find an alternative:</p></li>
+</ul>
+<details>
+<summary> Command to create a blank page
+</summary>
+<p>
+<pre><code>\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}</code></pre>
+</p>
+</details>
+</div>
+<div id="titlepage-acknowledgements-and-summary" class="section level2">
+<h2>Titlepage, acknowledgements and summary</h2>
+<p>Concerning these three components, I put them in another file named <code>titlepage.tex</code>. This is the layout I wanted:</p>
+<ul>
+<li><p>a titlepage with some logos and some information on my thesis and my university;</p></li>
+<li><p>a blank page;</p></li>
+<li><p>acknowledgements on a new page;</p></li>
+<li><p>summary on a new page;</p></li>
+<li><p>TOC, LOF and LOT on a new page.</p></li>
+</ul>
+<p>To do so, I started the titlepage with <code>\begin{titlepage}</code> and customized it as I wanted. But before putting <code>end{titlepage}</code>, I placed <code>\afterpage{\blankpage}</code>, which is the command we define in <code>preamble.tex</code>. With this, I had a titlepage and a blank page.</p>
+<p>The next step was to create two pages containing the acknowledgements and the summary. This was easily done in LaTeX, and this time I could use <code>\pagebreak</code> at the end of the acknowledgements to create a new page for the summary. I also put another <code>\pagebreak</code> to finish <code>titlepage.tex</code>, so that TOC, LOF and LOT (created in the YAML) could start on a new page.</p>
+</div>
+<div id="include-latex-files-in-yaml" class="section level2">
+<h2>Include LaTeX files in YAML</h2>
+<p>As explained, I had two <code>.tex</code> files to run when compiling the R Markdown file:</p>
+<ul>
+<li><p><code>preamble.tex</code> is a list of commands that should be placed before <code>\begin{document}</code> when this <code>.Rmd</code> file will be converted to <code>.tex</code>. Therefore, I used <code>in_header</code> in the YAML to compile it.</p></li>
+<li><p><code>titlepage.tex</code> contains some elements that should be in the final PDF document. Since this should appear first (before the rest of the <code>.Rmd</code> document), I used <code>before_body</code> in the YAML.</p></li>
+</ul>
+</div>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>Here are examples of the three files: <code>Global.Rmd</code>, <code>preamble.tex</code> and <code>titlepage.tex</code>.</p>
+<details>
+<summary> <strong>Global.Rmd</strong>
+</summary>
+<p>
+<pre><code>---
+output: 
+  bookdown::pdf_book:
+    includes:
+      in_header: preamble.tex
+      before_body: titlepage.tex
+    keep_tex: true
+    toc: yes
+    toc_depth: 3
+indent: true
+link-citations: yes
+lot: true
+lof: true
+---
+
+&lt;!-- Start the redaction on a new page --&gt;
+\newpage
+
+&lt;!-- Start page numbering where the redaction starts --&gt;
+\pagenumbering{arabic}
+
+```{r globaloptions, include=FALSE}
+# Include here chunk options
+```
+
+```{r packages}
+# Load here the packages
+```
+
+&lt;!-- Call the child documents --&gt;
+```{r body, child = c(&#39;01-Intro.Rmd&#39;, &#39;02-Literature.Rmd&#39;, &#39;03-Data-and-method.Rmd&#39;, &#39;04-Results.Rmd&#39;, &#39;05-Discussion.Rmd&#39;, &#39;06-Conclusion.Rmd&#39;)}
+```
+
+&lt;!-- Placement of bibliography --&gt;
+# References {-}
+
+&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;
+
+
+&lt;!-- Place the appendix after the bibliography --&gt;
+```{r appendix, child = c(&#39;07--Appendix.Rmd&#39;)}
+```</code></pre>
+</p>
+</details>
+<details>
+<summary> <strong>preamble.tex</strong>
+</summary>
+<p>
+<pre><code>% Line spacing
+\renewcommand{\baselinestretch}{1.3}
+
+% Page number and chapter at the top of the page
+\pagestyle{headings}
+
+% Important packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{dcolumn}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% Figure and table names 
+\usepackage{caption}
+\captionsetup[table]{name=Tableau} 
+\captionsetup[figure]{name=Figure}
+
+% Packages for kableExtra
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{float}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+
+% Remove page numbering before start of redaction
+\pagenumbering{gobble}
+
+% Command to make a blank page
+\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}</code></pre>
+</p>
+</details>
+<details>
+<summary> <strong>titlepage.tex</strong>
+</summary>
+<p>
+<pre><code>\begin{titlepage}
+\centering
+Title of my thesis
+\afterpage{\blankpage}
+\end{titlepage}
+
+\section*{Acknowledgements}
+Thanks everyone
+\pagebreak
+
+\begin{center}
+\textbf{Summary}
+\end{center}
+Bla bla bla...
+\pagebreak</code></pre>
+</p>
+</details>
+<p>Hope this helps!</p>
+</div>

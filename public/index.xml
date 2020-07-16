@@ -6,10 +6,214 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2020, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo</copyright>
-    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Writing a Master&#39;s thesis with R Markdown and Bookdown</title>
+      <link>/posts/tips-and-tricks-r-markdown/</link>
+      <pubDate>Thu, 16 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tips-and-tricks-r-markdown/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#why-bookdown&#34;&gt;Why &lt;code&gt;bookdown&lt;/code&gt;?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#latex-packages-and-commands&#34;&gt;LaTeX packages and commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#titlepage-acknowledgements-and-summary&#34;&gt;Titlepage, acknowledgements and summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#include-latex-files-in-yaml&#34;&gt;Include LaTeX files in YAML&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I finished my Master’s thesis very recently, and I wrote it with R Markdown, and more precisely with the &lt;code&gt;bookdown&lt;/code&gt; package. It was really comfortable to do absolutely everything with R: data treatment, use of econometric methods, redaction with chunk of codes, and even the slides for the presentation! However, I have also spent a non-negligible part of my time trying to have a correct layout, essentially for the first pages. I found that some things were not as easy to do as they should be. This post contains some solutions to these problems.&lt;/p&gt;
+&lt;div id=&#34;why-bookdown&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Why &lt;code&gt;bookdown&lt;/code&gt;?&lt;/h2&gt;
+&lt;p&gt;A small preamble before starting to list these problems and solutions: why did I use &lt;code&gt;bookdown&lt;/code&gt; and not &lt;code&gt;rmarkdown&lt;/code&gt;? &lt;code&gt;bookdown&lt;/code&gt; has a few advantages that are very important when writing a Master’s thesis (or an academic paper in general), such as cross-references between sections, figures, tables, etc. See &lt;a href=&#34;https://bookdown.org/yihui/bookdown/&#34;&gt;the &lt;code&gt;bookdown&lt;/code&gt; book&lt;/a&gt; for all the details.&lt;/p&gt;
+&lt;p&gt;While it is possible to create a &lt;code&gt;bookdown&lt;/code&gt; project with RStudio, I “manually” made my own, because I have the impression there are a lot of files created automatically by RStudio that would just confuse myself. Therefore, I had a file containing the YAML and the chunks necessary to load all the packages needed and to run the child documents. Child documents are &lt;code&gt;.Rmd&lt;/code&gt; files that contain only some Markdown text and code chunks (no YAML). They make it much easier to write a thesis since it is possible to divide it in several pieces (introduction, literature review, method, etc.).&lt;/p&gt;
+&lt;p&gt;In addition to &lt;code&gt;Global.Rmd&lt;/code&gt; (which contains YAML and setup chunks), I used two &lt;code&gt;.tex&lt;/code&gt; files: &lt;code&gt;preamble.tex&lt;/code&gt; is where I put all the LaTeX commands and packages I used, and &lt;code&gt;titlepage.tex&lt;/code&gt; to make my custom titlepage, acknowledgments and summary before the table of contents.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;latex-packages-and-commands&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;LaTeX packages and commands&lt;/h2&gt;
+&lt;p&gt;In &lt;code&gt;preamble.tex&lt;/code&gt;, I put all the LaTeX commands, many of them being &lt;code&gt;\usepackage&lt;/code&gt;. For example, the R package &lt;code&gt;kableExtra&lt;/code&gt; provides a list of LaTeX packages required to be able to customize the tables (see &lt;a href=&#34;https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Here’s a small list of the commands I used for my thesis.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;\renewcommand{\baselinestretch}{1.3}&lt;/code&gt; to change the space between lines;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;\pagenumbering{gobble}&lt;/code&gt; to remove page numbering for the first pages, that contain the title, the table of content (TOC), the lists of figures and tables (LOF and LOT) and some blank pages. I used &lt;code&gt;\pagenumbering{arabic}&lt;/code&gt; after the YAML to start the page numbering at the right place.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;\usepackage{caption}&lt;/code&gt;; &lt;code&gt;\captionsetup[table]{name=Tableau}&lt;/code&gt;; &lt;code&gt;\captionsetup[figure]{name=Figure}&lt;/code&gt;. These three commands (to put on three separate lines) are here to change the name of tables and figures. If you’re writing in English, you probably won’t need them, but they were necessary to write in French.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;the following lines create a new command to create a blank page after the titlepage. Strangely, &lt;code&gt;\pagebreak&lt;/code&gt; or &lt;code&gt;\newpage&lt;/code&gt; didn’t work inside the titlepage and I had to find an alternative:&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;details&gt;
+&lt;summary&gt; Command to create a blank page
+&lt;/summary&gt;
+&lt;p&gt;
+&lt;pre&gt;&lt;code&gt;\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}&lt;/code&gt;&lt;/pre&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;/div&gt;
+&lt;div id=&#34;titlepage-acknowledgements-and-summary&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Titlepage, acknowledgements and summary&lt;/h2&gt;
+&lt;p&gt;Concerning these three components, I put them in another file named &lt;code&gt;titlepage.tex&lt;/code&gt;. This is the layout I wanted:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;a titlepage with some logos and some information on my thesis and my university;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;a blank page;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;acknowledgements on a new page;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;summary on a new page;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;TOC, LOF and LOT on a new page.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To do so, I started the titlepage with &lt;code&gt;\begin{titlepage}&lt;/code&gt; and customized it as I wanted. But before putting &lt;code&gt;end{titlepage}&lt;/code&gt;, I placed &lt;code&gt;\afterpage{\blankpage}&lt;/code&gt;, which is the command we define in &lt;code&gt;preamble.tex&lt;/code&gt;. With this, I had a titlepage and a blank page.&lt;/p&gt;
+&lt;p&gt;The next step was to create two pages containing the acknowledgements and the summary. This was easily done in LaTeX, and this time I could use &lt;code&gt;\pagebreak&lt;/code&gt; at the end of the acknowledgements to create a new page for the summary. I also put another &lt;code&gt;\pagebreak&lt;/code&gt; to finish &lt;code&gt;titlepage.tex&lt;/code&gt;, so that TOC, LOF and LOT (created in the YAML) could start on a new page.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;include-latex-files-in-yaml&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Include LaTeX files in YAML&lt;/h2&gt;
+&lt;p&gt;As explained, I had two &lt;code&gt;.tex&lt;/code&gt; files to run when compiling the R Markdown file:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;preamble.tex&lt;/code&gt; is a list of commands that should be placed before &lt;code&gt;\begin{document}&lt;/code&gt; when this &lt;code&gt;.Rmd&lt;/code&gt; file will be converted to &lt;code&gt;.tex&lt;/code&gt;. Therefore, I used &lt;code&gt;in_header&lt;/code&gt; in the YAML to compile it.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;titlepage.tex&lt;/code&gt; contains some elements that should be in the final PDF document. Since this should appear first (before the rest of the &lt;code&gt;.Rmd&lt;/code&gt; document), I used &lt;code&gt;before_body&lt;/code&gt; in the YAML.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Here are examples of the three files: &lt;code&gt;Global.Rmd&lt;/code&gt;, &lt;code&gt;preamble.tex&lt;/code&gt; and &lt;code&gt;titlepage.tex&lt;/code&gt;.&lt;/p&gt;
+&lt;details&gt;
+&lt;summary&gt; &lt;strong&gt;Global.Rmd&lt;/strong&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+&lt;pre&gt;&lt;code&gt;---
+output: 
+  bookdown::pdf_book:
+    includes:
+      in_header: preamble.tex
+      before_body: titlepage.tex
+    keep_tex: true
+    toc: yes
+    toc_depth: 3
+indent: true
+link-citations: yes
+lot: true
+lof: true
+---
+
+&amp;lt;!-- Start the redaction on a new page --&amp;gt;
+\newpage
+
+&amp;lt;!-- Start page numbering where the redaction starts --&amp;gt;
+\pagenumbering{arabic}
+
+```{r globaloptions, include=FALSE}
+# Include here chunk options
+```
+
+```{r packages}
+# Load here the packages
+```
+
+&amp;lt;!-- Call the child documents --&amp;gt;
+```{r body, child = c(&amp;#39;01-Intro.Rmd&amp;#39;, &amp;#39;02-Literature.Rmd&amp;#39;, &amp;#39;03-Data-and-method.Rmd&amp;#39;, &amp;#39;04-Results.Rmd&amp;#39;, &amp;#39;05-Discussion.Rmd&amp;#39;, &amp;#39;06-Conclusion.Rmd&amp;#39;)}
+```
+
+&amp;lt;!-- Placement of bibliography --&amp;gt;
+# References {-}
+
+&amp;lt;div id=&amp;quot;refs&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+
+
+&amp;lt;!-- Place the appendix after the bibliography --&amp;gt;
+```{r appendix, child = c(&amp;#39;07--Appendix.Rmd&amp;#39;)}
+```&lt;/code&gt;&lt;/pre&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt; &lt;strong&gt;preamble.tex&lt;/strong&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+&lt;pre&gt;&lt;code&gt;% Line spacing
+\renewcommand{\baselinestretch}{1.3}
+
+% Page number and chapter at the top of the page
+\pagestyle{headings}
+
+% Important packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{dcolumn}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% Figure and table names 
+\usepackage{caption}
+\captionsetup[table]{name=Tableau} 
+\captionsetup[figure]{name=Figure}
+
+% Packages for kableExtra
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{float}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+
+% Remove page numbering before start of redaction
+\pagenumbering{gobble}
+
+% Command to make a blank page
+\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}&lt;/code&gt;&lt;/pre&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt; &lt;strong&gt;titlepage.tex&lt;/strong&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+&lt;pre&gt;&lt;code&gt;\begin{titlepage}
+\centering
+Title of my thesis
+\afterpage{\blankpage}
+\end{titlepage}
+
+\section*{Acknowledgements}
+Thanks everyone
+\pagebreak
+
+\begin{center}
+\textbf{Summary}
+\end{center}
+Bla bla bla...
+\pagebreak&lt;/code&gt;&lt;/pre&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;p&gt;Hope this helps!&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tips and Tricks for Writing a Master S Thesis With R Markdown</title>
+      <link>/post/tips-and-tricks-for-writing-a-master-s-thesis-with-r-markdown/</link>
+      <pubDate>Sun, 28 Jun 2020 12:29:57 +0200</pubDate>
+      
+      <guid>/post/tips-and-tricks-for-writing-a-master-s-thesis-with-r-markdown/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>What to do when your code doesn&#39;t work?</title>
@@ -19,77 +223,59 @@
       <guid>/posts/what-to-do-when-your-code-does-not-work/</guid>
       <description>
 
+
 &lt;p&gt;As &lt;a href=&#34;https://rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable/&#34;&gt;Jenny Bryan said&lt;/a&gt;, one of the first things people do when there is a problem with the code is run it a second time. But in 95% of the cases (in my small programming experience), this does not solve the problem, and I realized I developed a small pattern of reactions when I am in this situation.&lt;/p&gt;
-
-&lt;h3 id=&#34;read-the-error-message&#34;&gt;Read the error message&lt;/h3&gt;
-
+&lt;div id=&#34;read-the-error-message&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Read the error message&lt;/h3&gt;
 &lt;p&gt;This may seem obvious since this is the first thing we see when there is an error. However, some messages (like those in the &lt;code&gt;tidyverse&lt;/code&gt; packages) are really helpful and are enough to solve the problem.&lt;/p&gt;
-
-&lt;p&gt;As you spend time programming, some error messages become quite familiar over time. You don&amp;rsquo;t necessarily need to fully understand the message, just remember how you solved the error when you saw this. But this does not help if this is the first time you see the message.&lt;/p&gt;
-
-&lt;h3 id=&#34;search-on-stackoverflow-and-rstudio-community&#34;&gt;Search on StackOverflow and RStudio Community&lt;/h3&gt;
-
-&lt;p&gt;If the error message was not helpful, I quickly go to step 2: search online (which is almost always equivalent to &amp;ldquo;search on StackOverflow and RStudio Community&amp;rdquo;). Those are the two places where you have the most odds of finding an answer to your problem. If your problem concerns mainstream packages (once again, such as the &lt;code&gt;tidyverse&lt;/code&gt; ones), then there will always be at least one person who had a similar problem for which a solution was given.&lt;/p&gt;
-
-&lt;h3 id=&#34;search-on-github&#34;&gt;Search on Github&lt;/h3&gt;
-
+&lt;p&gt;As you spend time programming, some error messages become quite familiar over time. You don’t necessarily need to fully understand the message, just remember how you solved the error when you saw this. But this does not help if this is the first time you see the message.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;search-on-stackoverflow-and-rstudio-community&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Search on StackOverflow and RStudio Community&lt;/h3&gt;
+&lt;p&gt;If the error message was not helpful, I quickly go to step 2: search online (which is almost always equivalent to “search on StackOverflow and RStudio Community”). Those are the two places where you have the most odds of finding an answer to your problem. If your problem concerns mainstream packages (once again, such as the &lt;code&gt;tidyverse&lt;/code&gt; ones), then there will always be at least one person who had a similar problem for which a solution was given.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;search-on-github&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Search on Github&lt;/h3&gt;
 &lt;p&gt;If no answer was available on these two websites, I usually go a step further and search about it on GitHub, especially if the problem comes from an unknown and/or new package. Indeed, the source code of a lot of R packages is available on GitHub, as well as the brand-new versions (not on CRAN yet). It is also the place where people make feedback on some issues or help develop the package.&lt;/p&gt;
-
 &lt;p&gt;It happens that somebody reported a similar issue and that the package maintainer answered. If not, well, it is always useful to see the situations in which people use the package, or to learn new functions of this package.&lt;/p&gt;
-
-&lt;h3 id=&#34;post-my-question-online-part-1&#34;&gt;Post my question online - Part 1&lt;/h3&gt;
-
-&lt;p&gt;I have an error, I don&amp;rsquo;t understand the error message and there are no answers online. What can I do now?&lt;/p&gt;
-
+&lt;/div&gt;
+&lt;div id=&#34;post-my-question-online---part-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Post my question online - Part 1&lt;/h3&gt;
+&lt;p&gt;I have an error, I don’t understand the error message and there are no answers online. What can I do now?&lt;/p&gt;
 &lt;p&gt;You can post your question on one of the websites I mentioned. My order of preference is:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;StackOverflow: in general, more people see your message and therefore more people might answer your question.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;RStudio Community: more &amp;ldquo;specialized&amp;rdquo; and some mainstream packages maintainers are there. Also useful when the question is about RStudio IDE (not to be confused with the R language) since they developed it.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;GitHub: clearly the problem comes from an error specific to the package and I couldn&amp;rsquo;t find an answer online. Most of the time, there is no need to create new issues.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;RStudio Community: more “specialized” and some mainstream packages maintainers are there. Also useful when the question is about RStudio IDE (not to be confused with the R language) since they developed it.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;GitHub: clearly the problem comes from an error specific to the package and I couldn’t find an answer online. Most of the time, there is no need to create new issues.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&lt;strong&gt;However:&lt;/strong&gt; posting a question online implies that you need to create a reproducible example. What is a reproducible example?&lt;/p&gt;
-
-&lt;p&gt;Suppose that you are working on your data and have a problem. You may want to copy and paste your code online. It&amp;rsquo;s quick and easy. But try to imagine you&amp;rsquo;re someone on StackOverflow that sees your code for the first time. This person needs to run it to understand what your code does and what the problem is. But that&amp;rsquo;s impossible, because you load CSV data that is only available for you, or because you forgot to mention the packages you&amp;rsquo;re using. Therefore, no one can run your code and the odds of someone solving your problem plummet.&lt;/p&gt;
-
+&lt;p&gt;Suppose that you are working on your data and have a problem. You may want to copy and paste your code online. It’s quick and easy. But try to imagine you’re someone on StackOverflow that sees your code for the first time. This person needs to run it to understand what your code does and what the problem is. But that’s impossible, because you load CSV data that is only available for you, or because you forgot to mention the packages you’re using. Therefore, no one can run your code and the odds of someone solving your problem plummet.&lt;/p&gt;
 &lt;p&gt;If you post online, your post MUST contain:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;A description of what you&amp;rsquo;re trying to do and of your problem in plain text.&lt;/p&gt;&lt;/li&gt;
-
+&lt;li&gt;&lt;p&gt;A description of what you’re trying to do and of your problem in plain text.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Some code that contains:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;the &lt;code&gt;library()&lt;/code&gt; calls needed to run every function you use (but no need to put packages that you never use in your example)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;a code that can be copied and pasted in a new R session and that ends up in the same situation as you&amp;rsquo;re in. That means that the data you use must be reproducible.&lt;/p&gt;&lt;/li&gt;
-
+&lt;li&gt;&lt;p&gt;a code that can be copied and pasted in a new R session and that ends up in the same situation as you’re in. That means that the data you use must be reproducible.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;the expected output, if possible. If you can easily show the output you want, do it. It will be easier to help you if you show what you want. In some cases (&lt;em&gt;e.g&lt;/em&gt; Shiny apps), it is not always possible or easy to provide this, so it is not a 100% necessary.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;Making a reproducible example takes time but is incredibly helpful. Open a new tab in RStudio, try to simplify your situation as much as possible and to make it reproducible by using data available for everyone. For example, some datasets are automatically in R, such as &lt;code&gt;mtcars&lt;/code&gt; or &lt;code&gt;iris&lt;/code&gt;. Don&amp;rsquo;t forget to mention the packages you use in &lt;code&gt;library()&lt;/code&gt;. Once you think you have finished (you show what packages you use, you keep your example as small as possible and you show the expected output), restart the session (ctrl + shift + F10) and see if it runs and if it reproduces the same error. If it doesn&amp;rsquo;t, it means your example is not reproducible and that you have to improve it.&lt;/p&gt;
-
+&lt;p&gt;Making a reproducible example takes time but is incredibly helpful. Open a new tab in RStudio, try to simplify your situation as much as possible and to make it reproducible by using data available for everyone. For example, some datasets are automatically in R, such as &lt;code&gt;mtcars&lt;/code&gt; or &lt;code&gt;iris&lt;/code&gt;. Don’t forget to mention the packages you use in &lt;code&gt;library()&lt;/code&gt;. Once you think you have finished (you show what packages you use, you keep your example as small as possible and you show the expected output), restart the session (ctrl + shift + F10) and see if it runs and if it reproduces the same error. If it doesn’t, it means your example is not reproducible and that you have to improve it.&lt;/p&gt;
 &lt;p&gt;I would say that I solve the problem myself by making a reproducible example in 70% of the cases, so taking the time to make one is worth it!&lt;/p&gt;
-
-&lt;h3 id=&#34;post-my-question-online-part-2&#34;&gt;Post my question online - Part 2&lt;/h3&gt;
-
-&lt;p&gt;However, if you didn&amp;rsquo;t solve your problem with this (and if your example is reproducible), you can post it on StackOverflow or RStudio Community. Don&amp;rsquo;t forget to explain your situation and your code, don&amp;rsquo;t paste it without any details!&lt;/p&gt;
-
-&lt;p&gt;Hopefully, you&amp;rsquo;ll have an answer.&lt;/p&gt;
-
-&lt;h3 id=&#34;additional-resources&#34;&gt;Additional resources&lt;/h3&gt;
-
+&lt;/div&gt;
+&lt;div id=&#34;post-my-question-online---part-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Post my question online - Part 2&lt;/h3&gt;
+&lt;p&gt;However, if you didn’t solve your problem with this (and if your example is reproducible), you can post it on StackOverflow or RStudio Community. Don’t forget to explain your situation and your code, don’t paste it without any details!&lt;/p&gt;
+&lt;p&gt;Hopefully, you’ll have an answer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;additional-resources&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Additional resources&lt;/h3&gt;
 &lt;p&gt;Here are two pages with details about making a reproducible example:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/help/minimal-reproducible-example&#34;&gt;https://stackoverflow.com/help/minimal-reproducible-example&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example&#34;&gt;https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/help/minimal-reproducible-example&#34; class=&#34;uri&#34;&gt;https://stackoverflow.com/help/minimal-reproducible-example&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example&#34; class=&#34;uri&#34;&gt;https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
 </description>
     </item>
     
@@ -99,21 +285,18 @@
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/my-app-for-shiny-contest-2020/</guid>
-      <description>&lt;p&gt;One of the greatest things about R is the possibility to build websites quite easily with R Shiny. I started to create apps with Shiny almost immediately after having discovered it. This was in May last year and two months later I thought it would be a great idea to build an app to treat more easily World Bank data. Indeed, in my field, World Development Indicators (WDI) are often used and I thought it would be useful to have a graphical interface where we can import and treat these indicators.&lt;/p&gt;
+      <description>
 
+
+&lt;p&gt;One of the greatest things about R is the possibility to build websites quite easily with R Shiny. I started to create apps with Shiny almost immediately after having discovered it. This was in May last year and two months later I thought it would be a great idea to build an app to treat more easily World Bank data. Indeed, in my field, World Development Indicators (WDI) are often used and I thought it would be useful to have a graphical interface where we can import and treat these indicators.&lt;/p&gt;
 &lt;p&gt;So in July last year I started to work on this. Besides building something useful, I considered this as a good opportunity to practice with R Shiny. I worked on that irregularly during the rest of the year. Sometimes I considerably improved my app in a week and sometimes I spent two months not thinking about it.&lt;/p&gt;
-
-&lt;p&gt;In January, I was quite stuck: my app required to generate pieces of UI (User Interface) on the fly and I didn&amp;rsquo;t know how to do that. But when I saw the &lt;a href=&#34;https://community.rstudio.com/t/shiny-contest-2020-is-here/51002&#34;&gt;announcement&lt;/a&gt; for the second edition of the Shiny Contest, I convinced myself to give it a try and worked a lot on my app, especially since I finally understood how to use &lt;a href=&#34;https://shiny.rstudio.com/articles/modules.html&#34;&gt;modules&lt;/a&gt;. Therefore, after a few weeks, I could finally deploy my app and participate to the contest. Given the incredible apps of other participants (just look at the &amp;ldquo;Shiny Contest&amp;rdquo; tag on &lt;a href=&#34;https://community.rstudio.com/&#34;&gt;RStudio Community&lt;/a&gt;), I know that there is not a chance that I win something but nonetheless I am very proud of having the possibility to show what I can do.&lt;/p&gt;
-
-&lt;p&gt;&amp;ldquo;That&amp;rsquo;s very good&amp;rdquo;, you may say, &amp;ldquo;but what does your app do?&amp;rdquo;. Well if you are familiar with the WDIs, you know that each indicator has an ID (like &amp;ldquo;NV.AGR.TOTL.ZS&amp;rdquo;). Using this ID in my app, you can import the dataset related, choose the type of data you want (cross-country, time series, panel data), the country/countries and year(s) you want and compute the logarithm, the squared value and the lagged value of the variable. You may also generate a plot that you can download for this dataset. You can import and manipulate as many datasets as you desire and when you are done, you can merge them in a final dataset that is also downloadable. Finally, since reproducibility is a big aspect in science, all the manipulations you did are translated into R code so that you can copy and paste this code in a fresh R session and it will reproduce everything you have done. This was made possible thanks the great (but still experimental) &lt;code&gt;shinymeta&lt;/code&gt; package&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:Luckily-I-have-d&#34;&gt;&lt;a href=&#34;#fn:Luckily-I-have-d&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-
+&lt;p&gt;In January, I was quite stuck: my app required to generate pieces of UI (User Interface) on the fly and I didn’t know how to do that. But when I saw the &lt;a href=&#34;https://community.rstudio.com/t/shiny-contest-2020-is-here/51002&#34;&gt;announcement&lt;/a&gt; for the second edition of the Shiny Contest, I convinced myself to give it a try and worked a lot on my app, especially since I finally understood how to use &lt;a href=&#34;https://shiny.rstudio.com/articles/modules.html&#34;&gt;modules&lt;/a&gt;. Therefore, after a few weeks, I could finally deploy my app and participate to the contest. Given the incredible apps of other participants (just look at the “Shiny Contest” tag on &lt;a href=&#34;https://community.rstudio.com/&#34;&gt;RStudio Community&lt;/a&gt;), I know that there is not a chance that I win something but nonetheless I am very proud of having the possibility to show what I can do.&lt;/p&gt;
+&lt;p&gt;“That’s very good”, you may say, “but what does your app do?”. Well if you are familiar with the WDIs, you know that each indicator has an ID (like “NV.AGR.TOTL.ZS”). Using this ID in my app, you can import the dataset related, choose the type of data you want (cross-country, time series, panel data), the country/countries and year(s) you want and compute the logarithm, the squared value and the lagged value of the variable. You may also generate a plot that you can download for this dataset. You can import and manipulate as many datasets as you desire and when you are done, you can merge them in a final dataset that is also downloadable. Finally, since reproducibility is a big aspect in science, all the manipulations you did are translated into R code so that you can copy and paste this code in a fresh R session and it will reproduce everything you have done. This was made possible thanks the great (but still experimental) &lt;code&gt;shinymeta&lt;/code&gt; package&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;You can try the app &lt;a href=&#34;https://etiennebacher.shinyapps.io/woRldbank/&#34;&gt;here&lt;/a&gt;, but if it has been removed by the time you go checking it, you may find the source code for the whole app &lt;a href=&#34;https://github.com/etiennebacher/woRldbank&#34;&gt;on GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
-
 &lt;hr /&gt;
-
 &lt;ol&gt;
-&lt;li id=&#34;fn:Luckily-I-have-d&#34;&gt;Luckily, I have discovered this package a month before I launched my app, in a rstudio::conf 2020 &lt;a href=&#34;https://resources.rstudio.com/rstudio-conf-2020/reproducible-shiny-apps-with-shinymeta-dr-carson-sievert&#34;&gt;presentation by Carson Sievert&lt;/a&gt; &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:Luckily-I-have-d&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Luckily, I have discovered this package a month before I launched my app, in a rstudio::conf 2020 &lt;a href=&#34;https://resources.rstudio.com/rstudio-conf-2020/reproducible-shiny-apps-with-shinymeta-dr-carson-sievert&#34;&gt;presentation by Carson Sievert&lt;/a&gt;&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
@@ -122,128 +305,119 @@
     <item>
       <title>My favorite shortcuts in RStudio</title>
       <link>/posts/my-favorite-shortcuts-in-rstudio/</link>
-      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/my-favorite-shortcuts-in-rstudio/</guid>
       <description>
 
-&lt;p&gt;Currently working on my master&amp;rsquo;s thesis, I spend almost half on my day on R (the other half being spent reading articles). I have learnt a few very useful shortcuts by reading blog posts or free R books here and there and I have decided to make a small list of those I use most.&lt;/p&gt;
 
-&lt;h2 id=&#34;ctrl-shift-enter-run-the-whole-script&#34;&gt;&amp;ldquo;Ctrl+Shift+Enter&amp;rdquo;: run the whole script&lt;/h2&gt;
-
-&lt;p&gt;This combination will run all of your script, wherever the mouse is in the script. This considerably saves some time and is much more convenient than having to drag the mouse up to the &amp;ldquo;Run&amp;rdquo; button.&lt;/p&gt;
-
-&lt;h2 id=&#34;ctrl-shift-f10-restart-r-session&#34;&gt;&amp;ldquo;Ctrl+Shift+F10&amp;rdquo;: restart R session&lt;/h2&gt;
-
-&lt;p&gt;Almost all your work will have to be done again one day, either by you or by somebody else. That day, you will regret not having saved all the packages you needed in your R script. How is that possible? Well, it comes from the fact that I (and presumably other people too) load some packages &lt;em&gt;and their dependencies&lt;/em&gt; in the same session because we test some packages, or because we are trying to solve a StackOverflow problem during a break, etc. Therefore, when you were writing it, some of your code was running only thanks to some packages you didn&amp;rsquo;t keep in your script.&lt;/p&gt;
-
-&lt;p&gt;To prevent this to happen again, you can run &amp;ldquo;Ctrl+Shift+F10&amp;rdquo; sometimes: it restarts the R session (but does not close RStudio) and allows to see quickly if your code can run all by itself. When I have finished writing a chunk of code, I always do &amp;ldquo;Ctrl+Shift+F10&amp;rdquo; and &amp;ldquo;Ctrl+Shift+Enter&amp;rdquo; to make sure that my code can run again in three months or more.&lt;/p&gt;
-
-&lt;h2 id=&#34;ctrl-shift-k-knit-markdown-documents&#34;&gt;&amp;ldquo;Ctrl+Shift+K&amp;rdquo;: knit Markdown documents&lt;/h2&gt;
-
-&lt;p&gt;I do not use this everywhere but only in Markdown documents: it knits the document. As &amp;ldquo;Ctrl+Shift+Enter&amp;rdquo; replaces the &amp;ldquo;Run&amp;rdquo; button, &amp;ldquo;Ctrl+Shift+K&amp;rdquo; replaces the &amp;ldquo;Knit&amp;rdquo; button.&lt;/p&gt;
-
-&lt;h2 id=&#34;ctrl-alt-b-run-the-script-from-the-beginning-to-where-i-am&#34;&gt;&amp;ldquo;Ctrl+Alt+B&amp;rdquo;: run the script from the beginning to where I am&lt;/h2&gt;
-
-&lt;p&gt;This is similar to &amp;ldquo;Ctrl+Shift+Enter&amp;rdquo; but it runs the script only until your mouse.&lt;/p&gt;
-
-&lt;h2 id=&#34;ctrl-shift-a-good-alignment&#34;&gt;&amp;ldquo;Ctrl+Shift+A&amp;rdquo;: good alignment&lt;/h2&gt;
-
+&lt;p&gt;Currently working on my master’s thesis, I spend almost half on my day on R (the other half being spent reading articles). I have learnt a few very useful shortcuts by reading blog posts or free R books here and there and I have decided to make a small list of those I use most.&lt;/p&gt;
+&lt;div id=&#34;ctrlshiftenter-run-the-whole-script&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;“Ctrl+Shift+Enter”: run the whole script&lt;/h2&gt;
+&lt;p&gt;This combination will run all of your script, wherever the mouse is in the script. This considerably saves some time and is much more convenient than having to drag the mouse up to the “Run” button.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ctrlshiftf10-restart-r-session&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;“Ctrl+Shift+F10”: restart R session&lt;/h2&gt;
+&lt;p&gt;Almost all your work will have to be done again one day, either by you or by somebody else. That day, you will regret not having saved all the packages you needed in your R script. How is that possible? Well, it comes from the fact that I (and presumably other people too) load some packages &lt;em&gt;and their dependencies&lt;/em&gt; in the same session because we test some packages, or because we are trying to solve a StackOverflow problem during a break, etc. Therefore, when you were writing it, some of your code was running only thanks to some packages you didn’t keep in your script.&lt;/p&gt;
+&lt;p&gt;To prevent this to happen again, you can run “Ctrl+Shift+F10” sometimes: it restarts the R session (but does not close RStudio) and allows to see quickly if your code can run all by itself. When I have finished writing a chunk of code, I always do “Ctrl+Shift+F10” and “Ctrl+Shift+Enter” to make sure that my code can run again in three months or more.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ctrlshiftk-knit-markdown-documents&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;“Ctrl+Shift+K”: knit Markdown documents&lt;/h2&gt;
+&lt;p&gt;I do not use this everywhere but only in Markdown documents: it knits the document. As “Ctrl+Shift+Enter” replaces the “Run” button, “Ctrl+Shift+K” replaces the “Knit” button.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ctrlaltb-run-the-script-from-the-beginning-to-where-i-am&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;“Ctrl+Alt+B”: run the script from the beginning to where I am&lt;/h2&gt;
+&lt;p&gt;This is similar to “Ctrl+Shift+Enter” but it runs the script only until your mouse.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ctrlshifta-good-alignment&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;“Ctrl+Shift+A”: good alignment&lt;/h2&gt;
 &lt;p&gt;Indentation is quite important to have a code that is readable, especially when you begin to write more than 10 lines of code. Select your code (or just a piece of it) and do this combination to apply indentation rules automatically.&lt;/p&gt;
-
-&lt;h2 id=&#34;ctrl-shift-r-new-section-label&#34;&gt;&amp;ldquo;Ctrl+Shift+R&amp;rdquo;: new section label&lt;/h2&gt;
-
+&lt;/div&gt;
+&lt;div id=&#34;ctrlshiftr-new-section-label&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;“Ctrl+Shift+R”: new section label&lt;/h2&gt;
 &lt;p&gt;This creates a new section in your code, with the title you choose. Quite convenient to keep a readable code.&lt;/p&gt;
-
-&lt;h2 id=&#34;ctrl-shift-n-new-file&#34;&gt;&amp;ldquo;Ctrl+Shift+N&amp;rdquo;: new file&lt;/h2&gt;
-
+&lt;/div&gt;
+&lt;div id=&#34;ctrlshiftn-new-file&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;“Ctrl+Shift+N”: new file&lt;/h2&gt;
 &lt;p&gt;If you want to try a chunk of code quickly, you can run this combination to open a new file in RStudio.&lt;/p&gt;
-
-&lt;h2 id=&#34;ctrl-shift-c-comment-and-un-comment-lines-of-code&#34;&gt;&amp;ldquo;Ctrl+Shift+C&amp;rdquo;: comment and un-comment lines of code&lt;/h2&gt;
-
+&lt;/div&gt;
+&lt;div id=&#34;ctrlshiftc-comment-and-un-comment-lines-of-code&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;“Ctrl+Shift+C”: comment and un-comment lines of code&lt;/h2&gt;
 &lt;p&gt;To me, this is one of the most convenient shortcut. It simply allows to comment (and un-comment) at once all the lines selected.&lt;/p&gt;
-
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;The complete list of shortcuts is available in &amp;ldquo;Tools -&amp;gt; Keyboard Shortcuts Help&amp;rdquo; in RStudio.
+&lt;p&gt;The complete list of shortcuts is available in “Tools -&amp;gt; Keyboard Shortcuts Help” in RStudio.
 Other useful tools:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://rstudio.github.io/rstudio-extensions/rstudio_snippets.html&#34;&gt;snippets&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://rstudio.github.io/rstudioaddins/&#34;&gt;addins&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://twitter.com/rstudiotips&#34;&gt;RStudio tips&lt;/a&gt; (on Twitter)&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>First contact with the data on R</title>
       <link>/posts/first-contact/</link>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/first-contact/</guid>
       <description>
 
-&lt;p style=&#34;color:rgb(127, 165, 179)&#34;&gt; &lt;b&gt; Note: &lt;/b&gt;  &lt;/p&gt; &lt;p style=&#34;color:rgb(127, 165, 179)&#34;&gt;In this and future articles, you will see some arrows below R code. If you click on it, it will display the Stata code equivalent to the R code displayed. However, since those are two different softwares, they are not completely equivalent and some of the Stata code may not fully correspond to the R code. Consider it more like a reference point not to be lost rather than like an exact equivalent. &lt;/p&gt;
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#files-used-and-organization-of-the-project&#34;&gt;Files used and organization of the project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#import-data&#34;&gt;Import data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#merge-dataframes&#34;&gt;Merge dataframes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#clean-the-data&#34;&gt;Clean the data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#descriptive-statistics&#34;&gt;Descriptive Statistics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#plots&#34;&gt;Plots&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
+&lt;p style=&#34;color:rgb(127, 165, 179)&#34;&gt;
+&lt;b&gt; Note: &lt;/b&gt;
+&lt;/p&gt;
+&lt;p style=&#34;color:rgb(127, 165, 179)&#34;&gt;
+In this and future articles, you will see some arrows below R code. If you click on it, it will display the Stata code equivalent to the R code displayed. However, since those are two different softwares, they are not completely equivalent and some of the Stata code may not fully correspond to the R code. Consider it more like a reference point not to be lost rather than like an exact equivalent.
+&lt;/p&gt;
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;In this post, you will see how to import and treat data, make descriptive statistics and a few plots. I will also show you a personal method to organize one&amp;rsquo;s work.&lt;/p&gt;
-
-&lt;h2 id=&#34;files-used-and-organization-of-the-project&#34;&gt;Files used and organization of the project&lt;/h2&gt;
-
-&lt;p&gt;First of all, you need to create a project. In RStudio, you can do &amp;ldquo;File&amp;rdquo;, &amp;ldquo;New Project&amp;rdquo; and then choose the location of the project and its name. In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I use the package &lt;strong&gt;&lt;code&gt;here&lt;/code&gt;&lt;/strong&gt;. The command &lt;strong&gt;&lt;code&gt;here()&lt;/code&gt;&lt;/strong&gt; shows the path to your project and you just need to complete the path to access to your datasets or other files.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# if you&#39;ve never installed this package before, do:
+&lt;p&gt;In this post, you will see how to import and treat data, make descriptive statistics and a few plots. I will also show you a personal method to organize one’s work.&lt;/p&gt;
+&lt;div id=&#34;files-used-and-organization-of-the-project&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Files used and organization of the project&lt;/h2&gt;
+&lt;p&gt;First of all, you need to create a project. In RStudio, you can do “File”, “New Project” and then choose the location of the project and its name. In the folder that contains the project, I have several sub-folders: Figures, Bases_Used, Bases_Created. To be able to save or use files in these particular sub-folders, I use the package &lt;strong&gt;&lt;code&gt;here&lt;/code&gt;&lt;/strong&gt;. The command &lt;strong&gt;&lt;code&gt;here()&lt;/code&gt;&lt;/strong&gt; shows the path to your project and you just need to complete the path to access to your datasets or other files.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# if you&amp;#39;ve never installed this package before, do:
 # install.packages(&amp;quot;here&amp;quot;)
-library(here)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Why is this package important? Your code must be reproducible, either for your current collaborators to work efficiently with you or for other people to check your code and to use it in the future. Using paths that work only for your computer (like &amp;ldquo;/home/Mr X/somefolder/somesubfolder/Project&amp;rdquo;) makes it longer and more annoying to use your code since it requires to manually change paths in order to import data or other files. The package &lt;strong&gt;&lt;code&gt;here&lt;/code&gt;&lt;/strong&gt; makes it much easier to reproduce your code since it automatically detects the path to access to your data. You only need to keep the same structure between R files and datasets. You will see in the next part how to use it.&lt;/p&gt;
-
-&lt;h2 id=&#34;import-data&#34;&gt;Import data&lt;/h2&gt;
-
-&lt;p&gt;We will use data contained in Excel (&lt;strong&gt;&lt;code&gt;.xlsx&lt;/code&gt;&lt;/strong&gt;) and text (&lt;strong&gt;&lt;code&gt;.txt&lt;/code&gt;&lt;/strong&gt;) files. You can find these files (and the full R script corresponding to this post) &lt;a href=&#34;https://github.com/etiennebacher/from-stata-to-r/tree/master/public/Data/first-contact&#34;&gt;here&lt;/a&gt;. To import Excel data, we wil need the &lt;strong&gt;&lt;code&gt;readxl&lt;/code&gt;&lt;/strong&gt; package.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(readxl)
-&lt;/code&gt;&lt;/pre&gt;
-
+library(here)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Why is this package important? Your code must be reproducible, either for your current collaborators to work efficiently with you or for other people to check your code and to use it in the future. Using paths that work only for your computer (like “/home/Mr X/somefolder/somesubfolder/Project”) makes it longer and more annoying to use your code since it requires to manually change paths in order to import data or other files. The package &lt;strong&gt;&lt;code&gt;here&lt;/code&gt;&lt;/strong&gt; makes it much easier to reproduce your code since it automatically detects the path to access to your data. You only need to keep the same structure between R files and datasets. You will see in the next part how to use it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;import-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Import data&lt;/h2&gt;
+&lt;p&gt;We will use data contained in Excel (&lt;strong&gt;&lt;code&gt;.xlsx&lt;/code&gt;&lt;/strong&gt;) and text (&lt;strong&gt;&lt;code&gt;.txt&lt;/code&gt;&lt;/strong&gt;) files. You can find these files (and the full R script corresponding to this post) &lt;a href=&#34;https://github.com/etiennebacher/from-stata-to-r/tree/master/public/Data/first-contact&#34;&gt;here&lt;/a&gt;. To import Excel data, we will need the &lt;strong&gt;&lt;code&gt;readxl&lt;/code&gt;&lt;/strong&gt; package.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(readxl)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We use the &lt;strong&gt;&lt;code&gt;read_excel&lt;/code&gt;&lt;/strong&gt; function of this package to import excel files and the function &lt;strong&gt;&lt;code&gt;read.table&lt;/code&gt;&lt;/strong&gt; (in base R) to import the data:&lt;/p&gt;
-
 &lt;!-- La partie qui suit doit être visible pour correspondre à ce que je dis mais ne doit pas être exécutée car pas les bons chemins d&#39;accès --&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base1 &amp;lt;- read_excel(here(&amp;quot;Bases_Used/Base_Excel.xlsx&amp;quot;), sheet = &amp;quot;Base1&amp;quot;)
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;base1 &amp;lt;- read_excel(here(&amp;quot;Bases_Used/Base_Excel.xlsx&amp;quot;), sheet = &amp;quot;Base1&amp;quot;)
 base2 &amp;lt;- read_excel(here(&amp;quot;Bases_Used/Base_Excel.xlsx&amp;quot;), sheet = &amp;quot;Base2&amp;quot;)
 base3 &amp;lt;- read_excel(here(&amp;quot;Bases_Used/Base_Excel.xlsx&amp;quot;), sheet = &amp;quot;Base3&amp;quot;)
-base4 &amp;lt;- read.table(here(&amp;quot;Bases_Used/Base_Text.txt&amp;quot;), header = TRUE)
-&lt;/code&gt;&lt;/pre&gt;
-
+base4 &amp;lt;- read.table(here(&amp;quot;Bases_Used/Base_Text.txt&amp;quot;), header = TRUE)&lt;/code&gt;&lt;/pre&gt;
 &lt;!-- La partie qui suit ne doit pas être visible mais doit être exécutée --&gt;
-
-&lt;p&gt;&lt;details&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;cd &amp;quot;/path/to/Bases_Used&amp;quot;
-import excel using Base_Excel, sheet(&amp;quot;Base1&amp;quot;) firstrow
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;cd &amp;quot;/path/to/Bases_Used&amp;quot;
+import excel using Base_Excel, sheet(&amp;quot;Base1&amp;quot;) firstrow&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
 &lt;p&gt;As you can see, if your project is in a folder and if you stored you datasets in the Bases_Used subfolder, this code will work automatically since &lt;strong&gt;&lt;code&gt;here&lt;/code&gt;&lt;/strong&gt; detects the path. Now, we have stored the four datasets in four objects called &lt;strong&gt;&lt;code&gt;data.frames&lt;/code&gt;&lt;/strong&gt;. To me, this simple thing is an advantage on Stata where storing multiple datasets in the same time is not intuitive at all.&lt;/p&gt;
-
-&lt;h2 id=&#34;merge-dataframes&#34;&gt;Merge dataframes&lt;/h2&gt;
-
-&lt;p&gt;We want to have a unique dataset to make descriptive statistics and econometrics (we will just do descriptive statistics in this post). Therefore, we will merge these datasets together, first by using the &lt;strong&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/strong&gt; package. This package is one of the references for data manipulation. It is extremely useful and much more easy to use than base R. You may find a cheatsheet (i.e. a recap of the functions) for this package &lt;a href=&#34;https://rstudio.com/resources/cheatsheets/&#34;&gt;here&lt;/a&gt;, along with cheatsheets of many other great packages.&lt;/p&gt;
-
-&lt;p&gt;First, we want to regroup &lt;strong&gt;&lt;code&gt;base1&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code&gt;base2&lt;/code&gt;&lt;/strong&gt;. To do so, we just need to put one under the other and to &amp;ldquo;stick&amp;rdquo; them together with &lt;strong&gt;&lt;code&gt;bind_rows&lt;/code&gt;&lt;/strong&gt; and we observe the result:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+&lt;/div&gt;
+&lt;div id=&#34;merge-dataframes&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Merge dataframes&lt;/h2&gt;
+&lt;p&gt;We want to have a unique dataset to make descriptive statistics and econometrics (we will just do descriptive statistics in this post). Therefore, we will merge these datasets together, first by using the &lt;strong&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/strong&gt; package. This package is one of the references for data manipulation. It is extremely useful and much more easy to use than base R. You may find a cheatsheet (i.e. a recap of the functions) for this package &lt;a href=&#34;https://rstudio.com/resources/cheatsheets/&#34;&gt;here&lt;/a&gt;, along with cheatsheets of many other great packages.&lt;/p&gt;
+&lt;p&gt;First, we want to regroup &lt;strong&gt;&lt;code&gt;base1&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code&gt;base2&lt;/code&gt;&lt;/strong&gt;. To do so, we just need to put one under the other and to “stick” them together with &lt;strong&gt;&lt;code&gt;bind_rows&lt;/code&gt;&lt;/strong&gt; and we observe the result:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
 base_created &amp;lt;- bind_rows(base1, base2)
-base_created
-&lt;/code&gt;&lt;/pre&gt;
-
+base_created&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 23 x 6
 ##     hhid indidy1 surname   name     gender  wage
 ##    &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
@@ -257,33 +431,24 @@ base_created
 ##  8     2       4 ANDERSON  Richard       1  1900
 ##  9     3       1 THOMAS    Charles       1  1800
 ## 10     3       2 TAYLOR    Barbara       2  1890
-## # … with 13 more rows
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+## # … with 13 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;preserve
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;preserve
 
 *** Open base #2 and bind the rows
 clear all 
 import excel using Base_Excel, sheet(&amp;quot;Base2&amp;quot;) firstrow
 tempfile base2
-save  `base2&#39; 
+save  `base2&amp;#39; 
 restore
-append using `base2&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
+append using `base2&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
 &lt;p&gt;As you can see, we obtain a dataframe with 6 columns (like each table separately) and 23 rows: 18 in the first table, 5 in the second table. Now, we merge this dataframe with &lt;strong&gt;&lt;code&gt;base3&lt;/code&gt;&lt;/strong&gt;. &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code&gt;base3&lt;/code&gt;&lt;/strong&gt; only have one column in common (&lt;strong&gt;&lt;code&gt;hhid&lt;/code&gt;&lt;/strong&gt;) so we will need to specify that we want to merge these two bases by this column:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base_created &amp;lt;- left_join(base_created, base3, by = &amp;quot;hhid&amp;quot;)
-base_created
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;base_created &amp;lt;- left_join(base_created, base3, by = &amp;quot;hhid&amp;quot;)
+base_created&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 23 x 7
 ##     hhid indidy1 surname   name     gender  wage location
 ##    &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;   
@@ -297,49 +462,36 @@ base_created
 ##  8     2       4 ANDERSON  Richard       1  1900 England 
 ##  9     3       1 THOMAS    Charles       1  1800 Spain   
 ## 10     3       2 TAYLOR    Barbara       2  1890 Spain   
-## # … with 13 more rows
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+## # … with 13 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;preserve 
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;preserve 
 
 *** Open base #3 and merge
 clear all
 cd ..\Bases_Used 
 import excel using Base_Excel, sheet(&amp;quot;Base3&amp;quot;) firstrow
 tempfile base3
-save `base3&#39;
+save `base3&amp;#39;
 restore 
-merge m:1 hhid using `base3&#39; 
-drop _merge 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;left_join&lt;/code&gt;&lt;/strong&gt; is a &lt;strong&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/strong&gt; function saying that the first dataframe mentioned (here &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt;) is the &amp;ldquo;most important&amp;rdquo; and that we will stick the second one (here &lt;strong&gt;&lt;code&gt;base3&lt;/code&gt;&lt;/strong&gt;) to it. If there are more rows in the first one than in the second one, then there will be some missing values but the number of rows will stay the same. If we knew that &lt;strong&gt;&lt;code&gt;base3&lt;/code&gt;&lt;/strong&gt; had more rows than &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt;, we would have used &lt;strong&gt;&lt;code&gt;right_join&lt;/code&gt;&lt;/strong&gt;.&lt;/p&gt;
-
+merge m:1 hhid using `base3&amp;#39; 
+drop _merge &lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;left_join&lt;/code&gt;&lt;/strong&gt; is a &lt;strong&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/strong&gt; function saying that the first dataframe mentioned (here &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt;) is the “most important” and that we will stick the second one (here &lt;strong&gt;&lt;code&gt;base3&lt;/code&gt;&lt;/strong&gt;) to it. If there are more rows in the first one than in the second one, then there will be some missing values but the number of rows will stay the same. If we knew that &lt;strong&gt;&lt;code&gt;base3&lt;/code&gt;&lt;/strong&gt; had more rows than &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt;, we would have used &lt;strong&gt;&lt;code&gt;right_join&lt;/code&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;We now want to merge &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt; with &lt;strong&gt;&lt;code&gt;base4&lt;/code&gt;&lt;/strong&gt;. The problem is that there are no common columns so we will need to create one in each. Moreover, &lt;strong&gt;&lt;code&gt;base_created&lt;/code&gt;&lt;/strong&gt; contains data for the year 2019 and &lt;strong&gt;&lt;code&gt;base4&lt;/code&gt;&lt;/strong&gt; for the year 2020. We will need to create columns to specify that too:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# rename the second column of base_created and of base4
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# rename the second column of base_created and of base4
 colnames(base_created)[2] &amp;lt;- &amp;quot;indid&amp;quot;
 colnames(base4)[2] &amp;lt;- &amp;quot;indid&amp;quot;
 
 # create the column &amp;quot;year&amp;quot;, that will take the value 2019 
 # for base_created and 2020 for base4
 base_created$year &amp;lt;- 2019
-base4$year &amp;lt;- 2020
-&lt;/code&gt;&lt;/pre&gt;
-
+base4$year &amp;lt;- 2020&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;From this point, we can merge these two dataframes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base_created2 &amp;lt;- bind_rows(base_created, base4)
-base_created2
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;base_created2 &amp;lt;- bind_rows(base_created, base4)
+base_created2&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 46 x 8
 ##     hhid indid surname   name     gender  wage location  year
 ##    &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;
@@ -353,15 +505,12 @@ base_created2
 ##  8     2     4 ANDERSON  Richard       1  1900 England   2019
 ##  9     3     1 THOMAS    Charles       1  1800 Spain     2019
 ## 10     3     2 TAYLOR    Barbara       2  1890 Spain     2019
-## # … with 36 more rows
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+## # … with 36 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;
 rename indidy1 indid 
 gen year=2019 
 preserve 
@@ -372,24 +521,18 @@ import delimited Base_Text.txt
 rename indidy2 indid 
 gen year=2020
 tempfile base4
-save `base4&#39;
+save `base4&amp;#39;
 restore 
 
-merge 1:1 hhid indid year using `base4&#39;
-drop _merge
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
+merge 1:1 hhid indid year using `base4&amp;#39;
+drop _merge&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
 &lt;p&gt;But we have many missing values for the new rows because &lt;strong&gt;&lt;code&gt;base4&lt;/code&gt;&lt;/strong&gt; only contained three columns. We want to have a data frame arranged by household then by individual and finally by year. Using only &lt;strong&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/strong&gt; functions, we can do:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base_created2 &amp;lt;- base_created2 %&amp;gt;% 
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;base_created2 &amp;lt;- base_created2 %&amp;gt;% 
   group_by(hhid, indid) %&amp;gt;% 
   arrange(hhid, indid, year) %&amp;gt;%
   ungroup()
-base_created2
-&lt;/code&gt;&lt;/pre&gt;
-
+base_created2&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 46 x 8
 ##     hhid indid surname   name    gender  wage location  year
 ##    &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;
@@ -403,32 +546,22 @@ base_created2
 ##  8     1     4 &amp;lt;NA&amp;gt;      &amp;lt;NA&amp;gt;        NA  2090 &amp;lt;NA&amp;gt;      2020
 ##  9     2     1 RODRIGUEZ Mary         2  3600 England   2019
 ## 10     2     1 &amp;lt;NA&amp;gt;      &amp;lt;NA&amp;gt;        NA  3784 &amp;lt;NA&amp;gt;      2020
-## # … with 36 more rows
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice that there are some &lt;strong&gt;&lt;code&gt;%&amp;gt;%&lt;/code&gt;&lt;/strong&gt; between the lines: it is a pipe and its function is to connect lines of code between them so that we don&amp;rsquo;t have to write &lt;strong&gt;&lt;code&gt;base_created2&lt;/code&gt;&lt;/strong&gt; every time. Now that our dataframe is arranged, we need to fill the missing values. Fortunately, these missing values do not change for an individual since they concern the gender, the location, the name and the surname. So basically, we can just take the value of the cell above (corresponding to year 2019) and replicate it in each cell (corresponding to year 2020):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(tidyr)
+## # … with 36 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notice that there are some &lt;strong&gt;&lt;code&gt;%&amp;gt;%&lt;/code&gt;&lt;/strong&gt; between the lines: it is a pipe and its function is to connect lines of code between them so that we don’t have to write &lt;strong&gt;&lt;code&gt;base_created2&lt;/code&gt;&lt;/strong&gt; every time. Now that our dataframe is arranged, we need to fill the missing values. Fortunately, these missing values do not change for an individual since they concern the gender, the location, the name and the surname. So basically, we can just take the value of the cell above (corresponding to year 2019) and replicate it in each cell (corresponding to year 2020):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyr)
 base_created2 &amp;lt;- base_created2 %&amp;gt;%
   fill(select_if(., ~ any(is.na(.))) %&amp;gt;% 
          names(),
-       .direction = &#39;down&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+       .direction = &amp;#39;down&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;foreach x of varlist surname name gender location {
-  bysort hhid indid: replace `x&#39;=`x&#39;[_n-1] if year==2020
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;foreach x of varlist surname name gender location {
+  bysort hhid indid: replace `x&amp;#39;=`x&amp;#39;[_n-1] if year==2020
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
 &lt;p&gt;Let me explain the code above:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;fill&lt;/code&gt;&lt;/strong&gt; aims to fill cells&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;select_if&lt;/code&gt;&lt;/strong&gt; selects columns according to the condition defined&lt;/li&gt;
@@ -437,17 +570,12 @@ base_created2 &amp;lt;- base_created2 %&amp;gt;%
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;names&lt;/code&gt;&lt;/strong&gt; tells us what the names of the columns selected are&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;.direction&lt;/code&gt;&lt;/strong&gt; tells the direction in which the filling goes&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;So &lt;strong&gt;&lt;code&gt;fill(select_if(., ~ any(is.na(.))) %&amp;gt;% names(), .direction = &#39;down&#39;)&lt;/code&gt;&lt;/strong&gt; means that for the dataframe, we select each column which has some NA in it and we obtain their names. In these columns, the empty cells are filled by the value of the cell above (since the direction is &amp;ldquo;down&amp;rdquo;).&lt;/p&gt;
-
+&lt;p&gt;So &lt;strong&gt;&lt;code&gt;fill(select_if(., ~ any(is.na(.))) %&amp;gt;% names(), .direction = &#39;down&#39;)&lt;/code&gt;&lt;/strong&gt; means that for the dataframe, we select each column which has some NA in it and we obtain their names. In these columns, the empty cells are filled by the value of the cell above (since the direction is “down”).&lt;/p&gt;
 &lt;p&gt;Finally, we want the first three columns to be &lt;strong&gt;&lt;code&gt;hhid&lt;/code&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;code&gt;indid&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code&gt;year&lt;/code&gt;&lt;/strong&gt;, and we create a ID column named &lt;strong&gt;&lt;code&gt;hhind&lt;/code&gt;&lt;/strong&gt; which is just the union of &lt;strong&gt;&lt;code&gt;hhid&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code&gt;indid&lt;/code&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base_created2 &amp;lt;- base_created2 %&amp;gt;%
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;base_created2 &amp;lt;- base_created2 %&amp;gt;%
   select(hhid, indid, year, everything()) %&amp;gt;%
   unite(hhind, c(hhid, indid), sep = &amp;quot;&amp;quot;, remove = FALSE) 
-base_created2
-&lt;/code&gt;&lt;/pre&gt;
-
+base_created2&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 46 x 9
 ##    hhind  hhid indid  year surname   name    gender  wage location
 ##    &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;   
@@ -461,195 +589,135 @@ base_created2
 ##  8 14        1     4  2020 DAVIS     David        1  2090 France  
 ##  9 21        2     1  2019 RODRIGUEZ Mary         2  3600 England 
 ## 10 21        2     1  2020 RODRIGUEZ Mary         2  3784 England 
-## # … with 36 more rows
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+## # … with 36 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;egen hhind=group(hhid indid) 
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;egen hhind=group(hhid indid) 
 order hhind hhid indid year * 
-sort hhid indid year 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s it, we now have the complete dataframe.&lt;/p&gt;
-
-&lt;h2 id=&#34;clean-the-data&#34;&gt;Clean the data&lt;/h2&gt;
-
+sort hhid indid year &lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;p&gt;That’s it, we now have the complete dataframe.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;clean-the-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Clean the data&lt;/h2&gt;
 &lt;p&gt;There are still some things to do. First, we remark that there are some errors in the column &lt;strong&gt;&lt;code&gt;location&lt;/code&gt;&lt;/strong&gt; (&lt;strong&gt;&lt;code&gt;England_error&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code&gt;Spain_error&lt;/code&gt;&lt;/strong&gt;) so we correct it:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# display the unique values of the column &amp;quot;location&amp;quot;
-unique(base_created2$location)
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# display the unique values of the column &amp;quot;location&amp;quot;
+unique(base_created2$location)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] &amp;quot;France&amp;quot;        &amp;quot;England&amp;quot;       &amp;quot;Spain&amp;quot;         &amp;quot;Italy&amp;quot;        
-## [5] &amp;quot;England_error&amp;quot; &amp;quot;Spain_error&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# correct the errors
+## [5] &amp;quot;England_error&amp;quot; &amp;quot;Spain_error&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# correct the errors
 base_created2[base_created2 == &amp;quot;England_error&amp;quot;] &amp;lt;- &amp;quot;England&amp;quot;
 base_created2[base_created2 == &amp;quot;Spain_error&amp;quot;] &amp;lt;- &amp;quot;Spain&amp;quot;
-unique(base_created2$location)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;France&amp;quot;  &amp;quot;England&amp;quot; &amp;quot;Spain&amp;quot;   &amp;quot;Italy&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+unique(base_created2$location)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;France&amp;quot;  &amp;quot;England&amp;quot; &amp;quot;Spain&amp;quot;   &amp;quot;Italy&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;replace localisation=&amp;quot;England&amp;quot; if localisation==&amp;quot;England_error&amp;quot;
-replace localisation=&amp;quot;Spain&amp;quot; if localisation==&amp;quot;Spain_error&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
-&lt;p&gt;Basically, what we&amp;rsquo;ve done here is that we have selected every cell in the whole dataframe that had the value &lt;strong&gt;&lt;code&gt;England_error&lt;/code&gt;&lt;/strong&gt; (respectively &lt;strong&gt;&lt;code&gt;Spain_error&lt;/code&gt;&lt;/strong&gt;) and we replaced these cells by &lt;strong&gt;&lt;code&gt;England&lt;/code&gt;&lt;/strong&gt; (&lt;strong&gt;&lt;code&gt;Spain&lt;/code&gt;&lt;/strong&gt;). We also need to recode the column &lt;strong&gt;&lt;code&gt;gender&lt;/code&gt;&lt;/strong&gt; because binary variables have to take values of 0 or 1, not 1 or 2.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;base_created2$gender &amp;lt;- recode(base_created2$gender, `2` = 0)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;replace localisation=&amp;quot;England&amp;quot; if localisation==&amp;quot;England_error&amp;quot;
+replace localisation=&amp;quot;Spain&amp;quot; if localisation==&amp;quot;Spain_error&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;p&gt;Basically, what we’ve done here is that we have selected every cell in the whole dataframe that had the value &lt;strong&gt;&lt;code&gt;England_error&lt;/code&gt;&lt;/strong&gt; (respectively &lt;strong&gt;&lt;code&gt;Spain_error&lt;/code&gt;&lt;/strong&gt;) and we replaced these cells by &lt;strong&gt;&lt;code&gt;England&lt;/code&gt;&lt;/strong&gt; (&lt;strong&gt;&lt;code&gt;Spain&lt;/code&gt;&lt;/strong&gt;). We also need to recode the column &lt;strong&gt;&lt;code&gt;gender&lt;/code&gt;&lt;/strong&gt; because binary variables have to take values of 0 or 1, not 1 or 2.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;base_created2$gender &amp;lt;- recode(base_created2$gender, `2` = 0)&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;label define genderlab 1 &amp;quot;M&amp;quot; 2 &amp;quot;F&amp;quot;
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;label define genderlab 1 &amp;quot;M&amp;quot; 2 &amp;quot;F&amp;quot;
 label values gender genderlab
 recode gender (2=0 &amp;quot;Female&amp;quot;) (1=1 &amp;quot;Male&amp;quot;), gen(gender2)
 drop gender
-rename gender2 gender
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
+rename gender2 gender&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
 &lt;p&gt;To have more details on the dataframe, we need to create some labels. To do so, we need the &lt;strong&gt;&lt;code&gt;upData&lt;/code&gt;&lt;/strong&gt; function in the &lt;strong&gt;&lt;code&gt;Hmisc&lt;/code&gt;&lt;/strong&gt; package.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(Hmisc)
-var.labels &amp;lt;- c(hhind = &amp;quot;individual&#39;s ID&amp;quot;,
-                hhid = &amp;quot;household&#39;s ID&amp;quot;,
-                indid = &amp;quot;individual&#39;s ID in the household&amp;quot;,
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(Hmisc)
+var.labels &amp;lt;- c(hhind = &amp;quot;individual&amp;#39;s ID&amp;quot;,
+                hhid = &amp;quot;household&amp;#39;s ID&amp;quot;,
+                indid = &amp;quot;individual&amp;#39;s ID in the household&amp;quot;,
                 year = &amp;quot;year&amp;quot;,
                 surname = &amp;quot;surname&amp;quot;,
                 name = &amp;quot;name&amp;quot;,
                 gender = &amp;quot;1 if male, 0 if female&amp;quot;,
                 wage = &amp;quot;wage&amp;quot;,
-                location = &amp;quot;household&#39;s location&amp;quot;)
-base_created2 &amp;lt;- upData(base_created2, labels = var.labels)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+                location = &amp;quot;household&amp;#39;s location&amp;quot;)
+base_created2 &amp;lt;- upData(base_created2, labels = var.labels)&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;label variable hhind &amp;quot;individual&#39;s ID&amp;quot;
-label variable indid &amp;quot;household&#39;s ID&amp;quot; 
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;label variable hhind &amp;quot;individual&amp;#39;s ID&amp;quot;
+label variable indid &amp;quot;household&amp;#39;s ID&amp;quot; 
 label variable year &amp;quot;year&amp;quot;
-label variable hhid &amp;quot;individual&#39;s ID in the household&amp;quot;
+label variable hhid &amp;quot;individual&amp;#39;s ID in the household&amp;quot;
 label variable surname &amp;quot;Surname&amp;quot;
 label variable name &amp;quot;Name&amp;quot;
 label variable gender &amp;quot;1 if male, 0 if female&amp;quot;
 label variable wage &amp;quot;wage&amp;quot;
-label variable location &amp;quot;household&#39;s location&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
+label variable location &amp;quot;household&amp;#39;s location&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
 &lt;p&gt;We can see the result with:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;contents(base_created2)
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;contents(base_created2)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
-## Data frame:base_created2	46 observations and 9 variables    Maximum # NAs:0
+## Data frame:base_created2 46 observations and 9 variables    Maximum # NAs:0
 ## 
 ## 
 ##                                    Labels     Class   Storage
-## hhind                     individual&#39;s ID character character
-## hhid                       household&#39;s ID   integer   integer
-## indid    individual&#39;s ID in the household   integer   integer
+## hhind                     individual&amp;#39;s ID character character
+## hhid                       household&amp;#39;s ID   integer   integer
+## indid    individual&amp;#39;s ID in the household   integer   integer
 ## year                                 year   integer   integer
 ## surname                           surname character character
 ## name                                 name character character
 ## gender             1 if male, 0 if female   integer   integer
 ## wage                                 wage   integer   integer
-## location             household&#39;s location character character
-&lt;/code&gt;&lt;/pre&gt;
-
+## location             household&amp;#39;s location character character&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now that our dataframe is clean and detailed, we can compute some descriptive statistics. But before doing it, we might want to save it:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;write.xlsx(base_created2, file = here(&amp;quot;Bases_Created/modified_base.xlsx&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;write.xlsx(base_created2, file = here(&amp;quot;Bases_Created/modified_base.xlsx&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;cd ..\Bases_Created  
-export excel using &amp;quot;modified_base.xls&amp;quot;, replace
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;descriptive-statistics&#34;&gt;Descriptive Statistics&lt;/h2&gt;
-
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;cd ..\Bases_Created  
+export excel using &amp;quot;modified_base.xls&amp;quot;, replace&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;/div&gt;
+&lt;div id=&#34;descriptive-statistics&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Descriptive Statistics&lt;/h2&gt;
 &lt;p&gt;First of all, if we want to check the number of people per location or gender and per year, we use the &lt;strong&gt;&lt;code&gt;table&lt;/code&gt;&lt;/strong&gt; function:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;table(base_created2$gender, base_created2$year)
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;table(base_created2$gender, base_created2$year)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    
 ##     2019 2020
 ##   0    9    9
-##   1   14   14
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;table(base_created2$location, base_created2$year)
-&lt;/code&gt;&lt;/pre&gt;
-
+##   1   14   14&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;table(base_created2$location, base_created2$year)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##          
 ##           2019 2020
 ##   England    6    6
 ##   France    12   12
 ##   Italy      1    1
-##   Spain      4    4
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+##   Spain      4    4&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;tab gender if year==2019  
-tab location if year==2019 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;tab gender if year==2019  
+tab location if year==2019 &lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
 &lt;p&gt;To have more detailed statistics, you can use many functions. Here, we use the function &lt;strong&gt;&lt;code&gt;describe&lt;/code&gt;&lt;/strong&gt; from the &lt;strong&gt;&lt;code&gt;Hmisc&lt;/code&gt;&lt;/strong&gt; package&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;describe(base_created2)
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;describe(base_created2)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## base_created2 
 ## 
 ##  9  Variables      46  Observations
 ## --------------------------------------------------------------------------------
-## hhind : individual&#39;s ID 
+## hhind : individual&amp;#39;s ID 
 ##        n  missing distinct 
 ##       46        0       23 
 ## 
 ## lowest : 11 12 13 14 21, highest: 71 72 81 82 83
 ## --------------------------------------------------------------------------------
-## hhid : household&#39;s ID 
+## hhid : household&amp;#39;s ID 
 ##        n  missing distinct     Info     Mean      Gmd 
 ##       46        0        8    0.975    4.217    2.783 
 ## 
@@ -659,7 +727,7 @@ tab location if year==2019
 ## Frequency      8     8     4     2    10     4     4     6
 ## Proportion 0.174 0.174 0.087 0.043 0.217 0.087 0.087 0.130
 ## --------------------------------------------------------------------------------
-## indid : individual&#39;s ID in the household 
+## indid : individual&amp;#39;s ID in the household 
 ##        n  missing distinct     Info     Mean      Gmd 
 ##       46        0        5    0.923    2.217    1.306 
 ## 
@@ -704,115 +772,79 @@ tab location if year==2019
 ## 
 ## lowest : 1397 1600 1608 1683 1690, highest: 2384 3500 3600 3782 3784
 ## --------------------------------------------------------------------------------
-## location : household&#39;s location 
+## location : household&amp;#39;s location 
 ##        n  missing distinct 
 ##       46        0        4 
 ##                                           
 ## Value      England  France   Italy   Spain
 ## Frequency       12      24       2       8
 ## Proportion   0.261   0.522   0.043   0.174
-## --------------------------------------------------------------------------------
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+## --------------------------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;sum *, detail
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
-&lt;p&gt;but you can also try the function &lt;strong&gt;&lt;code&gt;summary&lt;/code&gt;&lt;/strong&gt; (automatically available in base R), &lt;strong&gt;&lt;code&gt;stat.desc&lt;/code&gt;&lt;/strong&gt; in &lt;strong&gt;&lt;code&gt;pastecs&lt;/code&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;code&gt;skim&lt;/code&gt;&lt;/strong&gt; in &lt;strong&gt;&lt;code&gt;skimr&lt;/code&gt;&lt;/strong&gt; or even &lt;strong&gt;&lt;code&gt;makeDataReport&lt;/code&gt;&lt;/strong&gt; in &lt;strong&gt;&lt;code&gt;dataMaid&lt;/code&gt;&lt;/strong&gt; to have a complete PDF report summarizing your data. To summarize data under certain conditions (e.g. to have the average wage for each location), you can use &lt;strong&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# you can change the argument in group_by() by gender for example
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;sum *, detail&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;p&gt;but you can also try the function &lt;strong&gt;&lt;code&gt;summary&lt;/code&gt;&lt;/strong&gt; (automatically available in base R), &lt;strong&gt;&lt;code&gt;stat.desc&lt;/code&gt;&lt;/strong&gt; in &lt;strong&gt;&lt;code&gt;pastecs&lt;/code&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;code&gt;skim&lt;/code&gt;&lt;/strong&gt; in &lt;strong&gt;&lt;code&gt;skimr&lt;/code&gt;&lt;/strong&gt; or even &lt;strong&gt;&lt;code&gt;makeDataReport&lt;/code&gt;&lt;/strong&gt; in &lt;strong&gt;&lt;code&gt;dataMaid&lt;/code&gt;&lt;/strong&gt; to have a complete PDF report summarizing your data. To summarize data under certain conditions (e.g. to have the average wage for each location), you can use &lt;strong&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# you can change the argument in group_by() by gender for example
 base_created2 %&amp;gt;%
   group_by(location) %&amp;gt;%
-  summarize_at(.vars = &amp;quot;wage&amp;quot;, .funs = &amp;quot;mean&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
+  summarize_at(.vars = &amp;quot;wage&amp;quot;, .funs = &amp;quot;mean&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 2
 ##   location    wage
 ##   &amp;lt;labelled&amp;gt; &amp;lt;dbl&amp;gt;
 ## 1 England    2452.
 ## 2 France     1935.
 ## 3 Italy      1801 
-## 4 Spain      1905.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+## 4 Spain      1905.&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;tabstat wage if year==2019, stats(N mean sd min max p25 p50 p75) by(location)
-tabstat wage if year==2020, stats(N mean sd min max p25 p50 p75) by(location)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;plots&#34;&gt;Plots&lt;/h2&gt;
-
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;tabstat wage if year==2019, stats(N mean sd min max p25 p50 p75) by(location)
+tabstat wage if year==2020, stats(N mean sd min max p25 p50 p75) by(location)&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plots&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plots&lt;/h2&gt;
 &lt;p&gt;Finally, we want to plot some data to include in our report or article (or anything else). &lt;strong&gt;&lt;code&gt;ggplot2&lt;/code&gt;&lt;/strong&gt; is THE reference to make plots with R. The &lt;strong&gt;&lt;code&gt;ggplot&lt;/code&gt;&lt;/strong&gt; function does not create a graph but tells what is the data you are going to use and the aesthetics (&lt;strong&gt;&lt;code&gt;aes&lt;/code&gt;&lt;/strong&gt;). Here, we want to display the wages in a histogram and to distinguish them per year. Therefore, we want to fill the bars according to the year. To precise the type of graph we want, we add &lt;strong&gt;&lt;code&gt;+ geom_histogram()&lt;/code&gt;&lt;/strong&gt; after &lt;strong&gt;&lt;code&gt;ggplot&lt;/code&gt;&lt;/strong&gt;. You may change the number of &lt;strong&gt;&lt;code&gt;bins&lt;/code&gt;&lt;/strong&gt; to have a more precise histogram.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggplot2)
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
 hist1 &amp;lt;- ggplot(data = base_created2, 
                 mapping = aes(wage, fill = factor(year))) +
   geom_histogram(bins = 10)
-hist1
-&lt;/code&gt;&lt;/pre&gt;
-
+hist1&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/posts/first-contact_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;details&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;histogram wage if year==2019, saving(Hist1, replace) bin(10) freq title(&amp;quot;Year 2019&amp;quot;) ytitle(&amp;quot;Frequency&amp;quot;) 
-histogram wage if year==2020, saving(Hist2, replace) bin(10) freq title(&amp;quot;Year 2020&amp;quot;) ytitle(&amp;quot;Frequency&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;histogram wage if year==2019, saving(Hist1, replace) bin(10) freq title(&amp;quot;Year 2019&amp;quot;) ytitle(&amp;quot;Frequency&amp;quot;) 
+histogram wage if year==2020, saving(Hist2, replace) bin(10) freq title(&amp;quot;Year 2020&amp;quot;) ytitle(&amp;quot;Frequency&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
 &lt;p&gt;If you prefer one histogram per year, you can use the &lt;strong&gt;&lt;code&gt;facet_wrap()&lt;/code&gt;&lt;/strong&gt; argument, as below.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;hist2 &amp;lt;- ggplot(data = base_created2, 
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist2 &amp;lt;- ggplot(data = base_created2, 
                 mapping = aes(wage, fill = factor(year))) +
   geom_histogram(bins = 10) +
   facet_wrap(vars(year))
-hist2
-&lt;/code&gt;&lt;/pre&gt;
-
+hist2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/posts/first-contact_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;details&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;graph combine Hist1.gph Hist2.gph, col(2) xsize(10) ysize(5) iscale(1.5) title(&amp;quot;{bf:Wage distribution per year}&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;graph combine Hist1.gph Hist2.gph, col(2) xsize(10) ysize(5) iscale(1.5) title(&amp;quot;{bf:Wage distribution per year}&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
 &lt;p&gt;Finally, you may want to export these graphs. To do so, we use &lt;strong&gt;&lt;code&gt;ggsave&lt;/code&gt;&lt;/strong&gt; (you can replace .pdf by .eps or .png if you want):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;ggsave(here(&amp;quot;Figures/plot1.pdf&amp;quot;), plot = hist1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;details&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggsave(here(&amp;quot;Figures/plot1.pdf&amp;quot;), plot = hist1)&lt;/code&gt;&lt;/pre&gt;
+&lt;details&gt;
 &lt;summary&gt; Stata
 &lt;/summary&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-stata&#34;&gt;graph export Histogram1.pdf,  replace
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s it! In this first post, you have seen how to import, clean and tidy datasets, and how to make some descriptive statistics and some plots. I hope this was helpful to you!&lt;/p&gt;
+&lt;p&gt;
+&lt;pre class=&#34;stata&#34;&gt;&lt;code&gt;graph export Histogram1.pdf,  replace&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;p&gt;That’s it! In this first post, you have seen how to import, clean and tidy datasets, and how to make some descriptive statistics and some plots. I hope this was helpful to you!&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     
@@ -822,40 +854,28 @@ hist2
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/posts/why-moving/</guid>
-      <description>&lt;p&gt;Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students&amp;rsquo; experiences, e.g. data cleaning and treatment, data analysis, econometrics, etc.&lt;/p&gt;
+      <description>
 
+
+&lt;p&gt;Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students’ experiences, e.g. data cleaning and treatment, data analysis, econometrics, etc.&lt;/p&gt;
 &lt;p&gt;Now we can begin.&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;Reason 1: R is free&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;That may seem a false argument for some people, especially because in many universities, students have freely access to Stata. However, in my experience, I know that we frequently want to work home or in group on some projects and therefore we need Stata on our personal laptop. Therefore, some cracked versions circulate between students and it is well-known that when downloading illegally softwares (and movies, TV shows, etc.), there&amp;rsquo;s always a risk of being infected by a virus. I don&amp;rsquo;t know if this happens often or not, maybe you will never suffer from it, but it would be just stupid to have to suffer from a hacking just because the statistical software was not free. That&amp;rsquo;s the big advantage of R: it is completely free. Whatever your operating system, you can download base R and every package you want and it won&amp;rsquo;t cost any money.&lt;/p&gt;
-
+&lt;p&gt;That may seem a false argument for some people, especially because in many universities, students have freely access to Stata. However, in my experience, I know that we frequently want to work home or in group on some projects and therefore we need Stata on our personal laptop. Therefore, some cracked versions circulate between students and it is well-known that when downloading illegally softwares (and movies, TV shows, etc.), there’s always a risk of being infected by a virus. I don’t know if this happens often or not, maybe you will never suffer from it, but it would be just stupid to have to suffer from a hacking just because the statistical software was not free. That’s the big advantage of R: it is completely free. Whatever your operating system, you can download base R and every package you want and it won’t cost any money.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Reason 2: R is open-source&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I have already heard one of my professor complaining about the fact that Stata is a &amp;ldquo;black box&amp;rdquo; (not like those in planes but more like an opaque system). On the contrary, R is open-source (meaning that anyone can see the code, contribute to it and distribute it) and the code behind the functions you use is easily visible with just one click. That accessiblity entails the next argument, which is the diversity of packages.&lt;/p&gt;
-
+&lt;p&gt;I have already heard one of my professor complaining about the fact that Stata is a “black box” (not like those in planes but more like an opaque system). On the contrary, R is open-source (meaning that anyone can see the code, contribute to it and distribute it) and the code behind the functions you use is easily visible with just one click. That accessiblity entails the next argument, which is the diversity of packages.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Reason 3: the diversity of packages&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;There is A LOT of packages on R (more than 10,000 on CRAN as shown &lt;a href=&#34;https://blog.revolutionanalytics.com/2017/01/cran-10000.html&#34;&gt;here&lt;/a&gt;, and it was in 2017!). Additionally to the packages on CRAN (the &lt;em&gt;Comprehensive R Archive Network&lt;/em&gt;, where the stable versions of the packages are), some packages are hosted only on Github and others are made by users or companies only for private purposes and will not be released on open-source. The packages are the strength of R. Base-R (i.e. the basic version of R, without any packages manually installed) is a great start to learn how to code and to manipulate data, and in fact you can stay with base-R only if you limit your study to some basic data analysis. However, base-R may also be hard to learn and not very esthetic. Moreover, some packages allow to extend R functionalities beyond base-R.&lt;/p&gt;
-
+&lt;p&gt;There is A LOT of packages on R (more than 10,000 on CRAN as shown &lt;a href=&#34;https://blog.revolutionanalytics.com/2017/01/cran-10000.html&#34;&gt;here&lt;/a&gt;, and it was in 2017!). Additionally to the packages on CRAN (the &lt;em&gt;Comprehensive R Archive Network&lt;/em&gt;, where the stable versions of the packages are), some packages are hosted only on Github and others are made by users or companies only for private purposes and will not be released on open-source. The packages are the strength of R. Base-R (i.e. the basic version of R, without any packages manually installed) is a great start to learn how to code and to manipulate data, and in fact you can stay with base-R only if you limit your study to some basic data analysis. However, base-R may also be hard to learn and not very esthetic. Moreover, some packages allow to extend R functionalities beyond base-R.&lt;/p&gt;
 &lt;p&gt;This is a list (far from being exhaustive) of some of the most important packages for students in economics:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;tidyverse&lt;/code&gt;: this is a portmanteau word of &lt;em&gt;tidy&lt;/em&gt; and &lt;em&gt;universe&lt;/em&gt;. It regroups more than 20 packages for data import (&lt;code&gt;readr&lt;/code&gt;), data treatment (&lt;code&gt;dplyr&lt;/code&gt;, &lt;code&gt;tidyr&lt;/code&gt;&amp;hellip;), graphics (&lt;code&gt;ggplot2&lt;/code&gt;), etc.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;rmarkdown&lt;/code&gt;: as a student (in economics but in other domains too), you will have to write a Master&amp;rsquo;s thesis and before that, you will certainly have to do some group projects, sort of small reports. When the data analysis will be done, you will have to write your report and to incorporate the results in the document. That can lead to some mistakes/typos that can lead to big errors, like changes in p-values between the results obtained in the statistical software and the word processing program (whether it is LaTeX or Microsoft Word). To guarantee that you won&amp;rsquo;t make this sort of mistakes, the most effective way is to write directly in R and to incorporate your code directly in the text. Therefore, in one document, you will have the text of your report and the code needed for the data analysis, all of that ready to be converted in PDF, HTML or Word.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;shiny&lt;/code&gt;: while &lt;code&gt;rmarkdown&lt;/code&gt; promotes reproducibility by keeping all in a unique document, &lt;code&gt;shiny&lt;/code&gt; goes a step further. Once you have made some data analysis, you can put it in a Shiny application (&amp;ldquo;app&amp;rdquo;) that will create a web page in which people interested in your work will be able to reproduce your results but also to check wether they are robust. Indeed, Shiny makes results &lt;em&gt;reactive&lt;/em&gt;, meaning that you can change the sample size or the years or anything else you want and the results will automatically adapt. That is very useful in econometrics, where robustness is very important and always checked.
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tidyverse&lt;/code&gt;: this is a portmanteau word of &lt;em&gt;tidy&lt;/em&gt; and &lt;em&gt;universe&lt;/em&gt;. It regroups more than 20 packages for data import (&lt;code&gt;readr&lt;/code&gt;), data treatment (&lt;code&gt;dplyr&lt;/code&gt;, &lt;code&gt;tidyr&lt;/code&gt;…), graphics (&lt;code&gt;ggplot2&lt;/code&gt;), etc.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rmarkdown&lt;/code&gt;: as a student (in economics but in other domains too), you will have to write a Master’s thesis and before that, you will certainly have to do some group projects, sort of small reports. When the data analysis will be done, you will have to write your report and to incorporate the results in the document. That can lead to some mistakes/typos that can lead to big errors, like changes in p-values between the results obtained in the statistical software and the word processing program (whether it is LaTeX or Microsoft Word). To guarantee that you won’t make this sort of mistakes, the most effective way is to write directly in R and to incorporate your code directly in the text. Therefore, in one document, you will have the text of your report and the code needed for the data analysis, all of that ready to be converted in PDF, HTML or Word.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;shiny&lt;/code&gt;: while &lt;code&gt;rmarkdown&lt;/code&gt; promotes reproducibility by keeping all in a unique document, &lt;code&gt;shiny&lt;/code&gt; goes a step further. Once you have made some data analysis, you can put it in a Shiny application (“app”) that will create a web page in which people interested in your work will be able to reproduce your results but also to check wether they are robust. Indeed, Shiny makes results &lt;em&gt;reactive&lt;/em&gt;, meaning that you can change the sample size or the years or anything else you want and the results will automatically adapt. That is very useful in econometrics, where robustness is very important and always checked.
 There exist thousands and thousands of R packages which cover a large spectrum of the problems and questions you might have, and that is definitely a strength of R.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&lt;strong&gt;Reason 4: the community&lt;/strong&gt;&lt;/p&gt;
-
 &lt;p&gt;It is certain that will have some problems with your code, everybody has. The documentation is very complete and allows to solve most of them, but sometimes you may need to seek for help online. It is quite probable that the question you ask yourself has already been asked by somebody else before you and if it has, you will find the answer on &lt;a href=&#34;https://stackoverflow.com/questions/tagged/r&#34;&gt;StackOverflow&lt;/a&gt; or on the &lt;a href=&#34;https://community.rstudio.com/&#34;&gt;RStudio Community&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;Reason 5: RStudio is just a pleasure to use&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;RStudio is the most used IDE for R (Integrated Desktop Environment, not the language but a software that permits to use more easily the language). It has tons of shortcuts and is very customizable. It is a real pleasure to use, and it can be linked to other great services like GitHub (maybe you don&amp;rsquo;t know what it is so in a few words, it is a service that permits version control i.e. keep a trace of every change in a project, whether it is a report, a package or a web application).&lt;/p&gt;
+&lt;p&gt;RStudio is the most used IDE for R (Integrated Desktop Environment, not the language but a software that permits to use more easily the language). It has tons of shortcuts and is very customizable. It is a real pleasure to use, and it can be linked to other great services like GitHub (maybe you don’t know what it is so in a few words, it is a service that permits version control i.e. keep a trace of every change in a project, whether it is a report, a package or a web application).&lt;/p&gt;
 </description>
     </item>
     

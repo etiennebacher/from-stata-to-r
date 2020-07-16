@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2020, Etienne Bacher. Built with Blogdown. Powered by indigo theme for Hugo</copyright>
-    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Writing a Master&#39;s thesis with R Markdown and Bookdown</title>
+      <link>/posts/tips-and-tricks-r-markdown/</link>
+      <pubDate>Thu, 16 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tips-and-tricks-r-markdown/</guid>
+      <description>Why bookdown? LaTeX packages and commands Titlepage, acknowledgements and summary Include LaTeX files in YAML Summary   I finished my Master’s thesis very recently, and I wrote it with R Markdown, and more precisely with the bookdown package. It was really comfortable to do absolutely everything with R: data treatment, use of econometric methods, redaction with chunk of codes, and even the slides for the presentation! However, I have also spent a non-negligible part of my time trying to have a correct layout, essentially for the first pages.</description>
+    </item>
     
     <item>
       <title>What to do when your code doesn&#39;t work?</title>
@@ -34,20 +43,20 @@ Read the error message This may seem obvious since this is the first thing we se
     <item>
       <title>My favorite shortcuts in RStudio</title>
       <link>/posts/my-favorite-shortcuts-in-rstudio/</link>
-      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/my-favorite-shortcuts-in-rstudio/</guid>
-      <description>Currently working on my master&amp;rsquo;s thesis, I spend almost half on my day on R (the other half being spent reading articles). I have learnt a few very useful shortcuts by reading blog posts or free R books here and there and I have decided to make a small list of those I use most.
-&amp;ldquo;Ctrl+Shift+Enter&amp;rdquo;: run the whole script This combination will run all of your script, wherever the mouse is in the script.</description>
+      <description>Currently working on my master’s thesis, I spend almost half on my day on R (the other half being spent reading articles). I have learnt a few very useful shortcuts by reading blog posts or free R books here and there and I have decided to make a small list of those I use most.
+“Ctrl+Shift+Enter”: run the whole script This combination will run all of your script, wherever the mouse is in the script.</description>
     </item>
     
     <item>
       <title>First contact with the data on R</title>
       <link>/posts/first-contact/</link>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/first-contact/</guid>
-      <description>Note:  In this and future articles, you will see some arrows below R code. If you click on it, it will display the Stata code equivalent to the R code displayed. However, since those are two different softwares, they are not completely equivalent and some of the Stata code may not fully correspond to the R code. Consider it more like a reference point not to be lost rather than like an exact equivalent.</description>
+      <description>Files used and organization of the project Import data Merge dataframes Clean the data Descriptive Statistics Plots    Note:  In this and future articles, you will see some arrows below R code. If you click on it, it will display the Stata code equivalent to the R code displayed. However, since those are two different softwares, they are not completely equivalent and some of the Stata code may not fully correspond to the R code.</description>
     </item>
     
     <item>
@@ -56,7 +65,7 @@ Read the error message This may seem obvious since this is the first thing we se
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/posts/why-moving/</guid>
-      <description>Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students&amp;rsquo; experiences, e.</description>
+      <description>Before going into the details about studying economics with R, it makes sense to explain why you should use R compared to Stata. Before I start, please note that I have been using Stata occasionally for about a year whereas I spend much more time on R so I may forget some features that Stata has and that I am not aware of. However, I believe that what I have made with Stata corresponds to most Master students’ experiences, e.</description>
     </item>
     
   </channel>
