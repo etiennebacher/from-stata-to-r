@@ -95,7 +95,7 @@
 <ul>
 <li><a href="#why-bookdown">Why <code>bookdown</code>?</a></li>
 <li><a href="#latex-packages-and-commands">LaTeX packages and commands</a></li>
-<li><a href="#titlepage-acknowledgements-and-summary">Titlepage, acknowledgements and summary</a></li>
+<li><a href="#titlepage-acknowledgements-and-abstract">Titlepage, acknowledgements and abstract</a></li>
 <li><a href="#include-latex-files-in-yaml">Include LaTeX files in YAML</a></li>
 <li><a href="#summary">Summary</a></li>
 </ul>
@@ -106,7 +106,7 @@
 <h2>Why <code>bookdown</code>?</h2>
 <p>A small preamble before starting to list these problems and solutions: why did I use <code>bookdown</code> and not <code>rmarkdown</code>? <code>bookdown</code> has a few advantages that are very important when writing a Master’s thesis (or an academic paper in general), such as cross-references between sections, figures, tables, etc. See <a href="https://bookdown.org/yihui/bookdown/">the <code>bookdown</code> book</a> for all the details.</p>
 <p>While it is possible to create a <code>bookdown</code> project with RStudio, I “manually” made my own, because I have the impression there are a lot of files created automatically by RStudio that would just confuse myself. Therefore, I had a file containing the YAML and the chunks necessary to load all the packages needed and to run the child documents. Child documents are <code>.Rmd</code> files that contain only some Markdown text and code chunks (no YAML). They make it much easier to write a thesis since it is possible to divide it in several pieces (introduction, literature review, method, etc.).</p>
-<p>In addition to <code>Global.Rmd</code> (which contains YAML and setup chunks), I used two <code>.tex</code> files: <code>preamble.tex</code> is where I put all the LaTeX commands and packages I used, and <code>titlepage.tex</code> to make my custom titlepage, acknowledgments and summary before the table of contents.</p>
+<p>In addition to <code>Global.Rmd</code> (which contains YAML and setup chunks), I used two <code>.tex</code> files: <code>preamble.tex</code> is where I put all the LaTeX commands and packages I used, and <code>titlepage.tex</code> to make my custom titlepage, acknowledgments and abstract before the table of contents.</p>
 </div>
 <div id="latex-packages-and-commands" class="section level2">
 <h2>LaTeX packages and commands</h2>
@@ -131,18 +131,18 @@
 </p>
 </details>
 </div>
-<div id="titlepage-acknowledgements-and-summary" class="section level2">
-<h2>Titlepage, acknowledgements and summary</h2>
+<div id="titlepage-acknowledgements-and-abstract" class="section level2">
+<h2>Titlepage, acknowledgements and abstract</h2>
 <p>Concerning these three components, I put them in another file named <code>titlepage.tex</code>. This is the layout I wanted:</p>
 <ul>
 <li><p>a titlepage with some logos and some information on my thesis and my university;</p></li>
 <li><p>a blank page;</p></li>
 <li><p>acknowledgements on a new page;</p></li>
-<li><p>summary on a new page;</p></li>
+<li><p>abstract on a new page;</p></li>
 <li><p>TOC, LOF and LOT on a new page.</p></li>
 </ul>
-<p>To do so, I started the titlepage with <code>\begin{titlepage}</code> and customized it as I wanted. But before putting <code>end{titlepage}</code>, I placed <code>\afterpage{\blankpage}</code>, which is the command we define in <code>preamble.tex</code>. With this, I had a titlepage and a blank page.</p>
-<p>The next step was to create two pages containing the acknowledgements and the summary. This was easily done in LaTeX, and this time I could use <code>\pagebreak</code> at the end of the acknowledgements to create a new page for the summary. I also put another <code>\pagebreak</code> to finish <code>titlepage.tex</code>, so that TOC, LOF and LOT (created in the YAML) could start on a new page.</p>
+<p>To do so, I started the titlepage with <code>\begin{titlepage}</code> and customized it as I wanted. But before putting <code>\end{titlepage}</code>, I placed <code>\afterpage{\blankpage}</code>, which is the command we define in <code>preamble.tex</code>. With this, I had a titlepage and a blank page.</p>
+<p>The next step was to create two pages containing the acknowledgements and the abstract This was easily done in LaTeX, and this time I could use <code>\pagebreak</code> at the end of the acknowledgements to create a new page for the abstract. I also put another <code>\pagebreak</code> to finish <code>titlepage.tex</code>, so that TOC, LOF and LOT (created in the YAML) could start on a new page.</p>
 </div>
 <div id="include-latex-files-in-yaml" class="section level2">
 <h2>Include LaTeX files in YAML</h2>
@@ -267,7 +267,7 @@ Thanks everyone
 \pagebreak
 
 \begin{center}
-\textbf{Summary}
+\textbf{Abstract}
 \end{center}
 Bla bla bla...
 \pagebreak</code></pre>

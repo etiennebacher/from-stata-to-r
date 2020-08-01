@@ -17,7 +17,7 @@ A small preamble before starting to list these problems and solutions: why did I
 
 While it is possible to create a `bookdown` project with RStudio, I "manually" made my own, because I have the impression there are a lot of files created automatically by RStudio that would just confuse myself. Therefore, I had a file containing the YAML and the chunks necessary to load all the packages needed and to run the child documents. Child documents are `.Rmd` files that contain only some Markdown text and code chunks (no YAML). They make it much easier to write a thesis since it is possible to divide it in several pieces (introduction, literature review, method, etc.).
 
-In addition to `Global.Rmd` (which contains YAML and setup chunks), I used two `.tex` files: `preamble.tex` is where I put all the LaTeX commands and packages I used, and `titlepage.tex` to make my custom titlepage, acknowledgments and summary before the table of contents. 
+In addition to `Global.Rmd` (which contains YAML and setup chunks), I used two `.tex` files: `preamble.tex` is where I put all the LaTeX commands and packages I used, and `titlepage.tex` to make my custom titlepage, acknowledgments and abstract before the table of contents. 
 
 
 ## LaTeX packages and commands
@@ -51,7 +51,7 @@ Here's a small list of the commands I used for my thesis.
 
 
 
-## Titlepage, acknowledgements and summary
+## Titlepage, acknowledgements and abstract
 
 Concerning these three components, I put them in another file named `titlepage.tex`. This is the layout I wanted:
 
@@ -61,13 +61,13 @@ Concerning these three components, I put them in another file named `titlepage.t
 
 * acknowledgements on a new page;
 
-* summary on a new page;
+* abstract on a new page;
 
 * TOC, LOF and LOT on a new page.
 
-To do so, I started the titlepage with `\begin{titlepage}` and customized it as I wanted. But before putting `end{titlepage}`, I placed `\afterpage{\blankpage}`, which is the command we define in `preamble.tex`. With this, I had a titlepage and a blank page. 
+To do so, I started the titlepage with `\begin{titlepage}` and customized it as I wanted. But before putting `\end{titlepage}`, I placed `\afterpage{\blankpage}`, which is the command we define in `preamble.tex`. With this, I had a titlepage and a blank page. 
 
-The next step was to create two pages containing the acknowledgements and the summary. This was easily done in LaTeX, and this time I could use `\pagebreak` at the end of the acknowledgements to create a new page for the summary. I also put another `\pagebreak` to finish `titlepage.tex`, so that TOC, LOF and LOT (created in the YAML) could start on a new page.
+The next step was to create two pages containing the acknowledgements and the abstract This was easily done in LaTeX, and this time I could use `\pagebreak` at the end of the acknowledgements to create a new page for the abstract. I also put another `\pagebreak` to finish `titlepage.tex`, so that TOC, LOF and LOT (created in the YAML) could start on a new page.
 
 
 ## Include LaTeX files in YAML
@@ -205,7 +205,7 @@ Thanks everyone
 \pagebreak
 
 \begin{center}
-\textbf{Summary}
+\textbf{Abstract}
 \end{center}
 Bla bla bla...
 \pagebreak

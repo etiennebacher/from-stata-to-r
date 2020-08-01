@@ -23,7 +23,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#why-bookdown&#34;&gt;Why &lt;code&gt;bookdown&lt;/code&gt;?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#latex-packages-and-commands&#34;&gt;LaTeX packages and commands&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#titlepage-acknowledgements-and-summary&#34;&gt;Titlepage, acknowledgements and summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#titlepage-acknowledgements-and-abstract&#34;&gt;Titlepage, acknowledgements and abstract&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#include-latex-files-in-yaml&#34;&gt;Include LaTeX files in YAML&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -34,7 +34,7 @@
 &lt;h2&gt;Why &lt;code&gt;bookdown&lt;/code&gt;?&lt;/h2&gt;
 &lt;p&gt;A small preamble before starting to list these problems and solutions: why did I use &lt;code&gt;bookdown&lt;/code&gt; and not &lt;code&gt;rmarkdown&lt;/code&gt;? &lt;code&gt;bookdown&lt;/code&gt; has a few advantages that are very important when writing a Master’s thesis (or an academic paper in general), such as cross-references between sections, figures, tables, etc. See &lt;a href=&#34;https://bookdown.org/yihui/bookdown/&#34;&gt;the &lt;code&gt;bookdown&lt;/code&gt; book&lt;/a&gt; for all the details.&lt;/p&gt;
 &lt;p&gt;While it is possible to create a &lt;code&gt;bookdown&lt;/code&gt; project with RStudio, I “manually” made my own, because I have the impression there are a lot of files created automatically by RStudio that would just confuse myself. Therefore, I had a file containing the YAML and the chunks necessary to load all the packages needed and to run the child documents. Child documents are &lt;code&gt;.Rmd&lt;/code&gt; files that contain only some Markdown text and code chunks (no YAML). They make it much easier to write a thesis since it is possible to divide it in several pieces (introduction, literature review, method, etc.).&lt;/p&gt;
-&lt;p&gt;In addition to &lt;code&gt;Global.Rmd&lt;/code&gt; (which contains YAML and setup chunks), I used two &lt;code&gt;.tex&lt;/code&gt; files: &lt;code&gt;preamble.tex&lt;/code&gt; is where I put all the LaTeX commands and packages I used, and &lt;code&gt;titlepage.tex&lt;/code&gt; to make my custom titlepage, acknowledgments and summary before the table of contents.&lt;/p&gt;
+&lt;p&gt;In addition to &lt;code&gt;Global.Rmd&lt;/code&gt; (which contains YAML and setup chunks), I used two &lt;code&gt;.tex&lt;/code&gt; files: &lt;code&gt;preamble.tex&lt;/code&gt; is where I put all the LaTeX commands and packages I used, and &lt;code&gt;titlepage.tex&lt;/code&gt; to make my custom titlepage, acknowledgments and abstract before the table of contents.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;latex-packages-and-commands&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;LaTeX packages and commands&lt;/h2&gt;
@@ -59,18 +59,18 @@
 &lt;/p&gt;
 &lt;/details&gt;
 &lt;/div&gt;
-&lt;div id=&#34;titlepage-acknowledgements-and-summary&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Titlepage, acknowledgements and summary&lt;/h2&gt;
+&lt;div id=&#34;titlepage-acknowledgements-and-abstract&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Titlepage, acknowledgements and abstract&lt;/h2&gt;
 &lt;p&gt;Concerning these three components, I put them in another file named &lt;code&gt;titlepage.tex&lt;/code&gt;. This is the layout I wanted:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;a titlepage with some logos and some information on my thesis and my university;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;a blank page;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;acknowledgements on a new page;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;summary on a new page;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;abstract on a new page;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;TOC, LOF and LOT on a new page.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;To do so, I started the titlepage with &lt;code&gt;\begin{titlepage}&lt;/code&gt; and customized it as I wanted. But before putting &lt;code&gt;end{titlepage}&lt;/code&gt;, I placed &lt;code&gt;\afterpage{\blankpage}&lt;/code&gt;, which is the command we define in &lt;code&gt;preamble.tex&lt;/code&gt;. With this, I had a titlepage and a blank page.&lt;/p&gt;
-&lt;p&gt;The next step was to create two pages containing the acknowledgements and the summary. This was easily done in LaTeX, and this time I could use &lt;code&gt;\pagebreak&lt;/code&gt; at the end of the acknowledgements to create a new page for the summary. I also put another &lt;code&gt;\pagebreak&lt;/code&gt; to finish &lt;code&gt;titlepage.tex&lt;/code&gt;, so that TOC, LOF and LOT (created in the YAML) could start on a new page.&lt;/p&gt;
+&lt;p&gt;To do so, I started the titlepage with &lt;code&gt;\begin{titlepage}&lt;/code&gt; and customized it as I wanted. But before putting &lt;code&gt;\end{titlepage}&lt;/code&gt;, I placed &lt;code&gt;\afterpage{\blankpage}&lt;/code&gt;, which is the command we define in &lt;code&gt;preamble.tex&lt;/code&gt;. With this, I had a titlepage and a blank page.&lt;/p&gt;
+&lt;p&gt;The next step was to create two pages containing the acknowledgements and the abstract This was easily done in LaTeX, and this time I could use &lt;code&gt;\pagebreak&lt;/code&gt; at the end of the acknowledgements to create a new page for the abstract. I also put another &lt;code&gt;\pagebreak&lt;/code&gt; to finish &lt;code&gt;titlepage.tex&lt;/code&gt;, so that TOC, LOF and LOT (created in the YAML) could start on a new page.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;include-latex-files-in-yaml&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Include LaTeX files in YAML&lt;/h2&gt;
@@ -195,7 +195,7 @@ Thanks everyone
 \pagebreak
 
 \begin{center}
-\textbf{Summary}
+\textbf{Abstract}
 \end{center}
 Bla bla bla...
 \pagebreak&lt;/code&gt;&lt;/pre&gt;

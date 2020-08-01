@@ -18,7 +18,7 @@
       <pubDate>Thu, 16 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/tips-and-tricks-r-markdown/</guid>
-      <description>Why bookdown? LaTeX packages and commands Titlepage, acknowledgements and summary Include LaTeX files in YAML Summary   I finished my Master’s thesis very recently, and I wrote it with R Markdown, and more precisely with the bookdown package. It was really comfortable to do absolutely everything with R: data treatment, use of econometric methods, redaction with chunk of codes, and even the slides for the presentation! However, I have also spent a non-negligible part of my time trying to have a correct layout, essentially for the first pages.</description>
+      <description>Why bookdown? LaTeX packages and commands Titlepage, acknowledgements and abstract Include LaTeX files in YAML Summary   I finished my Master’s thesis very recently, and I wrote it with R Markdown, and more precisely with the bookdown package. It was really comfortable to do absolutely everything with R: data treatment, use of econometric methods, redaction with chunk of codes, and even the slides for the presentation! However, I have also spent a non-negligible part of my time trying to have a correct layout, essentially for the first pages.</description>
     </item>
     
   </channel>
