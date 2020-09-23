@@ -11,7 +11,7 @@ disqusShortname = "" # mettre statator si je veux remettre disqus
 [params]
   Author = "Etienne Bacher"
   Description = "A blog to narrate my transition from Stata to R"
-  Subtitle = "A blog to narrate my transition from Stata to R"
+  Subtitle = "WARNING: this site is deprecated and no longer updated. Please see here for the new website: www.etiennebacher.com"
   Avatar = "images/site-logo.svg"
   Biography = "I'm a French student in Economics, currently finishing my Master's degree."
   ShowBio = true
